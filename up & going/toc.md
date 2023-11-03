@@ -1,35 +1,35 @@
 # You Don't Know JS: Up & Going
 
-## Table of Contents
+## İçerikler
 
-* Foreword
-* Preface
-* Chapter 1: Into Programming
-	* Code
-	* Try It Yourself
-	* Operators
-	* Values & Types
-	* Code Comments
-	* Variables
-	* Blocks
-	* Conditionals
-	* Loops
-	* Functions
-	* Practice
-* Chapter 2: Into JavaScript
-	* Values & Types
-	* Variables
-	* Conditionals
-	* Strict Mode
-	* Functions As Values
-	* `this` Keyword
-	* Prototypes
-	* Old & New
-	* Non-JavaScript
-* Chapter 3: Into YDKJS
-	* Scope & Closures
-	* this & Object Prototypes
-	* Types & Grammar
-	* Async & Performance
-	* ES6 & Beyond
-* Appendix A: Acknowledgments
+* Önsöz
+* Önsöz
+* Bölüm 1: Programlamaya Giriş
+	* Kod
+	* Kendin dene
+	* Operatörler
+	* Değerler ve Türler
+	* Kod Yorumları
+	* Değişkenler
+	* Bloklar
+	* Şartlılar
+	* Döngüler
+	* Fonksiyonlar
+	* Pratik
+* Bölüm 2: JavaScript'e Giriş
+	* Değerler ve Türler
+	* Değişkenler
+	* Şartlılar
+	* Katı Mod
+	* Değer Olarak İşlevler
+	* `bu` Anahtar Kelime
+	* Prototipler
+	* Eski yeni
+	* JavaScript olmayan
+* Bölüm 3: YDKJS'ye Giriş
+	* Kapsam ve Kapanışlar
+	* bu ve Nesne Prototipleri
+	* Türler ve Dilbilgisi
+	* Eşzamansız ve Performans
+	* ES6 ve Ötesi
+* Ek A: Teşekkür

@@ -1,6 +1,6 @@
-# You Don't Know JS: Up & Going - 1st Edition
+# You Don't Know JS: Up & Going - 1. Seri
 
-| UPDATE: You are viewing the 1st edition of the book series, as they were published by O'Reilly from 2014-2015. As of now, [2nd edition](https://github.com/getify/You-Dont-Know-JS/tree/2nd-ed) work is underway. Any issues or PRs should be directed against the latest edition. |
+| GÜNCELLEME: Şu anda O'Reilly tarafından 2014-2015 yıllarında yayınlanan kitap serisinin 1. baskısını görüntülüyorsunuz. Şu an için, [2nd edition](https://github.com/getify/You-Dont-Know-JS/tree/2nd-ed) çalışmalar devam etmektedir. Herhangi bir sorun veya PR, en son baskıya yönlendirilmelidir. |
 | :--- |
 
 ----
@@ -10,15 +10,15 @@
 
 -----
 
-**[Purchase digital/print copy from O'Reilly](http://shop.oreilly.com/product/0636920039303.do)**
+**[ O'Reilly'de dijital/basılı kopya](http://shop.oreilly.com/product/0636920039303.do)**
 
 -----
 
-[Table of Contents](toc.md)
+[İçindekiler](toc.md)
 
-* [Foreword](foreword.md) (by [Jenn Lukas](http://jennlukas.com))
-* [Preface](../preface.md)
-* [Chapter 1: Into Programming](ch1.md)
-* [Chapter 2: Into JavaScript](ch2.md)
-* [Chapter 3: Into YDKJS](ch3.md)
-* [Appendix A: Thank You's!](apA.md)
+* [Ön söz](foreword.md) (by [Jenn Lukas](http://jennlukas.com))
+* [Başlarken](../preface.md)
+* [Bölüm 1: Programlamaya Giriş](ch1.md)
+* [Bölüm 2: JavaScript'e Giriş](ch2.md)
+* [Bölüm 3: YDKJS'ye Giriş](ch3.md)
+* [Ek: Katkıda bulunanlara teşekkürlerimiz!](apA.md)
