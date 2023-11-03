@@ -1,104 +1,104 @@
 # You Don't Know JS: Up & Going
-# Chapter 3: Into YDKJS
+# Bölüm 3: YDKJS'ye Giriş
 
-What is this series all about? Put simply, it's about taking seriously the task of learning *all parts of JavaScript*, not just some subset of the language that someone called "the good parts," and not just whatever minimal amount you need to get your job done at work.
+Bu dizi ne hakkında? Basitçe söylemek gerekirse, bu, JavaScript'in *tüm bölümlerini* öğrenme görevini ciddiye almakla ilgilidir, yalnızca birilerinin "iyi parçalar" olarak adlandırdığı dilin bir alt kümesini değil ve iş yerinde işinizi yapmak için ihtiyacınız olan minimal miktarı değil.
 
-Serious developers in other languages expect to put in the effort to learn most or all of the language(s) they primarily write in, but JS developers seem to stand out from the crowd in the sense of typically not learning very much of the language. This is not a good thing, and it's not something we should continue to allow to be the norm.
+Diğer dillerdeki ciddi geliştiriciler, yazdıkları dillerin çoğunu veya tamamını öğrenmeye çaba göstermeyi beklerler, ancak JS geliştiricileri dilin çok fazla bir kısmını öğrenmeden kalma eğilimindedir gibi görünüyorlar. Bu iyi bir şey değil ve bu durumun norm olmasına izin vermeye devam etmemeliyiz.
 
-The *You Don't Know JS* (*YDKJS*) series stands in stark contrast to the typical approaches to learning JS, and is unlike almost any other JS books you will read. It challenges you to go beyond your comfort zone and to ask the deeper "why" questions for every single behavior you encounter. Are you up for that challenge?
+*You Don't Know JS* (*YDKJS*) serisi, JS'yi öğrenmeye yönelik tipik yaklaşımlara büyük bir tezat oluşturur ve neredeyse okuyacağınız herhangi bir JS kitabından farklıdır. Sizi sınırlarınızın ötesine çıkmaya ve karşılaştığınız her davranış için daha derin "neden" sorularını sormaya zorlar. Bu zorluğa hazır mısınız?
 
-I'm going to use this final chapter to briefly summarize what to expect from the rest of the books in the series, and how to most effectively go about building a foundation of JS learning on top of *YDKJS*.
+Bu son bölümü, serinin geri kalan kitaplarından ne beklemeniz gerektiğini ve *YDKJS* üzerine JS öğrenme temeli oluşturmanın en etkili yolunu kısaca özetlemek için kullanacağım.
 
-## Scope & Closures
+## Kapsam ve Kapanışlar
 
-Perhaps one of the most fundamental things you'll need to quickly come to terms with is how scoping of variables really works in JavaScript. It's not enough to have anecdotal fuzzy *beliefs* about scope.
+Hızla başa çıkmak zorunda kalacağınız en temel şeylerden biri, JavaScript'te değişkenlerin kapsamının gerçekten nasıl çalıştığıdır. Kapsam hakkında belirsiz *inançlar* yeterli değildir.
 
-The *Scope & Closures* title starts by debunking the common misconception that JS is an "interpreted language" and therefore not compiled. Nope.
+*Scope & Closures* başlığı, JS'nin bir "yorumlanan dil" olduğu yaygın yanlış anlamasını çürüterek başlar ve bu nedenle derlenmediği düşünülmez. Hayır.
 
-The JS engine compiles your code right before (and sometimes during!) execution. So we use some deeper understanding of the compiler's approach to our code to understand how it finds and deals with variable and function declarations. Along the way, we see the typical metaphor for JS variable scope management, "Hoisting."
+JS motoru kodunuzu tam olarak yürütmeden hemen önce (ve bazen sırasında) derler. Bu nedenle, kodumuzun derleyici yaklaşımını daha derinlemesine anlamak için kodumuzun değişken ve işlev bildirimlerini nasıl bulduğunu ve işlediğini anlamak için kullanırız. Yolda, JS değişken kapsam yönetimi için tipik metafor olan "Hoisting"i görürüz.
 
-This critical understanding of "lexical scope" is what we then base our exploration of closure on for the last chapter of the book. Closure is perhaps the single most important concept in all of JS, but if you haven't first grasped firmly how scope works, closure will likely remain beyond your grasp.
+Bu "leksikal kapsam"ın kritik anlayışı, kitabın son bölümünde kapanış keşfini temel aldığımız şeydir. Kapanış, muhtemelen JS'nin en önemli kavramıdır, ancak önce kapsamın nasıl çalıştığını sıkıca kavramamışsanız kapanış muhtemelen elinizin altında kalmaya devam eder.
 
-One important application of closure is the module pattern, as we briefly introduced in this book in Chapter 2. The module pattern is perhaps the most prevalent code organization pattern in all of JavaScript; deep understanding of it should be one of your highest priorities.
+Kapanışın önemli bir uygulaması, bu kitapta 2. Bölümde kısaca tanıttığımız modül desenidir. Modül deseni, muhtemelen tüm JavaScript'lerin en yaygın kod organizasyon desenidir; bunun derin bir anlayışı, önceliklerinizden biri olmalı.
 
-## this & Object Prototypes
+## this ve Nesne Prototipleri
 
-Perhaps one of the most widespread and persistent mistruths about JavaScript is that the `this` keyword refers to the function it appears in. Terribly mistaken.
+JavaScript hakkında en yaygın ve kalıcı yanlış inançlardan biri, `this` anahtar kelimesinin göründüğü işlevi işaret ettiği yanılgısıdır. Korkunç bir yanlış anlama.
 
-The `this` keyword is dynamically bound based on how the function in question is executed, and it turns out there are four simple rules to understand and fully determine `this` binding.
+`this` anahtarı, söz konusu işlemin nasıl yürütildiğine bağlı olarak dinamik olarak bağlanır ve `this` bağlama tam olarak belirlemek için anlaşılması gereken dört basit kural olduğu ortaya çıkıyor.
 
-Closely related to the `this` keyword is the object prototype mechanism, which is a look-up chain for properties, similar to how lexical scope variables are found. But wrapped up in the prototypes is the other huge miscue about JS: the idea of emulating (fake) classes and (so-called "prototypal") inheritance.
+`this` anahtarı ile yakından ilişkili olan diğer önemli konu, nesne prototip mekanizmasıdır, bu, özellikler için bir bakış zinciridir, leksikal kapsam değişkenlerinin nasıl bulunduğu gibi. Ancak prototiplerde sarmaşık olan diğer büyük yanılgı, JS hakkındaki düşüncelerin ötesinde (sahte) sınıfları ve (sözde "prototipal") mirası taklit etme fikri.
 
-Unfortunately, the desire to bring class and inheritance design pattern thinking to JavaScript is just about the worst thing you could try to do, because while the syntax may trick you into thinking there's something like classes present, in fact the prototype mechanism is fundamentally opposite in its behavior.
+Ne yazık ki, sını
 
-What's at issue is whether it's better to ignore the mismatch and pretend that what you're implementing is "inheritance," or whether it's more appropriate to learn and embrace how the object prototype system actually works. The latter is more appropriately named "behavior delegation."
+f ve miras tasarım deseni düşünme isteği, JS'ye getirmek isteyeceğiniz en kötü şeydir, çünkü sözdizimi sizi sınıfların mevcut olduğuna inandırmaya kandırabilir, aslında prototip mekanizması davranışıyla temelde zıt bir şekilde davranır.
 
-This is more than syntactic preference. Delegation is an entirely different, and more powerful, design pattern, one that replaces the need to design with classes and inheritance. But these assertions will absolutely fly in the face of nearly every other blog post, book, and conference talk on the subject for the entirety of JavaScript's lifetime.
+Konu, uyumsuzluğu görmezden gelip uyguladığınızın "miras" olduğunu düşünmek mi, yoksa nesne prototip sisteminin nasıl çalıştığını öğrenmek ve kabul etmek mi daha uygun olduğudur. İkincisi daha uygun bir şekilde "davranış yönlendirme" olarak adlandırılır.
 
-The claims I make regarding delegation versus inheritance come not from a dislike of the language and its syntax, but from the desire to see the true capability of the language properly leveraged and the endless confusion and frustration wiped away.
+Bu sadece sözdizimsel tercih değil. Delegasyon, farklı ve daha güçlü bir tasarım deseni olan tamamen farklı bir şeydir, bir sınıf ve mirasla tasarım yapma ihtiyacını ortadan kaldırır. Ancak bu iddialar, JavaScript'in ömrü boyunca konuyla ilgili neredeyse her blog yazısı, kitap ve konferans sunumu ile tamamen ters düşecektir.
 
-But the case I make regarding prototypes and delegation is a much more involved one than what I will indulge here. If you're ready to reconsider everything you think you know about JavaScript "classes" and "inheritance," I offer you the chance to "take the red pill" (*Matrix* 1999) and check out Chapters 4-6 of the *this & Object Prototypes* title of this series.
+Prototipler ve delegasyon hakkındaki iddialarım, burada benim katlanacağımdan daha ayrıntılıdır. JavaScript "sınıfları" ve "mirası" hakkında bildiğinizi düşündüğünüz her şeyi yeniden düşünmeye hazırsanız, size "kırmızı hapı al" (*Matrix* 1999) alma fırsatını sunuyorum ve bu serinin *this & Nesne Prototipleri* başlığına göz atabilirsiniz.
 
-## Types & Grammar
+## Türler ve Sözdizimi
 
-The third title in this series primarily focuses on tackling yet another highly controversial topic: type coercion. Perhaps no topic causes more frustration with JS developers than when you talk about the confusions surrounding implicit coercion.
+Bu serinin üçüncü kitabı, büyük ölçüde başka bir çok tartışmalı konu olan tür dönüşümünü ele almayı amaçlar. Muhtemelen, JS geliştiricilerinin içsel dönüşümle ilgili karışıklıkları konuştuğunuzda yaşadığı frustrasyondan daha fazla bir konu yoktur.
 
-By far, the conventional wisdom is that implicit coercion is a "bad part" of the language and should be avoided at all costs. In fact, some have gone so far as to call it a "flaw" in the design of the language. Indeed, there are tools whose entire job is to do nothing but scan your code and complain if you're doing anything even remotely like coercion.
+Genel kabul gören görüş, içsel dönüşümün dilin "kötü bir parçası" olduğu ve her durumda kaçınılması gereken bir şey olduğudur. Aslında, bazıları dönüşümle herhangi bir şekilde uğraşıyorsanız kodunuzu tarayıp şikayet etmek dışında hiçbir şey yapmayan araçlar olduğunu bile söylemişlerdir.
 
-But is coercion really so confusing, so bad, so treacherous, that your code is doomed from the start if you use it?
+Ancak dönüşüm gerçekten bu kadar kafa karıştırıcı, kötü ve tehlikeli mi, kullanırsanız kodunuz baştan beri mahvolmuş mu?
 
-I say no. After having built up an understanding of how types and values really work in Chapters 1-3, Chapter 4 takes on this debate and fully explains how coercion works, in all its nooks and crevices. We see just what parts of coercion really are surprising and what parts actually make complete sense if given the time to learn.
+Ben hayır diyorum. Türlerin ve değerlerin nasıl çalıştığını tam olarak anladıktan sonra, 1-3. Bölümlerde dönüşümün nasıl çalıştığını tamamen açıklamak ve dönüşümün tüm yönlerini görmek için 4. Bölüm bu tartışmayı ele alır. Hangi dönüşüm kısımlarının gerçekten şaşırtıcı olduğunu ve hangi kısımların zaman verilirse tamamen mantıklı olduğunu öğrenilmesi gerektiğinde görürüz.
 
-But I'm not merely suggesting that coercion is sensible and learnable, I'm asserting that coercion is an incredibly useful and totally underestimated tool that *you should be using in your code.* I'm saying that coercion, when used properly, not only works, but makes your code better. All the naysayers and doubters will surely scoff at such a position, but I believe it's one of the main keys to upping your JS game.
+Ancak sadece dönüşümün mantıklı ve öğrenilebilir olduğunu önermiyorum, aynı zamanda dönüşümün son derece faydalı ve tamamen hafife alınmış bir araç olduğunu *iddia ediyorum.* Dönüşümün, doğru bir şekilde kullanıldığında, sadece işe yaramakla kalmaz, aynı zamanda kodunuzu daha iyi hale getirir. Buna karşı olanların ve şüphecilerin hepsi bu pozisyonu küçümseyecektir, ancak ben bu pozisyonun JS oyununuzu geliştirmenin anahtarlarından biri olduğuna inanıyorum.
 
-Do you want to just keep following what the crowd says, or are you willing to set all the assumptions aside and look at coercion with a fresh perspective? The *Types & Grammar* title of this series will coerce your thinking.
+Sadece kalabalığın dediklerini mi takip etmek istersiniz, yoksa tüm varsayımları bir kenara bırakmaya ve dönüşüme taze bir bakış açısıyla bakmaya hazır mısınız? Bu serinin *Türler ve Sözdizimi* başlığı düşüncelerinizi yönlendirecektir.
 
-## Async & Performance
+## Asenkron ve Performans
 
-The first three titles of this series focus on the core mechanics of the language, but the fourth title branches out slightly to cover patterns on top of the language mechanics for managing asynchronous programming. Asynchrony is not only critical to the performance of our applications, it's increasingly becoming *the* critical factor in writability and maintainability.
+Serinin ilk üç kitabı, dilin temel mekanizmalarına odaklanırken, dördüncü kitap, asenkron programlamayı yönetmek için mekaniklerin üzerine örülmüş desenlere odaklanmaya biraz daha genişliyor. Asenkronluk, uygulamalarımızın performansı için sadece kritik bir faktör olmakla kalmıyor, aynı zamanda yazılabilirlik ve sürdürülebilirlik açısından da *temel* bir faktör haline geliyor.
 
-The book starts first by clearing up a lot of terminology and concept confusion around things like "async," "parallel," and "concurrent," and explains in depth how such things do and do not apply to JS.
+Kitap, önce "asenkron," "paralel" ve "eş zamanlı" gibi terimlerle ilgili birçok terim ve kavram karışıklığını ortadan kaldırarak başlar ve bu tür şeylerin JS'ye nasıl uygulandığını veya uygulanmadığını ayrıntılı olarak açıklar.
 
-Then we move into examining callbacks as the primary method of enabling asynchrony. But it's here that we quickly see that the callback alone is hopelessly insufficient for the modern demands of asynchronous programming. We identify two major deficiencies of callbacks-only coding: *Inversion of Control* (IoC) trust loss and lack of linear reason-ability.
+Ardından, asenkronluğu etkinleştirmenin temel yöntemi olarak geri aramaları incelemeye başlarız. Ancak burada, yalnızca geri aramanın çağdaş asenkron programlamanın modern gereksinimleri için tamamen yetersiz olduğunu hızla görüyoruz. Yalnızca geri aramaları içeren kodların iki temel eksikliğini belirleriz: *Kontrolün Tersine Dönmesi* (IoC) ve doğrusal akıl yürütme eksikliği.
 
-To address these two major deficiencies, ES6 introduces two new mechanisms (and indeed, patterns): promises and generators.
+Bu iki büyük eksikliği ele almak için, ES6 iki yeni mekanizma (ve doğrusu desenler) tanıtır: promises (sözler) ve generators (üreteçler).
 
-Promises are a time-independent wrapper around a "future value," which lets you reason about and compose them regardless of if the value is ready or not yet. Moreover, they effectively solve the IoC trust issues by routing callbacks through a trustable and composable promise mechanism.
+Promiseler, "gelecekteki bir değer" etrafında zaman bağımsız bir kaplama sağlar ve bu değerin hazır veya henüz hazır olup olmadığına bakılmaksızın bu sözleri düşünmenizi ve birleştirmenizi sağlar. Dahası, IoC güven sorunlarını güvenilir ve birleştirilebilir bir söz mekanizması aracılığıyla çözerler.
 
-Generators introduce a new mode of execution for JS functions, whereby the generator can be paused at `yield` points and be resumed asynchronously later. The pause-and-resume capability enables synchronous, sequential looking code in the generator to be processed asynchronously behind the scenes. By doing so, we address the non-linear, non-local-jump confusions of callbacks and thereby make our asynchronous code sync-looking so as to be more reason-able.
+Üreteçler, JS işlevlerinin yeni bir çalışma modunu tanıtır, böylece üreteç, `yield` noktalarında durdurulabilir ve daha sonra asenkron olarak yeniden başlatılabilir. Duraklatma ve devam etme yeteneği, üreteç içindeki senkron, ardışık görünen kodun arka planda asenkron olarak işlenmesine olanak tanır. Böyle yaparak, geri aramaların ve dolayısıyla asenkron kodumuzun neden mantıklı olduğunu adreslemiş oluruz.
 
-But it's the combination of promises and generators that "yields" our most effective asynchronous coding pattern to date in JavaScript. In fact, much of the future sophistication of asynchrony coming in ES7 and later will certainly be built on this foundation. To be serious about programming effectively in an async world, you're going to need to get really comfortable with combining promises and generators.
+Ancak promises ve generators'ın birleşimi, JavaScript'te bugüne kadar en etkili asenkron kodlama desenini "verir." Aslında, ES7 ve sonrasındaki asenkronluğun gelecekteki gelişiminin büyük bir kısmının bu temel üzerine inşa edileceğine kesin gözüyle bakılıyor. Asenkron bir dünyada etkili bir şekilde programlamak ciddi bir şekilde promises ve generators'ı birleştirmeyi öğrenmeniz gerekecek.
 
-If promises and generators are about expressing patterns that let our programs run more concurrently and thus get more processing accomplished in a shorter period, JS has many other facets of performance optimization worth exploring.
+Eğer promises ve generators, programlarımızın daha fazla işlem yapmasını sağlayan desenleri ifade etmekle ilgiliyse ve bu nedenle daha kısa sürede daha fazla işlem yapma gereksinimini karşılıyorsa, JS'nin keşfedilmeye değer pek çok performans optimizasyon yönü bulunuyor.
 
-Chapter 5 delves into topics like program parallelism with Web Workers and data parallelism with SIMD, as well as low-level optimization techniques like ASM.js. Chapter 6 takes a look at performance optimization from the perspective of proper benchmarking techniques, including what kinds of performance to worry about and what to ignore.
+5. Bölüm, Web İşçileri ile program paralelliği ve SIMD ile veri paralelliği gibi konulara dalar, aynı zamanda ASM.js gibi düşük seviye optimizasyon tekniklerini ele alır. 6. Bölüm, uygun benchmarking teknikleri açısından performans optimizasyonunu ele alır ve hangi tür performansın endişe verilmesi gereken türler olduğunu ve ihmal edilmesi gereken türleri açıklar.
 
-Writing JavaScript effectively means writing code that can break the constraint barriers of being run dynamically in a wide range of browsers and other environments. It requires a lot of intricate and detailed planning and effort on our parts to take a program from "it works" to "it works well."
+Etkili bir şekilde JavaScript yazmak, bir programı birçok farklı tarayıcıda ve diğer ortamlarda dinamik olarak çalıştırılma sınırlarını aşabilen kod yazmayı gerektirir. Bir programın "
 
-The *Async & Performance* title is designed to give you all the tools and skills you need to write reasonable and performant JavaScript code.
+çalışır" durumdan "iyi çalışır" duruma gelmesi için bizim tarafımızdan karmaşık ve detaylı planlama ve çaba gerektirir.
 
-## ES6 & Beyond
+*Asenkron ve Performans* başlığı, mantıklı ve performanslı JavaScript kodu yazmanız için ihtiyacınız olan tüm araçları ve becerileri size sunmak üzere tasarlanmıştır.
 
-No matter how much you feel you've mastered JavaScript to this point, the truth is that JavaScript is never going to stop evolving, and moreover, the rate of evolution is increasing rapidly. This fact is almost a metaphor for the spirit of this series, to embrace that we'll never fully *know* every part of JS, because as soon as you master it all, there's going to be new stuff coming down the line that you'll need to learn.
+Ne kadar ustalaştığınıza bakılmaksızın JavaScript'i bu noktaya kadar ne kadar ustalaşmış hissetseniz de, gerçek şu ki JavaScript asla evrimleşmeyi bırakmayacak ve dahası, evrim hızı hızla artıyor. Bu gerçek, bu serinin ruhunu kabul etmek için neredeyse bir metafor gibidir; JavaScript'in her parçasını tam olarak *bilmiyoruz* çünkü hepsini tam olarak öğrendiğiniz anda, öğrenmeniz gereken yeni şeyler yolda olacaktır.
 
-This title is dedicated to both the short- and mid-term visions of where the language is headed, not just the *known* stuff like ES6 but the *likely* stuff beyond.
+Bu başlık, dilin nereye gittiği konusundaki kısa ve orta vadeli vizyonlara adanmıştır, sadece ES6 gibi *bilinen* şeyler değil, ötesindeki *muhtemel* şeyler.
 
-While all the titles of this series embrace the state of JavaScript at the time of this writing, which is mid-way through ES6 adoption, the primary focus in the series has been more on ES5. Now, we want to turn our attention to ES6, ES7, and ...
+Bu serinin tüm başlıkları, bu yazının yazıldığı sırada JavaScript'in durumunu benimserken, serinin ana odak noktası daha çok ES5'ti. Şimdi dikkatimizi ES6, ES7 ve...
 
-Since ES6 is nearly complete at the time of this writing, *ES6 & Beyond* starts by dividing up the concrete stuff from the ES6 landscape into several key categories, including new syntax, new data structures (collections), and new processing capabilities and APIs. We cover each of these new ES6 features, in varying levels of detail, including reviewing details that are touched on in other books of this series.
+Bu yazının yazıldığı sırada ES6 neredeyse tamamlanmış olduğundan, *ES6 & Beyond* yeni sözdizimi, yeni veri yapıları (koleksiyonlar) ve yeni işleme yetenekleri ve API'lar dahil olmak üzere ES6 peyzajının somut bölümlerine ayrılarak başlar. Bu yeni ES6 özelliklerini, diğer kitaplarının üzerinde durulan ayrıntıları da içeren farklı ayrıntı seviyelerinde ele alıyoruz.
 
-Some exciting ES6 things to look forward to reading about: destructuring, default parameter values, symbols, concise methods, computed properties, arrow functions, block scoping, promises, generators, iterators, modules, proxies, weakmaps, and much, much more! Phew, ES6 packs quite a punch!
+Okumayı dört gözle beklemek için heyecan verici bazı ES6 şeyler: nesneleri çözme (destructuring), varsayılan parametre değerleri, semboller (symbols), özeti (concise) yöntemler, hesaplanmış özellikler (computed properties), ok işlevleri (arrow functions), blok kapsamı (block scoping), sözler (promises), üreteçler (generators), yineleyiciler (iterators), modüller (modules), vekiller (proxies), zayıf haritalar (weakmaps) ve çok daha fazlası! Vay be, ES6 oldukça güçlü!
 
-The first part of the book is a roadmap for all the stuff you need to learn to get ready for the new and improved JavaScript you'll be writing and exploring over the next couple of years.
+Kitabın ilk kısmı, önümüzdeki birkaç yıl içinde yazıp keşfedeceğiniz yeni ve geliştirilmiş JavaScript için öğrenmeniz gereken tüm konulara dair bir yol haritasıdır.
 
-The latter part of the book turns attention to briefly glance at things that we can likely expect to see in the near future of JavaScript. The most important realization here is that post-ES6, JS is likely going to evolve feature by feature rather than version by version, which means we can expect to see these near-future things coming much sooner than you might imagine.
+Kitabın son kısmı, JavaScript'in yakın geleceğinde görmeyi bekleyebileceğimiz şeylere kısa bir göz atar. Buradaki en önemli farkındalık, ES6 sonrası JS'nin muhtemelen sürüm sürüm yerine özellik özellik evrimleşeceğidir, bu da bu yakın gelecekteki şeyleri tahmin etmemizin çok daha hızlı olacağı anlamına gelir.
 
-The future for JavaScript is bright. Isn't it time we start learning it!?
+JavaScript için gelecek parlak. Artık onu öğrenme zamanı değil mi?
 
-## Review
+## Gözden Geçirme (Review)
 
-The *YDKJS* series is dedicated to the proposition that all JS developers can and should learn all of the parts of this great language. No person's opinion, no framework's assumptions, and no project's deadline should be the excuse for why you never learn and deeply understand JavaScript.
+*YDKJS* serisi, tüm JS geliştiricilerinin bu harika dilin tüm parçalarını öğrenmeyi ve öğrenmeyi derinlemesine anlamayı isteyebileceği teklifine adanmıştır. Hiç kimsenin görüşü, hiçbir çerçevenin varsayımı ve hiçbir proje teslim tarihi, JavaScript'i öğrenmediğiniz ve derinlemesine anlamadığınız nedeni olmamalıdır.
 
-We take each important area of focus in the language and dedicate a short but very dense book to fully explore all the parts of it that you perhaps thought you knew but probably didn't fully.
+Dilin odaklandığı her önemli alanı ele alırız ve muhtemelen bildiğinizi düşündüğünüz ancak muhtemelen tam olarak bilmediğiniz tüm parçalarını tam olarak keşfetmek için kısa ancak çok yoğun bir kitap ayırırız.
 
-"You Don't Know JS" isn't a criticism or an insult. It's a realization that all of us, myself included, must come to terms with. Learning JavaScript isn't an end goal but a process. We don't know JavaScript, yet. But we will!
+"You Don't Know JS" bir eleştiri veya hakaret değil. Bu, hepimizin, ben dahil, yüzleşmemiz gereken bir gerçektir. JavaScript öğrenmek bir son hedef değil, bir süreçtir. JavaScript'i henüz tam olarak *bilmiyoruz*. Ama bileceğiz!
