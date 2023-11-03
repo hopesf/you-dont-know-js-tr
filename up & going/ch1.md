@@ -1,102 +1,102 @@
 # You Don't Know JS: Up & Going
-# Chapter 1: Into Programming
+# Bölüm 1: Programlamaya Giriş
 
-Welcome to the *You Don't Know JS* (*YDKJS*) series.
+*You Dont know JS* (*YDKJS*) serisine hoş geldiniz.
 
-*Up & Going* is an introduction to several basic concepts of programming -- of course we lean toward JavaScript (often abbreviated JS) specifically -- and how to approach and understand the rest of the titles in this series. Especially if you're just getting into programming and/or JavaScript, this book will briefly explore what you need to get *up and going*.
+*Up & Going* programlamanın bazı temel kavramlarına giriş niteliğindedir - elbette özellikle JavaScript'e (genellikle JS olarak kısaltılır) yöneliyoruz - ve bu serideki diğer başlıklara nasıl yaklaşılacağı ve anlaşılacağı. Özellikle programlamaya ve/veya JavaScript'e yeni başlıyorsanız, bu kitap *başlamak* için neye ihtiyacınız olduğunu kısaca keşfedecektir.
 
-This book starts off explaining the basic principles of programming at a very high level. It's mostly intended if you are starting *YDKJS* with little to no prior programming experience, and are looking to these books to help get you started along a path to understanding programming through the lens of JavaScript.
+Bu kitap, programlamanın temel ilkelerini çok yüksek düzeyde açıklayarak başlıyor. Çoğunlukla *YDKJS*'ye önceden çok az programlama deneyimiyle veya hiç programlama deneyimi olmadan başlıyorsanız ve programlamayı JavaScript merceğinden anlama yolunda başlamanıza yardımcı olacak bu kitaplara bakıyorsanız amaçlanır.
 
-Chapter 1 should be approached as a quick overview of the things you'll want to learn more about and practice to get *into programming*. There are also many other fantastic programming introduction resources that can help you dig into these topics further, and I encourage you to learn from them in addition to this chapter.
+Bölüm 1'e, hakkında daha fazla bilgi edinmek isteyeceğiniz ve *programlamaya* girmek için pratik yapmak isteyeceğiniz şeylere hızlı bir genel bakış olarak yaklaşılmalıdır. Ayrıca, bu konuları daha derinlemesine incelemenize yardımcı olabilecek başka pek çok harika programlamaya giriş kaynağı da mevcut ve bu bölüme ek olarak onlardan da bir şeyler öğrenmenizi tavsiye ediyorum.
 
-Once you feel comfortable with general programming basics, Chapter 2 will help guide you to a familiarity with JavaScript's flavor of programming. Chapter 2 introduces what JavaScript is about, but again, it's not a comprehensive guide -- that's what the rest of the *YDKJS* books are for!
+Genel programlama temelleri konusunda kendinizi rahat hissettiğinizde, Bölüm 2, JavaScript'in programlama tarzına aşina olmanıza yardımcı olacaktır. 2. Bölümde JavaScript'in neyle ilgili olduğu anlatılıyor ancak yine de kapsamlı bir rehber değil -- geri kalan *YDKJS* kitaplarının amacı da bu!
 
-If you're already fairly comfortable with JavaScript, first check out Chapter 3 as a brief glimpse of what to expect from *YDKJS*, then jump right in!
+JavaScript konusunda zaten yeterince bilginiz varsa, öncelikle *YDKJS*'den neler beklenebileceğine dair kısa bir bakış için Bölüm 3'e göz atın, ardından hemen başlayın!
 
-## Code
+## Kodlama
 
-Let's start from the beginning.
+Hadi baştan başlayalım.
 
-A program, often referred to as *source code* or just *code*, is a set of special instructions to tell the computer what tasks to perform. Usually code is saved in a text file, although with JavaScript you can also type code directly into a developer console in a browser, which we'll cover shortly.
+Genellikle *kaynak kodu* veya yalnızca *kod* olarak anılan program, bilgisayara hangi görevleri gerçekleştireceğini söyleyen bir dizi özel talimattır. Kod genellikle bir metin dosyasına kaydedilir, ancak JavaScript ile kodu doğrudan bir tarayıcıdaki geliştirici konsoluna da yazabilirsiniz; buna kısaca değineceğiz.
 
-The rules for valid format and combinations of instructions is called a *computer language*, sometimes referred to as its *syntax*, much the same as English tells you how to spell words and how to create valid sentences using words and punctuation.
+Geçerli format ve talimat kombinasyonlarına ilişkin kurallara *bilgisayar dili* adı verilir ve bazen *sözdizimi* olarak da anılır; tıpkı İngilizce'nin size kelimeleri nasıl yazacağınızı ve kelimeleri ve noktalama işaretlerini kullanarak nasıl geçerli cümleler oluşturacağınızı söylemesi gibi.
 
-### Statements
+### İfadeler (Statements)
 
-In a computer language, a group of words, numbers, and operators that performs a specific task is a *statement*. In JavaScript, a statement might look as follows:
-
-```js
-a = b * 2;
-```
-
-The characters `a` and `b` are called *variables* (see "Variables"), which are like simple boxes you can store any of your stuff in. In programs, variables hold values (like the number `42`) to be used by the program. Think of them as symbolic placeholders for the values themselves.
-
-By contrast, the `2` is just a value itself, called a *literal value*, because it stands alone without being stored in a variable.
-
-The `=` and `*` characters are *operators* (see "Operators") -- they perform actions with the values and variables such as assignment and mathematic multiplication.
-
-Most statements in JavaScript conclude with a semicolon (`;`) at the end.
-
-The statement `a = b * 2;` tells the computer, roughly, to get the current value stored in the variable `b`, multiply that value by `2`, then store the result back into another variable we call `a`.
-
-Programs are just collections of many such statements, which together describe all the steps that it takes to perform your program's purpose.
-
-### Expressions
-
-Statements are made up of one or more *expressions*. An expression is any reference to a variable or value, or a set of variable(s) and value(s) combined with operators.
-
-For example:
+Bir bilgisayar dilinde, belirli bir görevi yerine getiren bir grup kelime, sayı ve operatör bir *ifadedir*. JavaScript'te bir ifade aşağıdaki gibi görünebilir:
 
 ```js
 a = b * 2;
 ```
 
-This statement has four expressions in it:
+`a` ve `b` karakterleri *değişkenler* olarak adlandırılır ("Değişkenler"e bakın), bunlar herhangi bir öğenizi saklayabileceğiniz basit kutular gibidir. Programlarda değişkenler, değerleri ('42' sayısı gibi) tutar. program tarafından kullanılacaktır. Bunları değerlerin sembolik yer tutucuları olarak düşünün.
 
-* `2` is a *literal value expression*
-* `b` is a *variable expression*, which means to retrieve its current value
-* `b * 2` is an *arithmetic expression*, which means to do the multiplication
-* `a = b * 2` is an *assignment expression*, which means to assign the result of the `b * 2` expression to the variable `a` (more on assignments later)
+Bunun tersine, "2" yalnızca bir değerdir ve *gerçek değer* olarak adlandırılır, çünkü bir değişkende saklanmadan tek başına durur.
 
-A general expression that stands alone is also called an *expression statement*, such as the following:
+`=` ve `*` karakterleri *operatörlerdir* (bkz. "Operatörler") - atama ve matematiksel çarpma gibi değerler ve değişkenlerle eylemler gerçekleştirirler.
+
+JavaScript'teki çoğu ifadenin sonunda noktalı virgül (`;`) bulunur.
+
+'a = b * 2;' ifadesi, bilgisayara kabaca, 'b' değişkeninde saklanan geçerli değeri almasını, bu değeri '2' ile çarpmasını ve ardından sonucu 'a' adını verdiğimiz başka bir değişkene geri saklamasını söyler.
+
+Programlar, programınızın amacını gerçekleştirmek için gereken tüm adımları birlikte açıklayan bu tür birçok ifadenin yalnızca bir derlemesidir.
+
+### İfadeler (Expressions)
+
+İfadeler bir veya daha fazla *ifadeden* oluşur. İfade, bir değişkene veya değere veya operatörlerle birleştirilmiş değişken(ler) ve değer(ler) kümesine yapılan herhangi bir başvurudur.
+
+örnek olarak:
+
+```js
+a = b * 2;
+```
+
+Bu ifadenin içinde dört ifade bulunmaktadır:
+
+* `2` bir *gerçek değer ifadesidir*
+* `b` bir *değişken ifadesidir*, yani mevcut değerini almak anlamına gelir
+* `b * 2` bir *aritmetik ifadedir*, yani çarpma işlemi yapmak anlamına gelir
+* `a = b * 2` bir *atama ifadesidir*; bu, `b * 2` ifadesinin sonucunu `a` değişkenine atamak anlamına gelir (daha sonra atamalarla ilgili daha fazla bilgi verilecektir)
+
+Tek başına duran genel bir ifadeye aynı zamanda *ifade ifadesi* de denir, örneğin:
 
 ```js
 b * 2;
 ```
 
-This flavor of expression statement is not very common or useful, as generally it wouldn't have any effect on the running of the program -- it would retrieve the value of `b` and multiply it by `2`, but then wouldn't do anything with that result.
+İfade ifadesinin bu çeşidi çok yaygın veya kullanışlı değildir, çünkü genellikle programın çalışması üzerinde herhangi bir etkisi olmaz - 'b' değerini alır ve onu '2' ile çarpar, ancak daha sonra' Bu sonuçla hiçbir şey yapmayın.
 
-A more common expression statement is a *call expression* statement (see "Functions"), as the entire statement is the function call expression itself:
+Daha yaygın bir ifade ifadesi *çağrı ifadesi* ifadesidir (bkz. "İşlevler"), çünkü ifadenin tamamı işlev çağrısı ifadesinin kendisidir:
 
 ```js
 alert( a );
 ```
 
-### Executing a Program
+### Bir Programın Yürütülmesi
 
-How do those collections of programming statements tell the computer what to do? The program needs to be *executed*, also referred to as *running the program*.
+Bu programlama ifadeleri koleksiyonları bilgisayara ne yapması gerektiğini nasıl söylüyor? Programın *yürütülmesi* gerekir; buna aynı zamanda *programın çalıştırılması* da denir.
 
-Statements like `a = b * 2` are helpful for developers when reading and writing, but are not actually in a form the computer can directly understand. So a special utility on the computer (either an *interpreter* or a *compiler*) is used to translate the code you write into commands a computer can understand.
+'a = b * 2' gibi ifadeler geliştiricilere okuma ve yazma sırasında yardımcı olur ancak aslında bilgisayarın doğrudan anlayabileceği bir biçimde değildir. Bu nedenle, bilgisayardaki özel bir yardımcı program (bir *yorumlayıcı* veya *derleyici*) yazdığınız kodu bilgisayarın anlayabileceği komutlara çevirmek için kullanılır.
 
-For some computer languages, this translation of commands is typically done from top to bottom, line by line, every time the program is run, which is usually called *interpreting* the code.
+Bazı bilgisayar dilleri için, komutların bu çevirisi genellikle program her çalıştırıldığında yukarıdan aşağıya, satır satır yapılır; buna genellikle kodun *yorumlanması* denir.
 
-For other languages, the translation is done ahead of time, called *compiling* the code, so when the program *runs* later, what's running is actually the already compiled computer instructions ready to go.
+Diğer diller için çeviri, kodun *derlenmesi* adı verilen önceden yapılır; dolayısıyla program daha sonra *çalıştığında*, çalışan şey aslında önceden derlenmiş, kullanıma hazır bilgisayar talimatlarıdır.
 
-It's typically asserted that JavaScript is *interpreted*, because your JavaScript source code is processed each time it's run. But that's not entirely accurate. The JavaScript engine actually *compiles* the program on the fly and then immediately runs the compiled code.
+JavaScript kaynak kodunuz her çalıştırıldığında işlendiğinden, genellikle JavaScript'in *yorumlandığı* iddia edilir. Ancak bu tamamen doğru değil. JavaScript motoru aslında programı anında *derler* ve derlenen kodu hemen çalıştırır.
 
-**Note:** For more information on JavaScript compiling, see the first two chapters of the *Scope & Closures* title of this series.
+**Not:** JavaScript derlemesi hakkında daha fazla bilgi için bu serinin *Kapsam ve Kapanışlar* başlığının ilk iki bölümüne bakın.
 
-## Try It Yourself
+## Kendiniz De Deneyin
 
-This chapter is going to introduce each programming concept with simple snippets of code, all written in JavaScript (obviously!).
+Bu bölümde her programlama konseptini tamamı JavaScript ile yazılmış (tabii ki!) basit kod parçacıklarıyla tanıtacağız.
 
-It cannot be emphasized enough: while you go through this chapter -- and you may need to spend the time to go over it several times -- you should practice each of these concepts by typing the code yourself. The easiest way to do that is to open up the developer tools console in your nearest browser (Firefox, Chrome, IE, etc.).
+Ne kadar vurgulansa azdır: Bu bölümü incelerken - ki bunun üzerinden birkaç kez geçmek için zaman harcamanız gerekebilir - kodu kendiniz yazarak bu kavramların her birini pratik etmelisiniz. Bunu yapmanın en kolay yolu geliştirici araçları konsolunu en yakın tarayıcınızda (Firefox, Chrome, IE vb.) açmaktır.
 
-**Tip:** Typically, you can launch the developer console with a keyboard shortcut or from a menu item. For more detailed information about launching and using the console in your favorite browser, see "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). To type multiple lines into the console at once, use `<shift> + <enter>` to move to the next new line. Once you hit `<enter>` by itself, the console will run everything you've just typed.
+**İpucu:** Genellikle geliştirici konsolunu klavye kısayoluyla veya bir menü öğesinden başlatabilirsiniz. Konsolu favori tarayıcınızda başlatma ve kullanma hakkında daha ayrıntılı bilgi için bkz. "Geliştirici Araçları Konsolunda Uzmanlaşma" (http://blog.teamtreehouse.com/mastering-developer-tools-console). Konsola aynı anda birden fazla satır yazmak için bir sonraki yeni satıra geçmek üzere `<shift> + <enter>` tuşlarını kullanın. Tek başına "<enter>" tuşuna bastığınızda, konsol az önce yazdığınız her şeyi çalıştıracaktır.
 
-Let's get familiar with the process of running code in the console. First, I suggest opening up an empty tab in your browser. I prefer to do this by typing `about:blank` into the address bar. Then, make sure your developer console is open, as we just mentioned.
+Konsolda kod çalıştırma sürecini tanıyalım. Öncelikle tarayıcınızda boş bir sekme açmanızı öneririm. Bunu adres çubuğuna "about:blank" yazarak yapmayı tercih ediyorum. Daha sonra az önce de belirttiğimiz gibi geliştirici konsolunuzun açık olduğundan emin olun.
 
-Now, type this code and see how it runs:
+Şimdi bu kodu yazın ve nasıl çalıştığını görün:
 
 ```js
 a = 21;
@@ -106,39 +106,39 @@ b = a * 2;
 console.log( b );
 ```
 
-Typing the preceding code into the console in Chrome should produce something like the following:
+Önceki kodu Chrome'daki konsola yazmak aşağıdakine benzer bir şey üretmelidir:
 
 <img src="fig1.png" width="500">
 
-Go on, try it. The best way to learn programming is to start coding!
+Haydi, dene. Programlamayı öğrenmenin en iyi yolu kodlamaya başlamaktır!
 
-### Output
+### Çıktı (Output)
 
-In the previous code snippet, we used `console.log(..)`. Briefly, let's look at what that line of code is all about.
+Önceki kod parçacığında `console.log(..)` kullanmıştık. Kısaca bu kod satırının neyle ilgili olduğuna bakalım.
 
-You may have guessed, but that's exactly how we print text (aka *output* to the user) in the developer console. There are two characteristics of that statement that we should explain.
+Tahmin etmiş olabilirsiniz, ancak geliştirici konsolunda metni (diğer adıyla kullanıcıya *çıktı*) bu şekilde yazdırırız. Bu ifadenin açıklamamız gereken iki özelliği var.
 
-First, the `log( b )` part is referred to as a function call (see "Functions"). What's happening is we're handing the `b` variable to that function, which asks it to take the value of `b` and print it to the console.
+İlk olarak, 'log(b)' kısmına işlev çağrısı denir (bkz. "İşlevler"). Olan şu ki, biz 'b' değişkenini bu fonksiyona veriyoruz, bu da ondan 'b' değerini alıp konsola yazdırmasını istiyor.
 
-Second, the `console.` part is an object reference where the `log(..)` function is located. We cover objects and their properties in more detail in Chapter 2.
+İkincisi, 'console.' kısmı 'log(..)' fonksiyonunun bulunduğu bir nesne referansıdır. Nesneleri ve onların özelliklerini Bölüm 2'de daha ayrıntılı olarak ele alacağız.
 
-Another way of creating output that you can see is to run an `alert(..)` statement. For example:
+Çıktı oluşturmanın görebileceğiniz başka bir yolu da 'alert(..)' ifadesini çalıştırmaktır. Örneğin:
 
 ```js
 alert( b );
 ```
 
-If you run that, you'll notice that instead of printing the output to the console, it shows a popup "OK" box with the contents of the `b` variable. However, using `console.log(..)` is generally going to make learning about coding and running your programs in the console easier than using `alert(..)`, because you can output many values at once without interrupting the browser interface.
+Bunu çalıştırırsanız, çıktıyı konsola yazdırmak yerine, 'b' değişkeninin içeriğini içeren açılır bir "Tamam" kutusu gösterdiğini fark edeceksiniz. Ancak, "console.log(..)" kullanmak genellikle kodlamayı öğrenmenizi ve programlarınızı konsolda çalıştırmayı "alert(..)" kullanmaktan daha kolay hale getirir, çünkü tarayıcıyı kesintiye uğratmadan aynı anda birçok değerin çıktısını alabilirsiniz arayüz.
 
-For this book, we'll use `console.log(..)` for output.
+Bu kitapta çıktı olarak `console.log(..)` kullanacağız.
 
-### Input
+### Girdi (Input)
 
-While we're discussing output, you may also wonder about *input* (i.e., receiving information from the user).
+Çıktıyı tartışırken, *giriş* (yani kullanıcıdan bilgi almak) konusunu da merak edebilirsiniz.
 
-The most common way that happens is for the HTML page to show form elements (like text boxes) to a user that they can type into, and then using JS to read those values into your program's variables.
+Bunun en yaygın yolu, HTML sayfasının kullanıcıya yazı yazabileceği form öğelerini (metin kutuları gibi) göstermesi ve ardından bu değerleri programınızın değişkenlerine okumak için JS'yi kullanmasıdır.
 
-But there's an easier way to get input for simple learning and demonstration purposes such as what you'll be doing throughout this book. Use the `prompt(..)` function:
+Ancak bu kitap boyunca yapacaklarınız gibi basit öğrenme ve gösterme amaçları için girdi almanın daha kolay bir yolu var. 'Prompt(..)' işlevini kullanın:
 
 ```js
 age = prompt( "Please tell me your age:" );
@@ -146,40 +146,40 @@ age = prompt( "Please tell me your age:" );
 console.log( age );
 ```
 
-As you may have guessed, the message you pass to `prompt(..)` -- in this case, `"Please tell me your age:"` -- is printed into the popup.
+Tahmin edebileceğiniz gibi, 'prompt(..)''a ilettiğiniz mesaj -- bu durumda, ''Lütfen bana yaşınızı söyleyin:'' -- açılır pencerede yazdırılır.
 
-This should look similar to the following:
+Bu, aşağıdakine benzer görünmelidir:
 
 <img src="fig2.png" width="500">
 
-Once you submit the input text by clicking "OK," you'll observe that the value you typed is stored in the `age` variable, which we then *output* with `console.log(..)`:
+"Tamam"ı tıklayarak giriş metnini gönderdiğinizde, yazdığınız değerin "yaş" değişkeninde saklandığını göreceksiniz, ardından bunu "console.log(..)" ile *çıkartıyoruz*:
 
 <img src="fig3.png" width="500">
 
-To keep things simple while we're learning basic programming concepts, the examples in this book will not require input. But now that you've seen how to use `prompt(..)`, if you want to challenge yourself you can try to use input in your explorations of the examples.
+Temel programlama kavramlarını öğrenirken işleri basit tutmak için bu kitaptaki örnekler girdi gerektirmeyecektir. Ancak artık “prompt(..)”ın nasıl kullanılacağını gördüğünüze göre, kendinize meydan okumak istiyorsanız örnekleri incelerken girdileri kullanmayı deneyebilirsiniz.
 
-## Operators
+## Operatörler (Operators)
 
-Operators are how we perform actions on variables and values. We've already seen two JavaScript operators, the `=` and the `*`.
+Operatörler, değişkenler ve değerler üzerinde eylemleri nasıl gerçekleştirdiğimizdir. Zaten iki JavaScript operatörü gördük, `=` ve `*`.
 
-The `*` operator performs mathematic multiplication. Simple enough, right?
+'*' operatörü matematiksel çarpma işlemini gerçekleştirir. Yeterince basit, değil mi?
 
-The `=` equals operator is used for *assignment* -- we first calculate the value on the *right-hand side* (source value) of the `=` and then put it into the variable that we specify on the *left-hand side* (target variable).
+`=` eşittir operatörü *atama* için kullanılır - önce `=`nin *sağ tarafındaki* (kaynak değeri) değeri hesaplarız ve sonra onu *sol tarafta belirttiğimiz değişkene koyarız -el tarafı* (hedef değişken).
 
-**Warning:** This may seem like a strange reverse order to specify assignment. Instead of `a = 42`, some might prefer to flip the order so the source value is on the left and the target variable is on the right, like `42 -> a` (this is not valid JavaScript!). Unfortunately, the `a = 42` ordered form, and similar variations, is quite prevalent in modern programming languages. If it feels unnatural, just spend some time rehearsing that ordering in your mind to get accustomed to it.
+**Uyarı:** Bu, atamayı belirtmek için garip bir ters sıra gibi görünebilir. Bazıları 'a = 42' yerine, kaynak değeri solda ve hedef değişkeni sağda olacak şekilde, '42 -> a' gibi sırayı değiştirmeyi tercih edebilir (bu geçerli bir JavaScript değil!). Ne yazık ki, 'a = 42' sıralı formu ve benzer varyasyonları modern programlama dillerinde oldukça yaygındır. Eğer doğal görünmüyorsa, alışmak için bu sıralamayı zihninizde prova etmek için biraz zaman ayırın.
 
-Consider:
+Dikkate almak:
 
 ```js
 a = 2;
 b = a + 1;
 ```
 
-Here, we assign the `2` value to the `a` variable. Then, we get the value of the `a` variable (still `2`), add `1` to it resulting in the value `3`, then store that value in the `b` variable.
+Burada `a` değişkenine `2` değerini atadık. Daha sonra, "a" değişkeninin değerini (hala "2") alıyoruz, buna "1" ekleyerek "3" değerini elde ediyoruz ve ardından bu değeri "b" değişkeninde saklıyoruz.
 
-While not technically an operator, you'll need the keyword `var` in every program, as it's the primary way you *declare* (aka *create*) *var*iables (see "Variables").
+Teknik olarak bir operatör olmasa da, her programda `var` anahtar kelimesine ihtiyacınız olacak, çünkü bu anahtar kelimeyi *bildirmenin* (diğer adıyla *oluşturma*) *değişkenleri*iables (bkz. "Değişkenler").
 
-You should always declare the variable by name before you use it. But you only need to declare a variable once for each *scope* (see "Scope"); it can be used as many times after that as needed. For example:
+Değişkeni kullanmadan önce daima ismine göre bildirmelisiniz. Ancak her *kapsam* için bir değişkeni yalnızca bir kez bildirmeniz gerekir (bkz. "Kapsam"); bundan sonra gerektiği kadar kullanılabilir. Örneğin:
 
 ```js
 var a = 20;
@@ -190,46 +190,46 @@ a = a * 2;
 console.log( a );	// 42
 ```
 
-Here are some of the most common operators in JavaScript:
+JavaScript'te en yaygın kullanılan operatörlerden bazıları şunlardır:
 
-* Assignment: `=` as in `a = 2`.
-* Math: `+` (addition), `-` (subtraction), `*` (multiplication), and `/` (division), as in `a * 3`.
-* Compound Assignment: `+=`, `-=`, `*=`, and `/=` are compound operators that combine a math operation with assignment, as in `a += 2` (same as `a = a + 2`).
-* Increment/Decrement: `++` (increment), `--` (decrement), as in `a++` (similar to `a = a + 1`).
-* Object Property Access: `.` as in `console.log()`.
+* Atama: `=`, `a = 2`de olduğu gibi.
+* Matematik: `+` (toplama), `-` (çıkarma), `*` (çarpma) ve `/` (bölme), `a * 3`te olduğu gibi.
+* Bileşik Atama: `+=`, `-=`, `*=` ve `/=`, `a += 2`de olduğu gibi bir matematik işlemini atamayla birleştiren bileşik operatörlerdir (`a = a ile aynı) + 2`).
+* Artış/Azalış: `++` (artırma), `--' (azalma), 'a++'da olduğu gibi ('a = a + 1'e benzer).
+* Nesne Özelliği Erişimi: `.`, `console.log()`daki gibi.
 
-   Objects are values that hold other values at specific named locations called properties. `obj.a` means an object value called `obj` with a property of the name `a`. Properties can alternatively be accessed as `obj["a"]`. See Chapter 2.
-* Equality: `==` (loose-equals), `===` (strict-equals), `!=` (loose not-equals), `!==` (strict not-equals), as in `a == b`.
+   Nesneler, özellikler adı verilen belirli adlandırılmış konumlarda diğer değerleri tutan değerlerdir. 'obj.a', 'a' adındaki bir özelliğe sahip, 'obj' adı verilen bir nesne değeri anlamına gelir. Özelliklere alternatif olarak `obj["a"]` olarak erişilebilir. 2. Bölüme bakın.
+* Eşitlik: `==` (gevşek eşit olmayanlar), `===` (katı eşit olanlar), `!=` (gevşek eşit olmayanlar), `!==` (katı eşit olmayanlar), `'da olduğu gibi a == b`.
 
-   See "Values & Types" and Chapter 2.
-* Comparison: `<` (less than), `>` (greater than), `<=` (less than or loose-equals), `>=` (greater than or loose-equals), as in `a <= b`.
+   Bkz. "Değerler ve Türler" ve Bölüm 2.
+* Karşılaştırma: `<` (küçüktür), `>` (büyüktür), `<=` (küçüktür veya gevşek eşittir), `>=` (büyüktür veya gevşek eşittir), `a <'de olduğu gibi = b`.
 
-   See "Values & Types" and Chapter 2.
-* Logical: `&&` (and), `||` (or), as in `a || b` that selects either `a` *or* `b`.
+   Bkz. "Değerler ve Türler" ve Bölüm 2.
+* Mantıksal: `&&` (ve), `||` (veya), `a || `a` *veya* `b`yi seçen b`.
 
-   These operators are used to express compound conditionals (see "Conditionals"), like if either `a` *or* `b` is true.
+   Bu operatörler, örneğin "a" *veya* "b"nin doğru olması gibi bileşik koşulları ifade etmek için kullanılır ("Koşullular"a bakın).
 
-**Note:** For much more detail, and coverage of operators not mentioned here, see the Mozilla Developer Network (MDN)'s "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators).
+**Not:** Daha fazla ayrıntı ve burada belirtilmeyen operatörlerin kapsamı için Mozilla Geliştirici Ağı'nın (MDN) "İfadeler ve Operatörler" (https://developer.mozilla.org/en-US/docs) sayfasına bakın. /Web/JavaScript/Guide/Expressions_and_Operators).
 
-## Values & Types
+## Değerler ve Türler (Values & Types)
 
-If you ask an employee at a phone store how much a certain phone costs, and they say "ninety-nine, ninety-nine" (i.e., $99.99), they're giving you an actual numeric dollar figure that represents what you'll need to pay (plus taxes) to buy it. If you want to buy two of those phones, you can easily do the mental math to double that value to get $199.98 for your base cost.
+Bir telefon mağazasındaki bir çalışana belirli bir telefonun fiyatını sorarsanız ve "doksan dokuz, doksan dokuz" (yani 99,99 dolar) derlerse, size ne kadar alacağınızı temsil eden gerçek bir sayısal dolar rakamı vermiş olurlar. satın almak için (artı vergiler) ödeme yapmanız gerekir. Bu telefonlardan ikisini satın almak istiyorsanız, zihinsel matematiği kolayca yaparak bu değeri iki katına çıkararak temel maliyetiniz için 199,98 ABD doları elde edebilirsiniz.
 
-If that same employee picks up another similar phone but says it's "free" (perhaps with air quotes), they're not giving you a number, but instead another kind of representation of your expected cost ($0.00) -- the word "free."
+Aynı çalışan başka bir benzer telefon alır ve bunun "ücretsiz" olduğunu söylerse (belki de uçak tarifeleriyle), size bir numara vermez, bunun yerine beklenen maliyetinizin (0,00 $) başka bir temsilini veriyordur - "ücretsiz" kelimesi "
 
-When you later ask if the phone includes a charger, that answer could only have been either "yes" or "no."
+Daha sonra telefonun şarj cihazının olup olmadığını sorduğunuzda bu yanıt yalnızca "evet" veya "hayır" olabilir.
 
-In very similar ways, when you express values in a program, you choose different representations for those values based on what you plan to do with them.
+Benzer şekilde, bir programda değerleri ifade ettiğinizde, onlarla yapmayı planladığınız şeye bağlı olarak bu değerler için farklı gösterimler seçersiniz.
 
-These different representations for values are called *types* in programming terminology. JavaScript has built-in types for each of these so called *primitive* values:
+Değerlerin bu farklı temsillerine programlama terminolojisinde *tipler* adı verilir. JavaScript, *ilkel* değerler olarak adlandırılan bu değerlerin her biri için yerleşik türlere sahiptir:
 
-* When you need to do math, you want a `number`.
-* When you need to print a value on the screen, you need a `string` (one or more characters, words, sentences).
-* When you need to make a decision in your program, you need a `boolean` (`true` or `false`).
+* Matematik yapmanız gerektiğinde bir 'sayı' istersiniz.
+* Ekrana bir değer yazdırmak istediğinizde bir 'string'e (bir veya daha fazla karakter, kelime, cümle) ihtiyacınız vardır.
+* Programınızda bir karar vermeniz gerektiğinde, bir "boolean"a ("doğru" veya "yanlış") ihtiyacınız vardır.
 
-Values that are included directly in the source code are called *literals*. `string` literals are surrounded by double quotes `"..."` or single quotes (`'...'`) -- the only difference is stylistic preference. `number` and `boolean` literals are just presented as is (i.e., `42`, `true`, etc.).
+Doğrudan kaynak koduna dahil edilen değerlere *literaller* adı verilir. 'string' değişmezleri çift tırnak `"..."` veya tek tırnak (`'...'`) ile çevrelenir; tek fark stil tercihidir. 'sayı' ve 'boolean' sabit değerleri olduğu gibi sunulur (ör. '42', 'true' vb.).
 
-Consider:
+Dikkate almak:
 
 ```js
 "I am a string";
@@ -241,13 +241,13 @@ true;
 false;
 ```
 
-Beyond `string`/`number`/`boolean` value types, it's common for programming languages to provide *arrays*, *objects*, *functions*, and more. We'll cover much more about values and types throughout this chapter and the next.
+"Dize"/"sayı"/"boolean" değer türlerinin ötesinde, programlama dillerinin *diziler*, *nesneler*, *işlevler* ve daha fazlasını sağlaması yaygındır. Bu ve sonraki bölümde değerler ve türler hakkında çok daha fazlasını ele alacağız.
 
-### Converting Between Types
+### Türler Arasında Dönüştürme (Converting Between Types)
 
-If you have a `number` but need to print it on the screen, you need to convert the value to a `string`, and in JavaScript this conversion is called "coercion." Similarly, if someone enters a series of numeric characters into a form on an ecommerce page, that's a `string`, but if you need to then use that value to do math operations, you need to *coerce* it to a `number`.
+Bir "sayı"nız varsa ancak bunu ekrana yazdırmanız gerekiyorsa, değeri bir "dize"ye dönüştürmeniz gerekir ve JavaScript'te bu dönüşüme "zorlama" adı verilir. Benzer şekilde, birisi bir e-ticaret sayfasındaki bir forma bir dizi sayısal karakter girerse, bu bir "dize"dir, ancak daha sonra bu değeri matematik işlemleri yapmak için kullanmanız gerekirse, onu bir "sayıya" *zorlamanız* gerekir .
 
-JavaScript provides several different facilities for forcibly coercing between *types*. For example:
+JavaScript, *türler* arasında zorla zorlama için birkaç farklı olanak sağlar. Örneğin:
 
 ```js
 var a = "42";
@@ -257,43 +257,42 @@ console.log( a );	// "42"
 console.log( b );	// 42
 ```
 
-Using `Number(..)` (a built-in function) as shown is an *explicit* coercion from any other type to the `number` type. That should be pretty straightforward.
+Gösterildiği gibi 'Number(..)' (yerleşik bir işlev) kullanmak, herhangi bir türden 'sayı' türüne *açık* bir zorlamadır. Bu oldukça basit olmalı.
 
-But a controversial topic is what happens when you try to compare two values that are not already of the same type, which would require *implicit* coercion.
+Ancak tartışmalı bir konu, halihazırda aynı türde olmayan iki değeri karşılaştırmaya çalıştığınızda ne olacağıdır, bu da *örtük* zorlama gerektirir.
 
-When comparing the string `"99.99"` to the number `99.99`, most people would agree they are equivalent. But they're not exactly the same, are they? It's the same value in two different representations, two different *types*. You could say they're "loosely equal," couldn't you?
+"99,99" dizesini "99,99" sayısıyla karşılaştırırken çoğu kişi bunların eşdeğer olduğunu kabul eder. Ama tam olarak aynı değiller, değil mi? İki farklı gösterimde, iki farklı *türde* aynı değerdir. Bunların "genel olarak eşit" olduğunu söyleyebilirsin, değil mi?
 
-To help you out in these common situations, JavaScript will sometimes kick in and *implicitly* coerce values to the matching types.
+Bu yaygın durumlarda size yardımcı olmak için, JavaScript bazen devreye girer ve eşleşen türlere değerleri *örtük olarak* zorlar.
 
-So if you use the `==` loose equals operator to make the comparison `"99.99" == 99.99`, JavaScript will convert the left-hand side `"99.99"` to its `number` equivalent `99.99`. The comparison then becomes `99.99 == 99.99`, which is of course `true`.
+Eğer `"99.99"` ile 99.99'u karşılaştırmak için `==` gevşek eşit operatörünü kullanırsanız, JavaScript sol tarafındaki `"99.99"`'u onun `number` karşılığı olan `99.99`'a dönüştürecektir. Karşılaştırma daha sonra `99.99 == 99.99` halini alır, ki bu tabii ki `true` (doğru) olur.
 
-While designed to help you, implicit coercion can create confusion if you haven't taken the time to learn the rules that govern its behavior. Most JS developers never have, so the common feeling is that implicit coercion is confusing and harms programs with unexpected bugs, and should thus be avoided. It's even sometimes called a flaw in the design of the language.
+Size yardımcı olmak amacıyla tasarlanmış bir mekanizma olsa da, belirli davranışlarını yönlendiren kuralları öğrenme zamanını ayırmadıysanız, zımni tip dönüşüm kafa karışıklığına neden olabilir. Birçok JS geliştiricisi bu kuralları öğrenmemiştir, bu nedenle yaygın bir düşünce, zımni tip dönüşümün kafa karıştırıcı olduğu ve beklenmeyen hatalarla programlara zarar verdiği ve bu nedenle kaçınılması gerektiğidir. Hatta bazen dilin tasarımındaki bir kusur olarak adlandırılır.
 
-However, implicit coercion is a mechanism that *can be learned*, and moreover *should be learned* by anyone wishing to take JavaScript programming seriously. Not only is it not confusing once you learn the rules, it can actually make your programs better! The effort is well worth it.
+Ancak zımni tip dönüşüm, öğrenilebilecek ve üst düzeyde JavaScript programlamak isteyen herkesin öğrenmesi gereken bir mekanizmadır. Kuralları öğrendikten sonra kafa karıştırıcı olmadığı gibi, aslında programlarınızı daha iyi hale getirebilir! Bu çaba kesinlikle buna değer.
 
-**Note:** For more information on coercion, see Chapter 2 of this title and Chapter 4 of the *Types & Grammar* title of this series.
+Not: Daha fazla dönüşüm hakkında bilgi için bu başlığın 2. Bölümüne ve bu serinin Türler ve Dil başlığının 4. Bölümüne bakınız.
 
-## Code Comments
+## Yorum Satırları (Code Comments)
 
-The phone store employee might jot down some notes on the features of a newly released phone or on the new plans her company offers. These notes are only for the employee -- they're not for customers to read. Nevertheless, these notes help the employee do her job better by documenting the hows and whys of what she should tell customers.
+Telefon mağazası çalışanı, yeni çıkan bir telefonun özellikleri veya şirketinin sunduğu yeni planlar hakkında bazı notlar alabilir. Bu notlar sadece çalışan içindir - müşterilerin okuması için değil. Bununla birlikte, bu notlar, çalışanın işini müşterilere ne söylemesi gerektiğinin nasıl ve neden belgelendiği konusunda daha iyi yapmasına yardımcı olur.
 
-One of the most important lessons you can learn about writing code is that it's not just for the computer. Code is every bit as much, if not more, for the developer as it is for the compiler.
+Kod yazma konusunda öğrenebileceğiniz en önemli derslerden biri, kodun sadece bilgisayara yönelik olmadığıdır. Kod, geliştirici için derleyiciden daha fazla, eğer öyleyse, gibidir.
 
-Your computer only cares about machine code, a series of binary 0s and 1s, that comes from *compilation*. There's a nearly infinite number of programs you could write that yield the same series of 0s and 1s. The choices you make about how to write your program matter -- not only to you, but to your other team members and even to your future self.
+Bilgisayarınız sadece makine koduyla ilgilenir, derlemelerden gelen bir dizi ikili 0 ve 1'den oluşur. Aynı 0'lar ve 1'ler serisini veren yazabileceğiniz neredeyse sonsuz sayıda program vardır. Programınızı nasıl yazmanız gerektiğine dair yaptığınız seçimler önemlidir - sadece sizin için değil, aynı zamanda diğer takım üyeleriniz ve hatta gelecekteki kendiniz için de önemlidir.
 
-You should strive not just to write programs that work correctly, but programs that make sense when examined. You can go a long way in that effort by choosing good names for your variables (see "Variables") and functions (see "Functions").
+Sadece doğru çalışan programlar yazmaya değil, incelendiğinde anlamlı olan programlar yazmaya çalışmalısınız. Bu çaba ile değişkenleriniz için iyi isimler seçerek (bkz. "Değişkenler") ve işlevleriniz için (bkz. "Fonksiyonlar") iyi isimler seçerek çok yol kat edebilirsiniz.
 
-But another important part is code comments. These are bits of text in your program that are inserted purely to explain things to a human. The interpreter/compiler will always ignore these comments.
+Ancak başka bir önemli kısım da kod açıklamalarıdır. Bunlar, programınızın içine yerleştirilen ve yalnızca bir insanın anlaması için olan metin parçalarıdır. Yorumlar her zaman yorumlayıcı/derleyici tarafından görmezden gelinir.
 
-There are lots of opinions on what makes well-commented code; we can't really define absolute universal rules. But some observations and guidelines are quite useful:
+İyi açıklamalı kod yapmanın neyin iyi olduğu hakkında birçok görüş vardır; gerçekten mutlak evrensel kuralları tanımlayamayız. Ancak bazı gözlemler ve yönergeler oldukça kullanışlıdır:
 
-* Code without comments is suboptimal.
-* Too many comments (one per line, for example) is probably a sign of poorly written code.
-* Comments should explain *why*, not *what*. They can optionally explain *how* if that's particularly confusing.
+Açıklama içermeyen kod altoptimaldir.
+Çok fazla açıklama (örneğin her satır için bir açıklama) muhtemelen kötü yazılmış kodun bir işareti olabilir.
+Açıklamalar ne değil, neden açıklamalıdır. Özellikle karışık bir durumsa, nasıl açıklayabilirler.
+JavaScript'te iki tür açıklama mümkündür: tek satırlık açıklama ve çok satırlık açıklama.
 
-In JavaScript, there are two types of comments possible: a single-line comment and a multiline comment.
-
-Consider:
+Düşünün:
 
 ```js
 // This is a single-line comment
@@ -304,17 +303,17 @@ Consider:
                       */
 ```
 
-The `//` single-line comment is appropriate if you're going to put a comment right above a single statement, or even at the end of a line. Everything on the line after the `//` is treated as the comment (and thus ignored by the compiler), all the way to the end of the line. There's no restriction to what can appear inside a single-line comment.
+`//` tek satırlık yorum, bir ifadenin hemen üstüne veya hatta bir satırın sonuna bir yorum eklemeyi düşünüyorsanız uygundur. `//`'den sonraki satırın sonuna kadar olan her şey yorum olarak kabul edilir (ve bu nedenle derleyici tarafından görmezden gelinir). Tek satırlık yorumun içine neyin yerleştirilebileceğine dair bir kısıtlama yoktur.
 
-Consider:
+Düşünün:
 
 ```js
 var a = 42;		// 42 is the meaning of life
 ```
 
-The `/* .. */` multiline comment is appropriate if you have several lines worth of explanation to make in your comment.
+`/* .. */` çok satırlı yorum, yorumunuzda açıklamanız gereken birkaç satır varsa uygun bir seçenektir.
 
-Here's a common usage of multiline comments:
+İşte çok satırlı yorumların yaygın bir kullanımı:
 
 ```js
 /* The following value is used because
@@ -323,7 +322,7 @@ Here's a common usage of multiline comments:
 var a = 42;
 ```
 
-It can also appear anywhere on a line, even in the middle of a line, because the `*/` ends it. For example:
+Ayrıca satırın herhangi bir yerinde, hatta ortasında bile görünebilir, çünkü `*/` onu bitirir. Örneğin:
 
 ```js
 var a = /* arbitrary value */ 42;
@@ -331,23 +330,23 @@ var a = /* arbitrary value */ 42;
 console.log( a );	// 42
 ```
 
-The only thing that cannot appear inside a multiline comment is a `*/`, because that would be interpreted to end the comment.
+Çok satırlı bir yorumun içinde görünemeyen tek şey `*/` işaretidir çünkü bu, yorumu sonlandırmak için yorumlanır.
 
-You will definitely want to begin your learning of programming by starting off with the habit of commenting code. Throughout the rest of this chapter, you'll see I use comments to explain things, so do the same in your own practice. Trust me, everyone who reads your code will thank you!
+Programlama öğreniminize kesinlikle kod yorumlama alışkanlığıyla başlamak isteyeceksiniz. Bu bölümün geri kalanında, bazı şeyleri açıklamak için yorumları kullandığımı göreceksiniz, o yüzden aynısını kendi uygulamalarınızda da yapın. İnanın bana, kodunuzu okuyan herkes size teşekkür edecek!
 
-## Variables
+## Değişkenler (Variables)
 
-Most useful programs need to track a value as it changes over the course of the program, undergoing different operations as called for by your program's intended tasks.
+Çoğu kullanışlı program, programın amaçladığı görevlere göre gerektiğinde farklı işlemlerden geçerek, programın ilerleyişi boyunca bir değeri takip etmesi gerekmektedir.
 
-The easiest way to go about that in your program is to assign a value to a symbolic container, called a *variable* -- so called because the value in this container can *vary* over time as needed.
+Programınızda bunu yapmanın en kolay yolu, sembolik bir kap içine bir değer atamaktır ve bu kap bir *değişken* olarak adlandırılır - çünkü bu kap içindeki değer, ihtiyaca göre zaman içinde *değişebilir*.
 
-In some programming languages, you declare a variable (container) to hold a specific type of value, such as `number` or `string`. *Static typing*, otherwise known as *type enforcement*, is typically cited as a benefit for program correctness by preventing unintended value conversions.
+Bazı programlama dillerinde, `number` veya `string` gibi belirli bir değeri tutmak için bir değişken (kap) tanımlarsınız. *Statik yazma*, aksi halde *tip zorunluluğu* olarak da bilinir, genellikle istenmeyen değer dönüşümlerini önleyerek program doğruluğu için bir fayda olarak belirtilir.
 
-Other languages emphasize types for values instead of variables. *Weak typing*, otherwise known as *dynamic typing*, allows a variable to hold any type of value at any time. It's typically cited as a benefit for program flexibility by allowing a single variable to represent a value no matter what type form that value may take at any given moment in the program's logic flow.
+Diğer diller, değişkenler yerine değerler için türleri vurgular. *Zayıf yazma*, aksi halde *dinamik yazma* olarak bilinir, bir değişkenin herhangi bir zamanda herhangi bir türde bir değeri tutmasına olanak tanır. Genellikle program esnekliği için bir fayda olarak belirtilir, çünkü tek bir değişkenin bir değeri temsil etmesine izin verir, bu değerin programın mantık akışındaki herhangi bir anında hangi tür formunu alabileceğine bakılmaksızın.
 
-JavaScript uses the latter approach, *dynamic typing*, meaning variables can hold values of any *type* without any *type* enforcement.
+JavaScript, *dinamik yazma* yaklaşımını kullanır, bu da değişkenlerin herhangi bir *tür* değerini herhangi bir *tür* zorunluluğu olmadan tutabilmesi anlamına gelir.
 
-As mentioned earlier, we declare a variable using the `var` statement -- notice there's no other *type* information in the declaration. Consider this simple program:
+Daha önce belirtildiği gibi, bir değişkeni `var` ifadesini kullanarak tanımlarız - dikkatinizi çekeceği üzere tanımda başka bir *tür* bilgisi yoktur. Bu basit bir programı düşünün:
 
 ```js
 var amount = 99.99;
@@ -363,23 +362,23 @@ amount = "$" + String( amount );
 console.log( amount );		// "$199.98"
 ```
 
-The `amount` variable starts out holding the number `99.99`, and then holds the `number` result of `amount * 2`, which is `199.98`.
+`amount` değişkeni başlangıçta `99.99` sayısını tutar ve ardından `amount * 2` işleminin sonucu olan `number` değeri olan `199.98`'i tutar.
 
-The first `console.log(..)` command has to *implicitly* coerce that `number` value to a `string` to print it out.
+İlk `console.log(..)` komutu, bu `number` değerini yazdırmak için *zımni olarak* `string`e dönüştürmek zorundadır.
 
-Then the statement `amount = "$" + String(amount)` *explicitly* coerces the `199.98` value to a `string` and adds a `"$"` character to the beginning. At this point, `amount` now holds the `string` value `"$199.98"`, so the second `console.log(..)` statement doesn't need to do any coercion to print it out.
+Ardından `amount = "$" + String(amount)` ifadesi, `199.98` değerini *açıkça* `string`e dönüştürür ve başına bir `"$"` karakteri ekler. Bu noktada `amount` artık `string` değer olan `"$199.98"` değerini tutar, bu yüzden ikinci `console.log(..)` ifadesinin onu yazdırmak için herhangi bir dönüşüm yapmasına gerek yoktur.
 
-JavaScript developers will note the flexibility of using the `amount` variable for each of the `99.99`, `199.98`, and the `"$199.98"` values. Static-typing enthusiasts would prefer a separate variable like `amountStr` to hold the final `"$199.98"` representation of the value, because it's a different type.
+JavaScript geliştiricileri, `amount` değişkenini `99.99`, `199.98` ve `"$199.98"` değerlerinin her biri için kullanma esnekliğini görecektir. Statik yazma tutkunları, farklı bir tür olduğu için son `"$199.98"` temsilini tutmak için ayrı bir değişken olan `amountStr` tercih ederler.
 
-Either way, you'll note that `amount` holds a running value that changes over the course of the program, illustrating the primary purpose of variables: managing program *state*.
+Her durumda, `amount`'un programın çalışması boyunca değişen bir değeri tuttuğunu göreceksiniz, bu da değişkenlerin temel amacını gösterir: program *durumu* yönetmek.
 
-In other words, *state* is tracking the changes to values as your program runs.
+Diğer bir deyişle, *durum*, programınız çalıştıkça değerlerin değişikliklerini takip etmektir.
 
-Another common usage of variables is for centralizing value setting. This is more typically called *constants*, when you declare a variable with a value and intend for that value to *not change* throughout the program.
+Değişkenlerin yaygın bir başka kullanımı, değer ayarlamanın merkezileştirilmesi içindir. Bu genellikle bir değişkeni bir değerle birlikte bildirdiğinizde *sabitler* olarak adlandırılır ve bu değerin programın tüm süresi boyunca *değişmemesi* ni amaçladığınızda kullanılır.
 
-You declare these *constants*, often at the top of a program, so that it's convenient for you to have one place to go to alter a value if you need to. By convention, JavaScript variables as constants are usually capitalized, with underscores `_` between multiple words.
+Bu *sabitleri*, genellikle bir programın en üstünde bildirirsiniz, böylece bir değeri değiştirmeniz gerektiğinde kolaylıkla gidilecek bir yeriniz olur. Geleneksel olarak, JavaScript değişkenleri sabitler olarak adlandırılır ve genellikle büyük harfle yazılır, birden çok kelimenin arasına alt çizgi `_` eklenir.
 
-Here's a silly example:
+İşte saçma bir örnek:
 
 ```js
 var TAX_RATE = 0.08;	// 8% sales tax
@@ -394,11 +393,11 @@ console.log( amount );				// 215.9784
 console.log( amount.toFixed( 2 ) );	// "215.98"
 ```
 
-**Note:** Similar to how `console.log(..)` is a function `log(..)` accessed as an object property on the `console` value, `toFixed(..)` here is a function that can be accessed on `number` values. JavaScript `number`s aren't automatically formatted for dollars -- the engine doesn't know what your intent is and there's no type for currency. `toFixed(..)` lets us specify how many decimal places we'd like the `number` rounded to, and it produces the `string` as necessary.
+**Not:** `console.log(..)`'ın `console` değeri üzerinde bir nesne özelliği olarak erişilen bir işlev olduğu gibi, burada `toFixed(..)` bir `number` değeri üzerinde erişilen bir işlemdir. JavaScript `number`'ları otomatik olarak dolar formatına dönüştürülmez - motorun ne amaçladığınızı bilme yeteneği yoktur ve bir para birimi türü yoktur. `toFixed(..)` bize `number`'ın kaç ondalık basamağa yuvarlanacağını belirlememize olanak tanır ve gerekli olduğunda `string`i üretir.
 
-The `TAX_RATE` variable is only *constant* by convention -- there's nothing special in this program that prevents it from being changed. But if the city raises the sales tax rate to 9%, we can still easily update our program by setting the `TAX_RATE` assigned value to `0.09` in one place, instead of finding many occurrences of the value `0.08` strewn throughout the program and updating all of them.
+`TAX_RATE` değişkeni sadece bir gelenek olarak *sabit* olarak kabul edilir - bu programda değiştirilmesini engelleyen özel bir şey yoktur. Ancak şehir satış vergi oranını %9'a yükseltirse, programımızı hala `TAX_RATE` atanmış değeri programın her yerine yayılmış `0.08` değerinin çoklu örneklerini bulmak ve hepsini güncellemek yerine bir yerde `0.09` olarak ayarlayarak kolayca güncelleyebiliriz.
 
-The newest version of JavaScript at the time of this writing (commonly called "ES6") includes a new way to declare *constants*, by using `const` instead of `var`:
+Bu yazının yazıldığı sırada JavaScript'in en son sürümü (genellikle "ES6" olarak adlandırılır) `var` yerine `const` kullanarak *sabitleri* bildirmek için yeni bir yol içerir:
 
 ```js
 // as of ES6:
@@ -409,17 +408,17 @@ var amount = 99.99;
 // ..
 ```
 
-Constants are useful just like variables with unchanged values, except that constants also prevent accidentally changing value somewhere else after the initial setting. If you tried to assign any different value to `TAX_RATE` after that first declaration, your program would reject the change (and in strict mode, fail with an error -- see "Strict Mode" in Chapter 2).
+Sabitler, değişmeyen değerlere sahip değişkenler gibi kullanışlıdır, ancak sabitler ayrıca başlangıçtan sonra başka bir yerde değerin yanlışlıkla değiştirilmesini önler. İlk bildirimin ardından `TAX_RATE`'e farklı bir değer atamayı denerseniz, programınız değişikliği reddeder (ve sıkı modda hata ile başarısız olur - bkz. "Sıkı Mod" Bölüm 2'de).
 
-By the way, that kind of "protection" against mistakes is similar to the static-typing type enforcement, so you can see why static types in other languages can be attractive!
+Bu arada, bu tür hatalara karşı "koruma", hatalara karşı koruma anlamına geldiğinden, neden diğer dillerdeki statik yazma türü zorunluluğun cazip olabileceğini görebilirsiniz!
 
-**Note:** For more information about how different values in variables can be used in your programs, see the *Types & Grammar* title of this series.
+**Not:** Değişkenlerdeki farklı değerlerin programlarınızda nasıl kullanılabileceği hakkında daha fazla bilgi için bu serinin *Türler ve Dil* başlığını inceleyin.
 
-## Blocks
+## Bloklar (Blocks)
 
-The phone store employee must go through a series of steps to complete the checkout as you buy your new phone.
+Telefon mağazası çalışanı, yeni telefonunuzu satın aldığınızda ödeme işlemini tamamlamak için bir dizi adımı tamamlamak zorundadır.
 
-Similarly, in code we often need to group a series of statements together, which we often call a *block*. In JavaScript, a block is defined by wrapping one or more statements inside a curly-brace pair `{ .. }`. Consider:
+Benzer şekilde, kod içinde sıklıkla bir dizi ifadeyi bir araya getirmemiz gerekebilir, bu da genellikle bir *blok* olarak adlandırılır. JavaScript'te bir blok, bir veya daha fazla ifadeyi bir süslü parantez çifti `{ .. }` içine alarak tanımlanır. Düşünün:
 
 ```js
 var amount = 99.99;
@@ -431,7 +430,7 @@ var amount = 99.99;
 }
 ```
 
-This kind of standalone `{ .. }` general block is valid, but isn't as commonly seen in JS programs. Typically, blocks are attached to some other control statement, such as an `if` statement (see "Conditionals") or a loop (see "Loops"). For example:
+Bu tür bağımsız `{ .. }` genel blok geçerlidir, ancak JS programlarında genellikle görülmez. Genellikle bloklar, bir `if` ifadesi (bkz. "Koşullar") veya bir döngü (bkz. "Döngüler") gibi diğer kontrol ifadesine bağlanır. Örneğin:
 
 ```js
 var amount = 99.99;
@@ -443,17 +442,17 @@ if (amount > 10) {			// <-- block attached to `if`
 }
 ```
 
-We'll explain `if` statements in the next section, but as you can see, the `{ .. }` block with its two statements is attached to `if (amount > 10)`; the statements inside the block will only be processed if the conditional passes.
+`if` ifadelerini bir sonraki bölümde açıklayacağız, ancak gördüğünüz gibi, `{ .. }` blok, iki ifade ile `if (amount > 10)`'a bağlanmıştır; blok içindeki ifadeler, koşul geçerliyse yalnızca işlenir.
 
-**Note:** Unlike most other statements like `console.log(amount);`, a block statement does not need a semicolon (`;`) to conclude it.
+**Not:** `console.log(amount);` gibi çoğu diğer ifadeye benzemez, bir blok ifadesinin sona erdirmek için bir noktalı virgül (`;`) gerektirmez.
 
-## Conditionals
+## Şartlar (Conditionals)
 
-"Do you want to add on the extra screen protectors to your purchase, for $9.99?" The helpful phone store employee has asked you to make a decision. And you may need to first consult the current *state* of your wallet or bank account to answer that question. But obviously, this is just a simple "yes or no" question.
+"Ekstra ekran koruyucularını satın almak ister misiniz, fiyatı 9.99 dolar?" Yardımsever telefon mağazası çalışanı size bir karar vermenizi istedi. Ve bu soruya cevap vermek için önce cüzdanınızın veya banka hesabınızın mevcut *durumunu* danışmanız gerekebilir. Ancak açıkçası, bu sadece basit bir "evet veya hayır" sorusudur.
 
-There are quite a few ways we can express *conditionals* (aka decisions) in our programs.
+Programlarımızda *koşullu ifadeleri* (kararlar olarak da adlandırılır) ifade etmenin birkaç yolunu kullanabiliriz.
 
-The most common one is the `if` statement. Essentially, you're saying, "*If* this condition is true, do the following...". For example:
+En yaygın olanı `if` ifadesidir. Temelde, "*Eğer* bu koşul doğruysa, aşağıdakileri yap..." diyorsunuz. Örneğin:
 
 ```js
 var bank_balance = 302.13;
@@ -464,9 +463,11 @@ if (amount < bank_balance) {
 }
 ```
 
-The `if` statement requires an expression in between the parentheses `( )` that can be treated as either `true` or `false`. In this program, we provided the expression `amount < bank_balance`, which indeed will either evaluate to `true` or `false` depending on the amount in the `bank_balance` variable.
+`if` ifadesi, `true` veya `false` olarak işlem görebilen parantezler `( )` arasında bir ifade gerektirir. Bu programda, gerçekten de `bank_balance` değişkenindeki miktarına bağlı olarak `true` veya `false` değerine değerlendirilebilecek olan `amount < bank_balance` ifadesini sağladık.
 
-You can even provide an alternative if the condition isn't true, called an `else` clause. Consider:
+Koşul doğru değilse bir alternatif bile sağlayabilirsiniz, bu da bir `else` ifadesi olarak adlandırılır.
+
+Düşünün:
 
 ```js
 const ACCESSORY_PRICE = 9.99;
@@ -487,25 +488,25 @@ else {
 }
 ```
 
-Here, if `amount < bank_balance` is `true`, we'll print out `"I'll take the accessory!"` and add the `9.99` to our `amount` variable. Otherwise, the `else` clause says we'll just politely respond with `"No, thanks."` and leave `amount` unchanged.
+Burada, `amount < bank_balance` `true` ise, `"Aksesuarı alacağım!"` yazdıracağız ve `9.99`'u `amount` değişkenimize ekleyeceğiz. Aksi takdirde, `else` ifadesi, yalnızca nazikçe `"Hayır, teşekkürler."` cevabı vereceğimizi ve `amount`'un değişmeden kalacağını belirtir.
 
-As we discussed in "Values & Types" earlier, values that aren't already of an expected type are often coerced to that type. The `if` statement expects a `boolean`, but if you pass it something that's not already `boolean`, coercion will occur.
+Daha önce "Değerler ve Türler" başlığında tartıştığımız gibi, beklenen bir türün dışında olan değerler genellikle bu türe zorlanır. `if` ifadesi bir `boolean` bekler, ancak ona zaten bir `boolean` olmayan bir şey geçirirseniz, zorlama gerçekleşir.
 
-JavaScript defines a list of specific values that are considered "falsy" because when coerced to a `boolean`, they become `false` -- these include values like `0` and `""`. Any other value not on the "falsy" list is automatically "truthy" -- when coerced to a `boolean` they become `true`. Truthy values include things like `99.99` and `"free"`. See "Truthy & Falsy" in Chapter 2 for more information.
+JavaScript, bir `boolean` yapılınca `false` haline gelen belirli değerlerin bir listesini tanımlar ve bu değerler "yanıltıcı" olarak kabul edilir - bunlar `0` ve `""` gibi değerleri içerir. "Yanıltıcı" listesinde bulunmayan diğer herhangi bir değer otomatik olarak "doğru" olarak kabul edilir - bir `boolean` haline getirildiğinde `true` olurlar. Doğru değerler, `99.99` ve `"ücretsiz"` gibi şeyleri içerir. Daha fazla bilgi için "Doğru ve Yanıltıcı"ya bakın.
 
-*Conditionals* exist in other forms besides the `if`. For example, the `switch` statement can be used as a shorthand for a series of `if..else` statements (see Chapter 2). Loops (see "Loops") use a *conditional* to determine if the loop should keep going or stop.
+*Koşullular*, `if` dışında başka biçimlerde de bulunur. Örneğin, `switch` ifadesi, bir dizi `if..else` ifadesi için bir kısaltma olarak kullanılabilir (Bkz. Bölüm 2). Döngüler (Bkz. "Döngüler"), döngünün devam etmesi veya durması gerekip gerekmediğini belirlemek için bir *koşullu* kullanır.
 
-**Note:** For deeper information about the coercions that can occur implicitly in the test expressions of *conditionals*, see Chapter 4 of the *Types & Grammar* title of this series.
+**Not:** *Koşulluların* test ifadelerinde örtülü olarak gerçekleşebilecek dönüşümler hakkında daha fazla bilgi için bu serinin *Türler ve Dil* başlığının Bölüm 4'üne bakın.
 
-## Loops
+## Döngüler (Loops)
 
-During busy times, there's a waiting list for customers who need to speak to the phone store employee. While there's still people on that list, she just needs to keep serving the next customer.
+Yoğun saatlerde, telefon mağazası çalışanıyla konuşmaya ihtiyaç duyan müşteriler için bir bekleme listesi vardır. Liste üzerinde hala insanlar olduğunda, sadece bir sonraki müşteriye hizmet etmeye devam etmesi gerekir.
 
-Repeating a set of actions until a certain condition fails -- in other words, repeating only while the condition holds -- is the job of programming loops; loops can take different forms, but they all satisfy this basic behavior.
+Belirli bir koşul başarısız olana kadar belirli bir işlem kümesini tekrar etmek - yani koşul geçerli olduğu sürece tekrarlamak - programlama döngülerinin görevidir; döngüler farklı biçimler alabilir, ancak hepsi bu temel davranışı karşılar.
 
-A loop includes the test condition as well as a block (typically as `{ .. }`). Each time the loop block executes, that's called an *iteration*.
+Bir döngü, test koşulunu ve bir bloğu (genellikle `{ .. }`) içerir. Döngü bloğu her çalıştığında, bu bir *yineleme* olarak adlandırılır.
 
-For example, the `while` loop and the `do..while` loop forms illustrate the concept of repeating a block of statements until a condition no longer evaluates to `true`:
+Örneğin, `while` döngüsü ve `do..while` döngüsü biçimleri, bir bloğu bir koşul artık `true` olarak değerlendirilmediği sürece tekrar etme kavramını göstermektedir:
 
 ```js
 while (numOfCustomers > 0) {
@@ -527,19 +528,19 @@ do {
 } while (numOfCustomers > 0);
 ```
 
-The only practical difference between these loops is whether the conditional is tested before the first iteration (`while`) or after the first iteration (`do..while`).
+Bu döngüler arasındaki tek pratik fark, koşulun ilk yinelemeden önce mi (`while`) yoksa ilk yinelemeden sonra mı (`do..while`) test edildiğidir.
 
-In either form, if the conditional tests as `false`, the next iteration will not run. That means if the condition is initially `false`, a `while` loop will never run, but a `do..while` loop will run just the first time.
+Her iki biçimde de, koşul `false` olarak test edilirse bir sonraki yineleme çalışmayacaktır. Bu, koşulun başlangıçta `false` ise, bir `while` döngüsünün hiç çalışmayacağı, ancak bir `do..while` döngüsünün yalnızca ilk kez çalışacağı anlamına gelir.
 
-Sometimes you are looping for the intended purpose of counting a certain set of numbers, like from `0` to `9` (ten numbers). You can do that by setting a loop iteration variable like `i` at value `0` and incrementing it by `1` each iteration.
+Bazen belirli bir dizi sayıyı sayma amacıyla döngü yapıyor olabilirsiniz, örneğin `0` ile `9` arasındaki (on sayı). Bunu, bir döngü yineleme değişkenini `i` gibi `0` değerinde ayarlayarak ve her yineleme de `1` artırarak yapabilirsiniz.
 
-**Warning:** For a variety of historical reasons, programming languages almost always count things in a zero-based fashion, meaning starting with `0` instead of `1`. If you're not familiar with that mode of thinking, it can be quite confusing at first. Take some time to practice counting starting with `0` to become more comfortable with it!
+**Uyarı:** Tarihsel nedenlerden dolayı, programlama dilleri neredeyse her zaman şeyleri sıfırdan başlayarak sayarlar, yani `1` yerine `0` ile başlarlar. Bu düşünme biçimini bilmiyorsanız, başta oldukça kafa karıştırıcı olabilir. Daha rahat hissetmek için `0` ile başlayarak saymayı uygulamak için biraz zaman ayırın!
 
-The conditional is tested on each iteration, much as if there is an implied `if` statement inside the loop.
+Koşul her yinelemede test edilir, sanki döngü içinde bir anlamda bir `if` ifadesi varmış gibi.
 
-We can use JavaScript's `break` statement to stop a loop. Also, we can observe that it's awfully easy to create a loop that would otherwise run forever without a `break`ing mechanism.
+Bir döngüyü durdurmak için JavaScript'in `break` ifadesini kullanabiliriz. Ayrıca, aksi takdirde sonsuz bir şekilde çalışacak bir döngü oluşturmanın kolay olduğunu gözlemleyebiliriz.
 
-Let's illustrate:
+İllüstre edelim:
 
 ```js
 var i = 0;
@@ -557,9 +558,9 @@ while (true) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-**Warning:** This is not necessarily a practical form you'd want to use for your loops. It's presented here for illustration purposes only.
+**Uyarı:** Bu mutlaka döngüleriniz için kullanmak isteyeceğiniz pratik bir form değildir. Burada yalnızca örnekleme amacıyla sunulmuştur.
 
-While a `while` (or `do..while`) can accomplish the task manually, there's another syntactic form called a `for` loop for just that purpose:
+Bir `while` (veya `do..while`) görevi manuel olarak yerine getirebilirken, bu iş için özel olarak tasarlanmış başka bir sözdizimsel biçim olan bir `for` döngüsü de bulunmaktadır:
 
 ```js
 for (var i = 0; i <= 9; i = i + 1) {
@@ -568,19 +569,19 @@ for (var i = 0; i <= 9; i = i + 1) {
 // 0 1 2 3 4 5 6 7 8 9
 ```
 
-As you can see, in both cases the conditional `i <= 9` is `true` for the first 10 iterations (`i` of values `0` through `9`) of either loop form, but becomes `false` once `i` is value `10`.
+Gördüğünüz gibi, her iki durumda da koşul `i <= 9`, her iki döngü biçimi için ilk 10 yineleme (`i` değerleri `0` ile `9` arasında) için `true`'dur, ancak `i` değeri `10` olduğunda `false` olur.
 
-The `for` loop has three clauses: the initialization clause (`var i=0`), the conditional test clause (`i <= 9`), and the update clause (`i = i + 1`). So if you're going to do counting with your loop iterations, `for` is a more compact and often easier form to understand and write.
+`for` döngüsü üç kısımdan oluşur: başlatma kısmı (`var i=0`), koşul test kısmı (`i <= 9`) ve güncelleme kısmı (`i = i + 1`). Bu nedenle, eğer döngü yinelemeleri ile sayma yapacaksanız, `for` daha kompakt ve genellikle daha anlaşılır ve yazması daha kolay bir biçimdir.
 
-There are other specialized loop forms that are intended to iterate over specific values, such as the properties of an object (see Chapter 2) where the implied conditional test is just whether all the properties have been processed. The "loop until a condition fails" concept holds no matter what the form of the loop.
+Özel amaçlı başka döngü biçimleri de bulunur ve bu biçimler belirli değerler üzerinde dönmek amacıyla tasarlanmıştır, örneğin bir nesnenin özellikleri (Bkz. Bölüm 2) gibi, burada örtülü koşul testi sadece tüm özelliklerin işlenip işlenmediğidir. "Koşul başarısız olana kadar döngüyü yinele" kavramı, döngünün biçimine bakılmaksızın her zaman geçerlidir.
 
-## Functions
+## Fonksiyonlar (Functions)
 
-The phone store employee probably doesn't carry around a calculator to figure out the taxes and final purchase amount. That's a task she needs to define once and reuse over and over again. Odds are, the company has a checkout register (computer, tablet, etc.) with those "functions" built in.
+Telefon mağazası çalışanının muhtemelen vergileri ve son satın alma miktarını hesaplamak için bir hesap makinesi taşıma ihtimali düşüktür. Bu, bir kez tanımlanması ve tekrar tekrar kullanılması gereken bir görevdir. Muhtemelen, şirketin bu "fonksiyonları" entegre edilmiş bir ödeme kaydı (bilgisayar, tablet vb.) vardır.
 
-Similarly, your program will almost certainly want to break up the code's tasks into reusable pieces, instead of repeatedly repeating yourself repetitiously (pun intended!). The way to do this is to define a `function`.
+Benzer şekilde, programınız büyük olasılıkla kodun görevlerini yeniden kullanılabilir parçalara bölmek isteyecek ve kendinizi sürekli olarak tekrar ederken bulunmak istemezsiniz. Bunu yapmanın yolu bir `fonksiyon` tanımlamaktır.
 
-A function is generally a named section of code that can be "called" by name, and the code inside it will be run each time. Consider:
+Bir fonksiyon genellikle adlandırılmış bir kod bölümüdür ve adıyla "çağrılabilir", ve içindeki kod her seferinde çalıştırılır. Düşünün:
 
 ```js
 function printAmount() {
@@ -596,7 +597,7 @@ amount = amount * 2;
 printAmount(); // "199.98"
 ```
 
-Functions can optionally take arguments (aka parameters) -- values you pass in. And they can also optionally return a value back.
+Fonksiyonlar isteğe bağlı olarak argümanlar (veya parametreler) alabilirler - içine geçirdiğiniz değerler. Ayrıca isteğe bağlı olarak bir değer de döndürebilirler.
 
 ```js
 function printAmount(amt) {
@@ -615,11 +616,11 @@ amount = formatAmount();
 console.log( amount );			// "$99.99"
 ```
 
-The function `printAmount(..)` takes a parameter that we call `amt`. The function `formatAmount()` returns a value. Of course, you can also combine those two techniques in the same function.
+`printAmount(..)` fonksiyonu `amt` adını verdiğimiz bir parametre alır. `formatAmount()` fonksiyonu bir değer döndürür. Tabii ki, bu iki tekniği aynı fonksiyonda birleştirebilirsiniz.
 
-Functions are often used for code that you plan to call multiple times, but they can also be useful just to organize related bits of code into named collections, even if you only plan to call them once.
+Fonksiyonlar genellikle birden çok kez çağırmayı planladığınız kodlar için kullanılır, ancak sadece bir kez çağırmayı planlıyorsanız bile, ilgili kod parçacıklarını adlandırılmış koleksiyonlar içinde düzenlemek için yararlı olabilirler.
 
-Consider:
+Düşünün:
 
 ```js
 const TAX_RATE = 0.08;
@@ -639,15 +640,15 @@ amount = calculateFinalPurchaseAmount( amount );
 console.log( amount.toFixed( 2 ) );		// "107.99"
 ```
 
-Although `calculateFinalPurchaseAmount(..)` is only called once, organizing its behavior into a separate named function makes the code that uses its logic (the `amount = calculateFinal...` statement) cleaner. If the function had more statements in it, the benefits would be even more pronounced.
+`calculateFinalPurchaseAmount(..)` sadece bir kez çağrılsa bile, davranışını ayrı bir adlandırılmış fonksiyona düzenlemek, mantığını kullanan kodu ( `amount = calculateFinal...` ifadesi) daha temiz hale getirir. Eğer fonksiyonun içinde daha fazla ifade olsaydı, faydaları daha da belirgin olurdu.
 
-### Scope
+### Kapsam (Scope)
 
-If you ask the phone store employee for a phone model that her store doesn't carry, she will not be able to sell you the phone you want. She only has access to the phones in her store's inventory. You'll have to try another store to see if you can find the phone you're looking for.
+Eğer telefon mağazası çalışanından mağazasında bulunmayan bir telefon modeli isterseniz, istediğiniz telefonu size satamayacaktır. Sadece mağazasının envanterindeki telefonlara erişimi vardır. İstediğiniz telefonu bulmak için başka bir mağazayı denemeniz gerekecektir.
 
-Programming has a term for this concept: *scope* (technically called *lexical scope*). In JavaScript, each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name. Only code inside that function can access that function's *scoped* variables.
+Programlamada bu kavram için bir terim vardır: *kapsam* (teknik olarak *lexical kapsam* denir). JavaScript'te her fonksiyon kendi kapsamını alır. Kapsam temelde değişkenlerin bir koleksiyonu ve bu değişkenlerin adıyla nasıl erişileceği kurallarıdır. Sadece o fonksiyonun içindeki kod, o fonksiyonun *kapsamlı* değişkenlerine erişebilir.
 
-A variable name has to be unique within the same scope -- there can't be two different `a` variables sitting right next to each other. But the same variable name `a` could appear in different scopes.
+Aynı kapsam içinde bir değişken adı benzersiz olmalıdır - yan yana iki farklı `a` değişkeni olamaz. Ancak aynı değişken adı `a`, farklı kapsamlarda görünebilir.
 
 ```js
 function one() {
@@ -666,9 +667,9 @@ one();		// 1
 two();		// 2
 ```
 
-Also, a scope can be nested inside another scope, just like if a clown at a birthday party blows up one balloon inside another balloon. If one scope is nested inside another, code inside the innermost scope can access variables from either scope.
+Ayrıca, bir kapsam başka bir kapsamın içine gömülebilir, tıpkı bir doğum günü partisinde palyaçonun bir balonu başka bir balonun içine üflemesi gibi. Bir kapsam başka bir kapsamın içine gömülüyorsa, en içteki kapsamın içindeki kod, her iki kapsamdan da değişkenlere erişebilir.
 
-Consider:
+Düşünün:
 
 ```js
 function outer() {
@@ -690,11 +691,11 @@ function outer() {
 outer();
 ```
 
-Lexical scope rules say that code in one scope can access variables of either that scope or any scope outside of it.
+Lexical kapsam kuralları, bir kapsamdaki kodun, o kapsamın veya dışındaki herhangi bir kapsamın değişkenlerine erişebileceğini söyler.
 
-So, code inside the `inner()` function has access to both variables `a` and `b`, but code in `outer()` has access only to `a` -- it cannot access `b` because that variable is only inside `inner()`.
+Bu nedenle, `inner()` işlevi içindeki kod, hem `a` hem de `b` değişkenlerine erişebilir, ancak `outer()` içindeki kod sadece `a`'ya erişebilir - `b` değişkenine erişemez çünkü bu değişken yalnızca `inner()` içindedir.
 
-Recall this code snippet from earlier:
+Daha önceki bu kod örneğini hatırlayın:
 
 ```js
 const TAX_RATE = 0.08;
@@ -708,28 +709,28 @@ function calculateFinalPurchaseAmount(amt) {
 }
 ```
 
-The `TAX_RATE` constant (variable) is accessible from inside the `calculateFinalPurchaseAmount(..)` function, even though we didn't pass it in, because of lexical scope.
+`TAX_RATE` sabiti (değişkeni), lexical scope nedeniyle `calculateFinalPurchaseAmount(..)` fonksiyonunun içinden erişilebilir, onu iletmemize rağmen.
 
-**Note:** For more information about lexical scope, see the first three chapters of the *Scope & Closures* title of this series.
+**Not:** Lexical kapsam hakkında daha fazla bilgi için bu serinin *Scope & Closures* başlığındaki ilk üç bölümü inceleyebilirsiniz.
 
-## Practice
+## Pratik (Practice)
 
-There is absolutely no substitute for practice in learning programming. No amount of articulate writing on my part is alone going to make you a programmer.
+Programlamayı öğrenmek için pratik yapmanın kesinlikle bir alternatifi yok. Benim tarafımdan yapılan ayrıntılı yazılar bile başlı başına sizi bir programcı yapmaz.
 
-With that in mind, let's try practicing some of the concepts we learned here in this chapter. I'll give the "requirements," and you try it first. Then consult the code listing below to see how I approached it.
+Bu düşünceyle, bu bölümde öğrendiğimiz bazı kavramları uygulamayı deneyelim. İlk olarak "gereksinimleri" veriyorum ve siz denemeyi yapın. Ardından, yaklaşımımı nasıl ele aldığımı görmek için aşağıdaki kod listesine başvurun.
 
-* Write a program to calculate the total price of your phone purchase. You will keep purchasing phones (hint: loop!) until you run out of money in your bank account. You'll also buy accessories for each phone as long as your purchase amount is below your mental spending threshold.
-* After you've calculated your purchase amount, add in the tax, then print out the calculated purchase amount, properly formatted.
-* Finally, check the amount against your bank account balance to see if you can afford it or not.
-* You should set up some constants for the "tax rate," "phone price," "accessory price," and "spending threshold," as well as a variable for your "bank account balance.""
-* You should define functions for calculating the tax and for formatting the price with a "$" and rounding to two decimal places.
-* **Bonus Challenge:** Try to incorporate input into this program, perhaps with the `prompt(..)` covered in "Input" earlier. You may prompt the user for their bank account balance, for example. Have fun and be creative!
+* Telefon alımınızın toplam fiyatını hesaplamak için bir program yazın. Banka hesabınızdaki paranız bitene kadar telefonlar alacaksınız (ipucu: döngü kullanın!). Alışveriş miktarınız, zihinsel harcama sınırınızın altında olduğu sürece her telefon için aksesuarlar da alacaksınız.
+* Alım miktarınızı hesapladıktan sonra vergiyi ekleyin ve hesaplanmış alım miktarını düzgün bir şekilde biçimlendirilmiş olarak yazdırın.
+* Son olarak, miktarı banka hesap bakiyenizle karşılaştırın ve bunu karşılayıp karşılayamayacağınızı kontrol edin.
+* "Vergi oranı", "telefon fiyatı", "aksesuar fiyatı" ve "harcama sınırı" için bazı sabitler oluşturmalısınız, ayrıca "banka hesap bakiyesi" için bir değişken oluşturmalısınız.
+* Vergiyi hesaplama ve fiyatı "$" ile biçimlendirme ve iki ondalık basamağa yuvarlama işlemleri için işlevler tanımlamalısınız.
+* **Bonus Zorluk:** Bu programa giriş yapmak için "Giriş" bölümünde ele alınan `prompt(..)` ile kullanıcı girişini entegre etmeyi deneyin. Örneğin, kullanıcıdan banka hesap bakiyelerini sorabilirsiniz. Eğlenin ve yaratıcı olun!
 
-OK, go ahead. Try it. Don't peek at my code listing until you've given it a shot yourself!
+Peki, hadi deneyin. Kendi çabanızı göstermeden kodumuza bakmayın!
 
-**Note:** Because this is a JavaScript book, I'm obviously going to solve the practice exercise in JavaScript. But you can do it in another language for now if you feel more comfortable.
+**Not:** Bu bir JavaScript kitabı olduğu için, açıkçası bu pratik egzersizi JavaScript'te çözeceğim. Ancak şu an daha rahat hissederseniz başka bir dilde de yapabilirsiniz.
 
-Here's my JavaScript solution for this exercise:
+İşte bu egzersiz için JavaScript çözümüm:
 
 ```js
 const SPENDING_THRESHOLD = 200;
@@ -776,27 +777,27 @@ if (amount > bank_balance) {
 // You can't afford this purchase. :(
 ```
 
-**Note:** The simplest way to run this JavaScript program is to type it into the developer console of your nearest browser.
+**Not:** Bu JavaScript programını çalıştırmanın en basit yolu, en yakın tarayıcınızın geliştirici konsoluna yazmaktır.
 
-How did you do? It wouldn't hurt to try it again now that you've seen my code. And play around with changing some of the constants to see how the program runs with different values.
+Nasıl bir sonuç elde ettiniz? Şimdi kodumu gördükten sonra tekrar denemekte fayda var. Ayrıca bazı sabitleri değiştirerek programın farklı değerlerle nasıl çalıştığını gözlemlemek de iyi bir fikir olabilir.
 
-## Review
+## Gözden Geçirme (Review)
 
-Learning programming doesn't have to be a complex and overwhelming process. There are just a few basic concepts you need to wrap your head around.
+Programlamayı öğrenmek karmaşık ve bunaltıcı bir süreç olmak zorunda değildir. Kafanızı sarmanız gereken sadece birkaç temel kavram var.
 
-These act like building blocks. To build a tall tower, you start first by putting block on top of block on top of block. The same goes with programming. Here are some of the essential programming building blocks:
+Bunlar yapı taşları gibi davranır. Uzun bir kule inşa etmek için önce bloğu bloğun üstüne bloğun üstüne koyarak başlarsınız. Aynı şey programlama için de geçerlidir. Temel programlama yapı taşlarından bazıları şunlardır:
 
-* You need *operators* to perform actions on values.
-* You need values and *types* to perform different kinds of actions like math on `number`s or output with `string`s.
-* You need *variables* to store data (aka *state*) during your program's execution.
-* You need *conditionals* like `if` statements to make decisions.
-* You need *loops* to repeat tasks until a condition stops being true.
-* You need *functions* to organize your code into logical and reusable chunks.
+* Değerler üzerinde işlem yapabilmek için *operatörlere* ihtiyacınız vardır.
+* Farklı türde işlemleri gerçekleştirmek için `number` türündeki sayılarla matematik yapmak veya `string` türündeki çıktılar üretmek gibi işlemler için değerlere ve *türlere* ihtiyacınız vardır.
+* Programınızın çalışması sırasında verileri (yani *durumu*) saklamak için *değişkenlere* ihtiyacınız vardır.
+* Kararlar vermek için `if` ifadeleri gibi *koşullu yapıları* kullanmanız gerekir.
+* Görevleri bir koşul artık doğru olmadığında kadar tekrar etmek için *döngülere* ihtiyacınız vardır.
+* Kodunuzu mantıklı ve tekrar kullanılabilir parçalara ayırmak için *fonksiyonlara* ihtiyacınız vardır.
 
-Code comments are one effective way to write more readable code, which makes your program easier to understand, maintain, and fix later if there are problems.
+Kod yorumları, daha okunaklı kod yazmanın etkili bir yoludur, bu da programınızın daha iyi anlaşılmasını, bakımını yapılmasını ve daha sonra sorunlarla başa çıkılmasını kolaylaştırır.
 
-Finally, don't neglect the power of practice. The best way to learn how to write code is to write code.
+Son olarak, pratik yapmanın gücünü ihmal etmeyin. Kod yazmayı öğrenmenin en iyi yolu, kod yazmaktır.
 
-I'm excited you're well on your way to learning how to code, now! Keep it up. Don't forget to check out other beginner programming resources (books, blogs, online training, etc.). This chapter and this book are a great start, but they're just a brief introduction.
+Şimdi kod yazmayı öğrenme yolunda iyi bir şekilde ilerliyorsunuz! Devam edin. Başka başlangıç seviyesi programlama kaynaklarını (kitaplar, bloglar, çevrimiçi eğitimler vb.) kontrol etmeyi unutmayın. Bu bölüm ve bu kitap iyi bir başlangıç olsa da, sadece kısa bir giriştir.
 
-The next chapter will review many of the concepts from this chapter, but from a more JavaScript-specific perspective, which will highlight most of the major topics that are addressed in deeper detail throughout the rest of the series.
+Sonraki bölüm, bu bölümden birçok kavramı daha özgü bir JavaScript bakış açısından ele alacak ve serinin geri kalanında daha derinlemesine ele alınan başlıca konuların çoğunu vurgulayacaktır.
