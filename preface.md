@@ -1,40 +1,42 @@
 # You Don't Know JS
-# Preface
+# Giriş
 
-I'm sure you noticed, but "JS" in the book series title is not an abbreviation for words used to curse about JavaScript, though cursing at the language's quirks is something we can probably all identify with!
+Muhtemelen fark etmişsinizdir, ancak kitap serisinin başlığındaki "JS," JavaScript hakkında küfür etmek için kullanılan kelimelerin kısaltması değildir, ancak JavaScript'in tuhaflıkları hakkında küfür etmek, hepimizin kimlikleştirebileceği bir şeydir!
 
-From the earliest days of the web, JavaScript has been a foundational technology that drives interactive experience around the content we consume. While flickering mouse trails and annoying pop-up prompts may be where JavaScript started, nearly 2 decades later, the technology and capability of JavaScript has grown many orders of magnitude, and few doubt its importance at the heart of the world's most widely available software platform: the web.
+Web'in en erken günlerinden itibaren, JavaScript, tükettiğimiz içerik etrafındaki etkileşimli deneyimi yönlendiren temel bir teknoloji olmuştur. Titrek fare izleri ve sinir bozucu açılır pencereler belki JavaScript'in başladığı yer olsa da, neredeyse 2 on yıl sonra, JavaScript'in teknolojisi ve yetenekleri büyük ölçüde büyümüş ve web'in dünyanın en yaygın olarak bulunan yazılım platformunun kalbindeki önemini kimse sorgulamıyor.
 
-But as a language, it has perpetually been a target for a great deal of criticism, owing partly to its heritage but even more to its design philosophy. Even the name evokes, as Brendan Eich once put it, "dumb kid brother" status next to its more mature older brother "Java". But the name is merely an accident of politics and marketing. The two languages are vastly different in many important ways. "JavaScript" is as related to "Java" as "Carnival" is to "Car".
+Ancak bir dil olarak, her zaman hem kökenlerinden kaynaklanan hem de daha fazlasını tasarım felsefesinden kaynaklanan büyük eleştirilere maruz kalmıştır. Adı bile, Brendan Eich'in bir zamanlar ifade ettiği gibi "aptal çocuk kardeş" durumunu çağrıştırır, yanındaki daha olgun ağabeyi "Java"ya. Ancak adı sadece siyaset ve pazarlama kazalarının bir sonucudur. İki dil, birçok önemli açıdan büyük ölçüde farklıdır. "JavaScript," "Java" ile "Karnaval" "Araba" kadar ilgilidir.
 
-Because JavaScript borrows concepts and syntax idioms from several languages, including proud C-style procedural roots as well as subtle, less obvious Scheme/Lisp-style functional roots, it is exceedingly approachable to a broad audience of developers, even those with just little to no programming experience. The "Hello World" of JavaScript is so simple that the language is inviting and easy to get comfortable with in early exposure.
+JavaScript, gururlu C tarzı prosedürel köklere sahip olduğu kadar, daha az belirgin olan Scheme/Lisp tarzı işlevsel köklere sahip başka birçok dilin kavramlarını ve sözdizimi alırken, geniş bir geliştirici kitlesine son derece ulaşılabilir olmuştur. "Merhaba Dünya" JavaScript'in en basit olduğundan o kadar basittir ki, dil davetkar ve erken temasla rahat hissetmek kolaydır.
 
-While JavaScript is perhaps one of the easiest languages to get up and running with, its eccentricities make solid mastery of the language a vastly less common occurrence than in many other languages. Where it takes a pretty in-depth knowledge of a language like C or C++ to write a full-scale program, full-scale production JavaScript can, and often does, barely scratch the surface of what the language can do.
+JavaScript belki de başlatmak için en kolay dillerden biri olabilir, ancak tuhaflıkları, dilin sağlam bir şekilde ustalaşmasını, diğer birçok dilde olduğundan çok daha az yaygın bir olayı yapar. Bir dilin C veya C++ gibi tam ölçekli bir program yazmak için oldukça ayrıntılı bir bilgi gerektirdiği yerde, tam ölçekli üretim JavaScript'i, genellikle dilin yapabileceği şeyin sadece yüzeyini çizer.
 
-Sophisticated concepts which are deeply rooted into the language tend instead to surface themselves in *seemingly* simplistic ways, such as passing around functions as callbacks, which encourages the JavaScript developer to just use the language as-is and not worry too much about what's going on under the hood.
+Dilin derinlemesine kök salmış karmaşık kavramları, kendilerini işlev olarak geçiren işlevleri geçirmek gibi *görünüşte* basit yollarla ortaya çıkar. Bu, JavaScript geliştiricisini sadece dili olduğu gibi kullanmaya teşvik eder ve kaputun altında ne olduğu hakkında fazla endişelenmemesini sağlar.
 
-It is simultaneously a simple, easy-to-use language that has broad appeal, and a complex and nuanced collection of language mechanics which without careful study will elude *true understanding* even for the most seasoned of JavaScript developers.
+Aynı anda, geniş bir çekiciliği olan basit, kolay kullanılan bir dil olabilir ve dikkatli bir çalışma olmadan bile *gerçek anlamda anlaşılması* zorlu bir görev olabilir, hatta en deneyimli JavaScript geliştiriciler için.
 
-Therein lies the paradox of JavaScript, the Achilles' Heel of the language, the challenge we are presently addressing. Because JavaScript *can* be used without understanding, the understanding of the language is often never attained.
+İşte JavaScript'in çelişkisi, dilin Achilles'in topuğu, şu an ele aldığımız zorluk budur. Çünkü JavaScript *anlayışsızca* kullanılabilir, dilin anlayışı genellikle hiçbir zaman elde edilmez.
 
-## Mission
+## Misyon
 
-If at every point that you encounter a surprise or frustration in JavaScript, your response is to add it to the blacklist, as some are accustomed to doing, you soon will be relegated to a hollow shell of the richness of JavaScript.
+JavaScript'te her karşılaştığınızda şaşırdığınızda veya hayal kırıklığına uğradığınızda tepkiniz bunu siyah listeye eklemekse, bazıları alışkın oldukları gibi, JavaScript'in zenginliğin boş bir kabuğuna gönderilmenize neden olur.
 
-While this subset has been famously dubbed "The Good Parts", I would implore you, dear reader, to instead consider it the "The Easy Parts", "The Safe Parts", or even "The Incomplete Parts".
+Bu alt küme "The Good Parts" olarak ünlü olsa da, sizi bu yerine "The Easy Parts", "The Safe Parts" veya hatta "The Incomplete Parts" olarak düşünmeye çağırırım, sevgili okuyucu.
 
-This *You Don't Know JavaScript* book series offers a contrary challenge: learn and deeply understand *all* of JavaScript, even and especially "The Tough Parts".
+Bu *You Don't Know JavaScript* kitap serisi, zaten "The Tough Parts" olarak kabul edilen ve en çok yanlış anlaşılan veya yetersiz anlaşılan dilin belirli temel bölümleriyle başa çıkar: JavaScript'i *tamamen ve derinlemesine* öğ
 
-Here, we address head on the tendency of JS developers to learn "just enough" to get by, without ever forcing themselves to learn exactly how and why the language behaves the way it does. Furthermore, we eschew the common advice to *retreat* when the road gets rough.
+renin.
 
-I am not content, nor should you be, at stopping once something *just works*, and not really knowing *why*. I gently challenge you to journey down that bumpy "road less traveled" and embrace all that JavaScript is and can do. With that knowledge, no technique, no framework, no popular buzzword acronym of the week, will be beyond your understanding.
+Burada, JavaScript geliştiricilerinin genellikle "sadece yeterince" öğrenmelerine, dilin neden ve nasıl davrandığını tam olarak öğrenmeye zorlamadan, yolu zorlaştığında *çekilmelerini* başa alışkanlık yapma eğilimine doğrudan karşı koyuyoruz.
 
-These books each take on specific core parts of the language which are most commonly misunderstood or under-understood, and dive very deep and exhaustively into them. You should come away from reading with a firm confidence in your understanding, not just of the theoretical, but the practical "what you need to know" bits.
+Ben, bir şey *sadece işe yaradığında* durmakla memnun değilim, ve gerçekten *neden* bilmeden. Size bu dikenli "az seyahat edilen yol" boyunca gitme ve JavaScript'in ne olduğunu ve ne yapabileceğini kucaklama konusunda sakin bir şekilde meydan okuyorum. Bu bilgiyle, hiçbir teknik, hiçbir çerçeve, haftanın popüler akronimi gibi hiçbir popüler trend terimi anlayışınızın ötesinde olmayacaktır.
 
-The JavaScript you know *right now* is probably *parts* handed down to you by others who've been burned by incomplete understanding. *That* JavaScript is but a shadow of the true language. You don't *really* know JavaScript, *yet*, but if you dig into this series, you *will*. Read on, my friends. JavaScript awaits you.
+Bu kitaplar, en çok yanlış anlaşılan veya yanlış anlaşılan dilin belirli temel bölümleri ile ilgilenir ve bu konulara çok derinlemesine ve tükenmeyen bir şekilde iner. Okuduktan sonra, teorik olmanın ötesinde, pratik "bilmeniz gereken" kısımlar hakkında sıkı bir anlayışla ayrılmalısınız.
 
-## Summary
+Şu anda bildiğiniz JavaScript muhtemelen başkaları tarafından size geçirilen *parçalardır* ve eksik anlayışları nedeniyle yanmışlardır. *O* JavaScript, gerçek dilin bir gölgesi sadece. JavaScript'i *gerçekten* bilmiyorsunuz, *henüz*, ama bu serinin içine dalarsanız, *bileceksiniz*. Devam edin, dostlarım. JavaScript sizi bekliyor.
 
-JavaScript is awesome. It's easy to learn partially, and much harder to learn completely (or even *sufficiently*). When developers encounter confusion, they usually blame the language instead of their lack of understanding. These books aim to fix that, inspiring a strong appreciation for the language you can now, and *should*, deeply *know*.
+## Özet
 
-Note: Many of the examples in this book assume modern (and future-reaching) JavaScript engine environments, such as ES6. Some code may not work as described if run in older (pre-ES6) engines.
+JavaScript harika bir dil. Kısmen öğrenmesi kolaydır ve tamamen öğrenmek (veya yeterli öğrenmek) çok daha zordur. Geliştiriciler karışıklıkla karşılaştığında, genellikle anlam eksikliğini suçlarlar. Bu kitaplar, bunu düzeltmeyi amaçlayarak, şimdi ve *gerekiyorsa* derinlemesine *bilmeniz* gereken dili güçlendirmeyi amaçlamaktadır.
+
+Not: Bu kitaptaki örneklerin birçoğu, ES6 gibi modern (ve geleceğe yönelik) JavaScript motor ortamlarını varsaydığından, eski (ES6 öncesi) motorlarda çalışmayabilir.
