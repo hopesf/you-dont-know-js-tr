@@ -1,28 +1,29 @@
 # You Don't Know JS: Up & Going
-# Chapter 2: Into JavaScript
+# Bölüm 2: JavaScript'e Giriş
 
-In the previous chapter, I introduced the basic building blocks of programming, such as variables, loops, conditionals, and functions. Of course, all the code shown has been in JavaScript. But in this chapter, we want to focus specifically on things you need to know about JavaScript to get up and going as a JS developer.
+Önceki bölümde, programlamanın temel yapı taşlarını, değişkenler, döngüler, koşullu ifadeler ve fonksiyonlar gibi tanıttım. Tabii ki, gösterilen tüm kodlar JavaScript'te oldu. Ancak bu bölümde, bir JS developer olarak başlamak için bilmeniz gereken özelliklere odaklanmak istiyoruz.
 
-We will introduce quite a few concepts in this chapter that will not be fully explored until subsequent *YDKJS* books. You can think of this chapter as an overview of the topics covered in detail throughout the rest of this series.
+Bu bölümde ilerleyen YDKJS kitaplarına kadar tam olarak keşfedilmeyecek birçok kavramı tanıtacağız. Bu bölümü, serinin geri kalanında detaylı olarak ele alınan konuların bir genel bakışı olarak düşünebilirsiniz.
 
-Especially if you're new to JavaScript, you should expect to spend quite a bit of time reviewing the concepts and code examples here multiple times. Any good foundation is laid brick by brick, so don't expect that you'll immediately understand it all the first pass through.
+Özellikle JavaScript'e yeni başlıyorsanız, buradaki kavramları ve kod örneklerini birkaç kez inceleyebilirsiniz. İyi bir temel tuğla tuğla döşenir, bu yüzden her şeyi ilk seferde hemen anlayacağınızı beklemeyin.
 
-Your journey to deeply learn JavaScript starts here.
+JavaScript'i derinlemesine öğrenme yolculuğunuz burada başlıyor.
 
-**Note:** As I said in Chapter 1, you should definitely try all this code yourself as you read and work through this chapter. Be aware that some of the code here assumes capabilities introduced in the newest version of JavaScript at the time of this writing (commonly referred to as "ES6" for the 6th edition of ECMAScript -- the official name of the JS specification). If you happen to be using an older, pre-ES6 browser, the code may not work. A recent update of a modern browser (like Chrome, Firefox, or IE) should be used.
+**Not:** Birinci Bölümde belirttiğim gibi, bu bölümü okurken ve çalışırken kesinlikle bu kodları kendiniz denemelisiniz. Bu kodlardan bazıları, bu yazının yazıldığı sırada en yeni JavaScript sürümünde tanıtılan yetenekleri varsaymaktadır (genellikle "ES6" olarak adlandırılan ECMAScript'in 6. sürümü için -- JS spesifikasyonunun resmi adı). Eğer daha eski bir, ES6 öncesi bir tarayıcı kullanıyorsanız, kod işe yaramayabilir. Güncel ve modern bir tarayıcının (örneğin Chrome, Firefox veya IE) son sürümünü kullanmanız gerekmektedir.
 
-## Values & Types
+## Değerler & Türler
 
-As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
+Birinci Bölümde belirttiğimiz gibi, JavaScript'in tip değerleri vardır, tip belirli değişkenleri değil. Aşağıda yer alan yerleşik tipler mevcuttur:
 
 * `string`
 * `number`
 * `boolean`
-* `null` and `undefined`
+* `null`
+* `undefined`
 * `object`
-* `symbol` (new to ES6)
+* `symbol` (ES6 sürümüyle birlikte gelen tür)
 
-JavaScript provides a `typeof` operator that can examine a value and tell you what type it is:
+JavaScript, bir değeri inceleyebilen ve size ne türde olduğunu söyleyebilen bir `typeof` operatörü sağlar:
 
 ```js
 var a;
@@ -38,7 +39,7 @@ a = true;
 typeof a;				// "boolean"
 
 a = null;
-typeof a;				// "object" -- weird, bug
+typeof a;				// "object" -- JavaScript dilinde bulunan ilginç bir bug
 
 a = undefined;
 typeof a;				// "undefined"
@@ -47,19 +48,19 @@ a = { b: "c" };
 typeof a;				// "object"
 ```
 
-The return value from the `typeof` operator is always one of six (seven as of ES6! - the "symbol" type) string values. That is, `typeof "abc"` returns `"string"`, not `string`.
+`typeof` operatörünün dönüş değeri her zaman altı (ES6 ile yedi! - "symbol" türü eklenmiştir) dize değerinden biridir. Yani, typeof "abc" "string" olarak döner, "string" değil.
 
-Notice how in this snippet the `a` variable holds every different type of value, and that despite appearances, `typeof a` is not asking for the "type of `a`", but rather for the "type of the value currently in `a`." Only values have types in JavaScript; variables are just simple containers for those values.
+Bu parçada dikkatinizi çekmek istediğim şey, a değişkeninin her türlü farklı değeri tuttuğu ve görünüşe bakılırsa `typeof a`'nın "a'nın türü"nü sormadığınızı, aslında "şu an a içinde bulunan değerin türünü" sorduğunuzu görmektir. JavaScript'te yalnızca değerlerin türleri vardır; değişkenler sadece bu değerler için basit konteynerlerdir.
 
-`typeof null` is an interesting case, because it errantly returns `"object"`, when you'd expect it to return `"null"`.
+`typeof null`, ilginç bir durumdur, çünkü yanlışlıkla `"object"` olarak döner, oysa `"null"` olarak dönmesini beklersiniz.
 
-**Warning:** This is a long-standing bug in JS, but one that is likely never going to be fixed. Too much code on the Web relies on the bug and thus fixing it would cause a lot more bugs!
+**Uyarı:** Bu, JS'deki uzun süredir devam eden bir hata olup muhtemelen hiçbir zaman düzeltilmeyecek bir hata çünkü web üzerindeki çok fazla kod, bu hataya dayandığı için düzeltilmesi daha fazla hataya neden olur!
 
-Also, note `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
+Ayrıca, `a = undefined` ifadesine dikkat edin. Açıkça `a`'yı `undefined` değerine ayarlıyoruz, ancak bu, `var a;` ifadesi ile baştaki örnekte olduğu gibi henüz değer atanmamış bir değişkenden farklı bir davranış göstermez. Bir değişken, fonksiyonların değer döndürmediği ve `void` operatörünün kullanımı dahil olmak üzere birkaç farklı şekilde bu "undefined" değerine ulaşabilir.
 
 ### Objects
 
-The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type. This is perhaps one of the most useful value types in all of JavaScript.
+`object` türü, her biri kendi türünde değerler tutan özellikleri (isimlendirilmiş konumlar) ayarlayabileceğiniz bileşik bir değeri ifade eder. Bu, muhtemelen JavaScript'in tüm değer türleri arasında en kullanışlı olanlarından biridir.
 
 ```js
 var obj = {
@@ -77,15 +78,15 @@ obj["b"];	// 42
 obj["c"];	// true
 ```
 
-It may be helpful to think of this `obj` value visually:
+Bu 'obj' değerini görsel olarak düşünmek faydalı olabilir:
 
 <img src="fig4.png">
 
-Properties can either be accessed with *dot notation* (i.e., `obj.a`) or *bracket notation* (i.e., `obj["a"]`). Dot notation is shorter and generally easier to read, and is thus preferred when possible.
+Objects'lerdeki değerlere ya nokta notasyonu kullanılarak (örneğin, `obj.a`) ya da köşeli parantez notasyonu kullanılarak (örneğin, `obj["a"]`) erişilebilir. Nokta notasyonu daha kısa ve genellikle daha okunaklıdır.
 
-Bracket notation is useful if you have a property name that has special characters in it, like `obj["hello world!"]` -- such properties are often referred to as *keys* when accessed via bracket notation. The `[ ]` notation requires either a variable (explained next) or a `string` *literal* (which needs to be wrapped in `" .. "` or `' .. '`).
+Köşeli parantez notasyonu, içinde özel karakterler bulunan bir özellik adınız varsa kullanışlıdır, örneğin `obj["hello world!"]` -- bu tür özelliklere, köşeli parantez notasyonuyla erişildiğinde genellikle *keys* denir. `[ ]` notasyonu ya bir değişken gerektirir (aşağıda açıklanmıştır) ya da bir `string` *literal* (ki `" .. "` veya `' .. '` ile çevrelenmelidir).
 
-Of course, bracket notation is also useful if you want to access a property/key but the name is stored in another variable, such as:
+Elbette, köşeli parantez notasyonu, bir özellik/anahtar erişmek isterseniz, ancak adı başka bir değişkenin içinde saklanıyorsa da kullanışlıdır, örneğin:
 
 ```js
 var obj = {
@@ -99,16 +100,16 @@ obj[b];			// "hello world"
 obj["b"];		// 42
 ```
 
-**Note:** For more information on JavaScript `object`s, see the *this & Object Prototypes* title of this series, specifically Chapter 3.
+**Not:** JavaScript `object`'leri hakkında daha fazla bilgi için bu serinin *this & Object Prototypes* başlığını incelemeyi düşünebilirsiniz, özellikle 3. Bölümüne odaklanabilirsiniz.
 
-There are a couple of other value types that you will commonly interact with in JavaScript programs: *array* and *function*. But rather than being proper built-in types, these should be thought of more like subtypes -- specialized versions of the `object` type.
+JavaScript programlarında sıkça etkileşimde bulunacağınız birkaç başka değer türü daha vardır: *dizi (array)* ve *fonksiyon (function)*. Ancak bunlar kesin yerleşik türler olmaktan ziyade, daha çok `object` türünün özelleşmiş sürümleri olarak düşünülmelidir.
 
-#### Arrays
+#### Arrays (Diziler)
 
-An array is an `object` that holds values (of any type) not particularly in named properties/keys, but rather in numerically indexed positions. For example:
+Bir Array, adlandırılmış key/value yerine sayısal indeksli pozisyonlarda değerleri (herhangi bir türde) tutan bir `object`'dir. Örneğin:
 
 ```js
-var arr = [
+const arr = [
 	"hello world",
 	42,
 	true
@@ -122,9 +123,9 @@ arr.length;		// 3
 typeof arr;		// "object"
 ```
 
-**Note:** Languages that start counting at zero, like JS does, use `0` as the index of the first element in the array.
+**Not:** JS array'deki ilk öğenin indeksini `0` olarak kullanırlar.
 
-It may be helpful to think of `arr` visually:
+Görsel olarak `arr`ı düşünmek faydalı olabilir:
 
 <img src="fig5.png">
 
@@ -134,9 +135,15 @@ You theoretically could use an array as a normal object with your own named prop
 
 The best and most natural approach is to use arrays for numerically positioned values and use `object`s for named properties.
 
-#### Functions
+Çünkü array'ler özel object'lerdir (bu, `typeof` tarafından belirtilir), bu nedenle otomatik olarak güncellenen `length` özelliği dahil olmak üzere built-in özelliklere sahip olabilirler.
 
-The other `object` subtype you'll use all over your JS programs is a function:
+Teorik olarak, bir `array`'i kendi adlandırılmış özellikleri olan normal bir object olarak kullanabilirsiniz veya bir `object` kullanabilirsiniz.
+
+En iyi ve en doğal yaklaşım, sayısal pozisyondaki değerler için `array`'leri ve adlandırılmış özellikler için `object`'leri kullanmaktır.
+
+#### Functions (Fonksiyonlar)
+
+JS programlarınızın tamamında kullanacağınız diğer `object` alt türü, fonksiyonlar:
 
 ```js
 function foo() {
@@ -150,15 +157,15 @@ typeof foo();		// "number"
 typeof foo.bar;		// "string"
 ```
 
-Again, functions are a subtype of `objects` -- `typeof` returns `"function"`, which implies that a `function` is a main type -- and can thus have properties, but you typically will only use function object properties (like `foo.bar`) in limited cases.
+Fonksiyonlar `object`'lerin bir alt türüdür -- `typeof` "function" olarak döner, bu da bir `function`'ın ana tür olduğunu ima eder -- ve bu nedenle özelliklere sahip olabilir, ancak genellikle fonksiyon nesne özelliklerini (örneğin `foo.bar`) sınırlı durumlarda kullanırsınız.
 
-**Note:** For more information on JS values and their types, see the first two chapters of the *Types & Grammar* title of this series.
+**Not:** JS değerleri ve türleri hakkında daha fazla bilgi için bu serinin *Types & Grammar* başlığının ilk iki bölümünü incelemeyi düşünebilirsiniz.
 
-### Built-In Type Methods
+### Built-In Type Methods (Yerleşik Tür Methodları)
 
-The built-in types and subtypes we've just discussed have behaviors exposed as properties and methods that are quite powerful and useful.
+Built-in types oldukça güçlü ve faydalı olan özellikler ve yöntemler olarak açığa çıkan davranışlara sahiptir.
 
-For example:
+Örnek olarak:
 
 ```js
 var a = "hello world";
@@ -169,31 +176,31 @@ a.toUpperCase();		// "HELLO WORLD"
 b.toFixed(4);			// "3.1416"
 ```
 
-The "how" behind being able to call `a.toUpperCase()` is more complicated than just that method existing on the value.
+`a.toUpperCase()` çağrısını bir string değeri tutan değişken üzerinde yapabilmenin arkasındaki "nasıl" daha karmaşıktır, yalnızca bu yöntemin değer üzerinde mevcut olmasıyla sınırlı değildir.
 
-Briefly, there is a `String` (capital `S`) object wrapper form, typically called a "native," that pairs with the primitive `string` type; it's this object wrapper that defines the `toUpperCase()` method on its prototype.
+Kısaca, tip olarak "native" olarak adlandırılan, birincil `string` türü ile eşleşen bir `String` (büyük "S") türünde nesne sarmalayıcı form vardır; `toUpperCase()` yöntemini prototype'ında tanımlayan da bu nesne sarmalayıcıdır.
 
-When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), JS automatically "boxes" the value to its object wrapper counterpart (hidden under the covers).
+Bir `object` olarak `"hello world"` gibi ilkel değeri bir özelliğe veya yönteme referansla kullandığınızda (örneğin, önceki örnekteki gibi `a.toUpperCase()`), JS, değeri otomatik olarak ilgili nesne sarmalayıcı karşılığına ("boxed") dönüştürür (kapakların altında gizlenir).
 
-A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object. For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you.
+Bir `string` değeri bir `String` nesnesi tarafından sarmalanabilir, bir `number` bir `Number` nesnesi tarafından sarmalanabilir ve bir `boolean` bir `Boolean` nesnesi tarafından sarmalanabilir. Çoğu durumda, bu değerlerin nesne sarmalayıcı formlarıyla ilgilenmenize veya doğrudan kullanmanıza gerek yoktur -- neredeyse tüm durumlarda ilkel değer formlarını tercih edin ve JavaScript gerisini sizin için halledecektir.
 
-**Note:** For more information on JS natives and "boxing," see Chapter 3 of the *Types & Grammar* title of this series. To better understand the prototype of an object, see Chapter 5 of the *this & Object Prototypes* title of this series.
+**Not:** JS native türleri ve "boxing" hakkında daha fazla bilgi için bu serinin *Types & Grammar* başlığının 3. Bölümünü incelemeyi düşünebilirsiniz. Bir nesnenin prototype'ını daha iyi anlamak için bu serinin *this & Object Prototypes* başlığının 5. Bölümüne göz atabilirsiniz.
 
-### Comparing Values
+### Değerleri Karşılaştırma (Comparing Values)
 
-There are two main types of value comparison that you will need to make in your JS programs: *equality* and *inequality*. The result of any comparison is a strictly `boolean` value (`true` or `false`), regardless of what value types are compared.
+JavaScript programlarınızda yapmanız gereken iki temel değer karşılaştırma türü vardır: *eşitlik* ve *eşitsizlik* (*equality* and *inequality*). Herhangi bir karşılaştırmanın sonucu, karşılaştırılan değer türleri ne olursa olsun katı bir `boolean` değeri (`true` veya `false`) döner.
 
-#### Coercion
+#### Type Coercion (Tür Dönüşümü)
 
-We talked briefly about coercion in Chapter 1, but let's revisit it here.
+Bölüm 1'de coercion'dan kısaca bahsetmiştik ama gelin burada tekrar ele alalım.
 
-Coercion comes in two forms in JavaScript: *explicit* and *implicit*. Explicit coercion is simply that you can see obviously from the code that a conversion from one type to another will occur, whereas implicit coercion is when the type conversion can happen as more of a non-obvious side effect of some other operation.
+JavaScript'te, Coercion (dönüşüm), iki türde gelir: *açık* (explicit) ve *kapalı* (implicit). Açık dönüşüm, bir türden diğerine dönüşümün koddan açıkça görülebildiği durumlarda gerçekleşirken, kapalı dönüşüm, tür dönüşümünün diğer işlemlerin daha az açık bir yan etkisi olarak gerçekleşebileceği durumları ifade eder.
 
-You've probably heard sentiments like "coercion is evil" drawn from the fact that there are clearly places where coercion can produce some surprising results. Perhaps nothing evokes frustration from developers more than when the language surprises them.
+Belki de dönüşümün bazı şaşırtıcı sonuçlar üretebileceği yerler açısından "dönüşüm kötüdür" gibi ifadeleri duymuşsunuzdur.
 
-Coercion is not evil, nor does it have to be surprising. In fact, the majority of cases you can construct with type coercion are quite sensible and understandable, and can even be used to *improve* the readability of your code. But we won't go much further into that debate -- Chapter 4 of the *Types & Grammar* title of this series covers all sides.
+Dönüşüm kötü değildir ve şaşırtıcı olmak zorunda değildir. Aslında, tür dönüşümü ile oluşturabileceğiniz çoğu durum oldukça mantıklı ve anlaşılabilir ve kodunuzu daha okunaklı hale getirmenize bile yardımcı olabilir. Ancak bu konudaki tartışmaya çok fazla girmeyeceğiz - bu serinin *Types & Grammar* başlığının 4. Bölümü tüm yönleri ele alır.
 
-Here's an example of *explicit* coercion:
+*explicit* coercion için bir örnek:
 
 ```js
 var a = "42";
@@ -204,7 +211,7 @@ a;				// "42"
 b;				// 42 -- the number!
 ```
 
-And here's an example of *implicit* coercion:
+*implicit* coercion için bir örnek
 
 ```js
 var a = "42";
@@ -215,18 +222,18 @@ a;				// "42"
 b;				// 42 -- the number!
 ```
 
-#### Truthy & Falsy
+#### Truthy & Falsy 
 
-In Chapter 1, we briefly mentioned the "truthy" and "falsy" nature of values: when a non-`boolean` value is coerced to a `boolean`, does it become `true` or `false`, respectively?
+Birinci Bölümde, değerlerin "truthy" ve "falsy" özelliklerinden kısaca bahsettik: `boolean` olmayan değer `boolean` türüne dönüştürüldüğünde sırasıyla `true` veya `false` olur mu?
 
-The specific list of "falsy" values in JavaScript is as follows:
+JavaScript'teki "falsy" değerlerin belirli listesi şu şekildedir:
 
 * `""` (empty string)
 * `0`, `-0`, `NaN` (invalid `number`)
 * `null`, `undefined`
 * `false`
 
-Any value that's not on this "falsy" list is "truthy." Here are some examples of those:
+Bu "falsy" listesinde olmayan herhangi bir değer "truthy" olarak kabul edilir. İşte bu "truthy" değerlere örnekler:
 
 * `"hello"`
 * `42`
@@ -237,13 +244,15 @@ Any value that's not on this "falsy" list is "truthy." Here are some examples of
 
 It's important to remember that a non-`boolean` value only follows this "truthy"/"falsy" coercion if it's actually coerced to a `boolean`. It's not all that difficult to confuse yourself with a situation that seems like it's coercing a value to a `boolean` when it's not.
 
-#### Equality
+Önemli olan, `boolean` olmayan bir değerin yalnızca `boolean` türüne dönüştürüldüğünde "truthy"/"falsy" dönüşümü izlediğini hatırlamaktır. Bir değeri `boolean` türüne dönüştürüyormuş gibi görünen ancak gerçekte dönüştürmeyen bir durumla karşılaşabiliriz.
 
-There are four equality operators: `==`, `===`, `!=`, and `!==`. The `!` forms are of course the symmetric "not equal" versions of their counterparts; *non-equality* should not be confused with *inequality*.
+#### Eşitlik (Equality)
 
-The difference between `==` and `===` is usually characterized that `==` checks for value equality and `===` checks for both value and type equality. However, this is inaccurate. The proper way to characterize them is that `==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion; `===` is often called "strict equality" for this reason.
+JavaScript'te dört adet eşitlik operatörü bulunur: `==`, `===`, `!=` ve `!==`. `!` biçimleri, elbette karşıtları olan simetrik "eşit değil" versiyonlarıdır; *non-equality* ile *inequality* karıştırılmamalıdır.
 
-Consider the implicit coercion that's allowed by the `==` loose-equality comparison and not allowed with the `===` strict-equality:
+`==` ile `===` arasındaki fark genellikle şu şekilde tanımlanır: `==`, değer eşitliğini kontrol ederken `===`, hem değer hem de tür eşitliğini kontrol eder. Onları doğru bir şekilde tanımlamanın yolu, `==`'in dönüşüme izin veren değer eşitliğini kontrol ettiği, `===`'in ise dönüşüme izin vermeden değer eşitliğini kontrol ettiği şeklinde olmalıdır; bu nedenle `===` genellikle "katı eşitlik" olarak adlandırılır.
+
+`==` gevşek-eşitlik karşılaştırmasına izin verilen dolaylı dönüşümü düşünün ve `===` katı-eşitlik ile izin verilmeyen dönüşümü düşünün:
 
 ```js
 var a = "42";
@@ -253,29 +262,31 @@ a == b;			// true
 a === b;		// false
 ```
 
-In the `a == b` comparison, JS notices that the types do not match, so it goes through an ordered series of steps to coerce one or both values to a different type until the types match, where then a simple value equality can be checked.
+`a == b` karşılaştırmasında, JavaScript türlerin uyuşmadığını fark eder, bu nedenle türleri eşleşene kadar bir veya her iki değeri farklı bir türe dönüştürmek için sıralı bir dizi adıma geçer ve ardından basit bir değer eşitliği kontrol edilebilir.
 
-If you think about it, there's two possible ways `a == b` could give `true` via coercion. Either the comparison could end up as `42 == 42` or it could be `"42" == "42"`. So which is it?
+Düşünün ki, `a == b` ifadesi, dönüşüm yoluyla `true` sonucunu verebilecek iki olası yolu vardır. Ya karşılaştırma sonucu `42 == 42` olur ya da `"42" == "42"` olabilir. Hangisi doğru?
 
-The answer: `"42"` becomes `42`, to make the comparison `42 == 42`. In such a simple example, it doesn't really seem to matter which way that process goes, as the end result is the same. There are more complex cases where it matters not just what the end result of the comparison is, but *how* you get there.
+Cevap: `"42"`, karşılaştırmayı `42 == 42` yapmak için `42`'ye dönüşür. Bu kadar basit bir örnekte, bu sürecin hangi yönde gittiği gerçekten önemli gibi görünmez, çünkü sonuç aynıdır. Ancak sonuçtan daha da önemli olan, karşılaştırmanın sonucu değil, o sonuca nasıl ulaşıldığıdır, bu gibi durumlarda daha karmaşık durumlar vardır.
 
-The `a === b` produces `false`, because the coercion is not allowed, so the simple value comparison obviously fails. Many developers feel that `===` is more predictable, so they advocate always using that form and staying away from `==`. I think this view is very shortsighted. I believe `==` is a powerful tool that helps your program, *if you take the time to learn how it works.*
+`a === b`, dönüşüme izin verilmediği için, basit değer karşılaştırması açıkça başarısız olur ve `false` üretir. Birçok geliştirici, `===`'ın daha tahmin edilebilir olduğunu düşünür ve her zaman bu operatörü kullanmayı ve `==`'den kaçınmayı savunur. Bu görüşün çok dar bir bakış açısı olduğuna inanıyorum. `==`, programınıza yardımcı olan güçlü bir araç olduğuna inanıyorum, *nasıl çalıştığını öğrenmeye zaman ayırırsanız*.
 
-We're not going to cover all the nitty-gritty details of how the coercion in `==` comparisons works here. Much of it is pretty sensible, but there are some important corner cases to be careful of. You can read section 11.9.3 of the ES5 specification (http://www.ecma-international.org/ecma-262/5.1/) to see the exact rules, and you'll be surprised at just how straightforward this mechanism is, compared to all the negative hype surrounding it.
+`==` karşılaştırmalarındaki dönüşümün tüm ayrıntılarını burada kapsamayacağız. Çoğu mantıklı olsa da, dikkatli olunması gereken bazı önemli noktalar vardır. Tam kuralları görmek için ES5 özelliklerinin 11.9.3 bölümünü (http://www.ecma-international.org/ecma-262/5.1/) okuyabilirsiniz ve bu mekanizmanın, etrafındaki olumsuz eleştirilere göre ne kadar basit olduğuna şaşıracaksınız.
 
-To boil down a whole lot of details to a few simple takeaways, and help you know whether to use `==` or `===` in various situations, here are my simple rules:
+Birçok ayrıntıyı birkaç basit öğrenmeye dökmek ve çeşitli durumlarda `==` veya `===` kullanmanız gerekip gerekmediğini bilmek ve size yardımcı olmak için işte basit kurallarım:
 
-* If either value (aka side) in a comparison could be the `true` or `false` value, avoid `==` and use `===`.
-* If either value in a comparison could be one of these specific values (`0`, `""`, or `[]` -- empty array), avoid `==` and use `===`.
-* In *all* other cases, you're safe to use `==`. Not only is it safe, but in many cases it simplifies your code in a way that improves readability.
+* Bir karşılaştırmadaki herhangi bir değer (yani taraf), `true` veya `false` değeri olabilirse, `==` yerine `===` kullanın.
+* Bir karşılaştırmadaki herhangi bir değer, belirli değerlerden biri (`0`, `""` veya `[]` - boş dizi) olabilirse, `==` yerine `===` kullanın
+* *Tüm diğer durumlarda*, `==` kullanmak güvenlidir. Aynı zamanda birçok durumda kodunuzu okunabilirliği artıran bir şekilde basitleştirir.
 
 What these rules boil down to is requiring you to think critically about your code and about what kinds of values can come through variables that get compared for equality. If you can be certain about the values, and `==` is safe, use it! If you can't be certain about the values, use `===`. It's that simple.
 
-The `!=` non-equality form pairs with `==`, and the `!==` form pairs with `===`. All the rules and observations we just discussed hold symmetrically for these non-equality comparisons.
+Bu kuralların temelinde, kodunuzu eleştirel bir şekilde düşünmenizi ve eşitlik için karşılaştırılan değişkenler aracılığıyla hangi türden değerlerin gelebileceğini düşünmenizi gerektirir. Değerler hakkında kesin olabiliyorsanız ve `==` güvenliyse, onu kullanın! Değerler hakkında kesin olamıyorsanız, `===` kullanın. Bu kadar basit.
 
-You should take special note of the `==` and `===` comparison rules if you're comparing two non-primitive values, like `object`s (including `function` and `array`). Because those values are actually held by reference, both `==` and `===` comparisons will simply check whether the references match, not anything about the underlying values.
+`!=` eşit olmayan biçimi `==` ile eşleşirken, `!==` biçimi `===` ile eşleşir. Şimdi tartıştığımız tüm kurallar ve gözlemler, bu eşit olmayan karşılaştırmalar için de simetrik olarak geçerlidir.
 
-For example, `array`s are by default coerced to `string`s by simply joining all the values with commas (`,`) in between. You might think that two `array`s with the same contents would be `==` equal, but they're not:
+Eğer iki temel olmayan değeri, yani `object`leri (bu arada `function` ve `array`leri) karşılaştırıyorsanız, `==` ve `===` karşılaştırma kurallarına özel bir şekilde dikkat etmelisiniz. Çünkü bu değerler aslında referans tarafından tutulur ve hem `==` hem de `===` karşılaştırmaları sadece referansların eşleşip eşleşmediğini kontrol eder, altındaki değerler hakkında herhangi bir şeyi kontrol etmez.
+
+Örneğin, `array`lar varsayılan olarak virgüllerle (`,`) arasına eklenerek `string`lere dönüştürülür. Aynı içeriğe sahip iki `array`ın `==` olarak eşit olacağını düşünebilirsiniz, ancak eşit değillerdir:
 
 ```js
 var a = [1,2,3];
@@ -287,17 +298,17 @@ b == c;		// true
 a == b;		// false
 ```
 
-**Note:** For more information about the `==` equality comparison rules, see the ES5 specification (section 11.9.3) and also consult Chapter 4 of the *Types & Grammar* title of this series; see Chapter 2 for more information about values versus references.
+**Not:** `==` eşitlik karşılaştırma kuralları hakkında daha fazla bilgi için ES5 özelliklerinin 11.9.3 bölümünü inceleyebilirsiniz ve bu seriye ait *Types & Grammar* başlığının 4. bölümünü de incelemek isteyebilirsiniz; değerlerin referanslara karşı ne anlama geldiği hakkında daha fazla bilgi için 2. bölüme başvurun.
 
-#### Inequality
+#### Eşitsizlik (Inequality)
 
-The `<`, `>`, `<=`, and `>=` operators are used for inequality, referred to in the specification as "relational comparison." Typically they will be used with ordinally comparable values like `number`s. It's easy to understand that `3 < 4`.
+`<`, `>`, `<=` ve `>=` operatörleri, "ilişkisel karşılaştırma" olarak belirtilen eşitsizlik için kullanılır. Genellikle sayılar gibi sıralanabilir değerlerle kullanılırlar. Örneğin `3 < 4` kolayca anlaşılabilir.
 
-But JavaScript `string` values can also be compared for inequality, using typical alphabetic rules (`"bar" < "foo"`).
+Ancak JavaScript `string` değerleri de tipik alfabeye göre eşitsizlik karşılaştırması için kullanılabilir, `"bar" < "foo"` gibi.
 
-What about coercion? Similar rules as `==` comparison (though not exactly identical!) apply to the inequality operators. Notably, there are no "strict inequality" operators that would disallow coercion the same way `===` "strict equality" does.
+Dönüşüm konusunda ne oluyor? Eşitsizlik operatörleri için `==` karşılaştırma ile benzer kurallar (tam olarak aynı olmasa da) uygulanır. Özellikle, dönüşümü engelleyen "katı eşitsizlik" operatörleri `===` ile aynı şekilde çalışmayan "katı eşitsizlik" operatörleri yoktur.
 
-Consider:
+Örnek olarak:
 
 ```js
 var a = 41;
@@ -312,6 +323,10 @@ What happens here? In section 11.8.5 of the ES5 specification, it says that if b
 
 The biggest gotcha you may run into here with comparisons between potentially different value types -- remember, there are no "strict inequality" forms to use -- is when one of the values cannot be made into a valid number, such as:
 
+Burada ne olur? ES5 özelliklerinin 11.8.5 bölümünde, `<` karşılaştırmasındaki her iki değer de `string` ise, örneğin `b < c` gibi, karşılaştırmanın leksikografik olarak (sözlük gibi alfabetik olarak) yapıldığı belirtilir. Ancak biri veya her ikisi de `string` değilse, örneğin `a < b` gibi, her iki değer de `number` olacak şekilde dönüştürülür ve tipik bir sayı karşılaştırması gerçekleşir.
+
+Potansiyel olarak farklı değer türleri arasındaki karşılaştırmalarda dikkat etmeniz gereken nokta, "katı eşitsizlik" biçimlerinin olmamasıdır. Özellikle, değerlerden birinin geçerli bir sayıya dönüştürülemeyeceği durumlar gibi:
+
 ```js
 var a = 42;
 var b = "foo";
@@ -325,29 +340,35 @@ Wait, how can all three of those comparisons be `false`? Because the `b` value i
 
 The `==` comparison fails for a different reason. `a == b` could fail if it's interpreted either as `42 == NaN` or `"42" == "foo"` -- as we explained earlier, the former is the case.
 
-**Note:** For more information about the inequality comparison rules, see section 11.8.5 of the ES5 specification and also consult Chapter 4 of the *Types & Grammar* title of this series.
+🚨 Bu üç karşılaştırma nasıl tamamıyla `false` olabilir? Çünkü `<` ve `>` karşılaştırmalarında `b` değeri "geçersiz sayı değeri" olan `NaN`'a dönüştürülüyor ve belirtilene göre `NaN`, diğer herhangi bir değerden büyük veya küçük değildir.
 
-## Variables
+`==` karşılaştırması ise farklı bir nedenle başarısız olur. `a == b`, ya `42 == NaN` olarak yorumlanabilir ya da `"42" == "foo"` olarak yorumlanabilir. Daha önce açıkladığımız gibi, ilk durum böyledir.
 
-In JavaScript, variable names (including function names) must be valid *identifiers*. The strict and complete rules for valid characters in identifiers are a little complex when you consider nontraditional characters such as Unicode. If you only consider typical ASCII alphanumeric characters though, the rules are simple.
+**Not:** Eşitsizlik karşılaştırma kuralları hakkında daha fazla bilgi için ES5 özelliklerinin 11.8.5 bölümünü inceleyebilirsiniz ve ayrıca bu serinin *Types & Grammar* başlığının 4. bölümünü incelemek isteyebilirsiniz. Bu kaynaklar, JavaScript'te eşitsizlik karşılaştırmalarının nasıl çalıştığını daha ayrıntılı bir şekilde açıklayacaktır.
 
-An identifier must start with `a`-`z`, `A`-`Z`, `$`, or `_`. It can then contain any of those characters plus the numerals `0`-`9`.
+## (Değişkenler) Variables
 
-Generally, the same rules apply to a property name as to a variable identifier. However, certain words cannot be used as variables, but are OK as property names. These words are called "reserved words," and include the JS keywords (`for`, `in`, `if`, etc.) as well as `null`, `true`, and `false`.
+JavaScript'de, değişken adları (fonksiyon adları dahil) geçerli tanımlayıcılar (identifiers) olmalıdır. Geçerli tanımlayıcılar için katı ve tam kurallar, Unicode gibi geleneksel olmayan karakterleri düşündüğünüzde biraz karmaşık olabilir. Ancak yalnızca tipik ASCII alfasayısal karakterleri düşünüyorsanız, kurallar basittir.
 
-**Note:** For more information about reserved words, see Appendix A of the *Types & Grammar* title of this series.
+Bir tanımlayıcı (`identifier`), `a`-`z`, `A`-`Z`, `$` veya `_` ile başlamalıdır. Daha sonra başlangıç karakteri, harf (`0`-`9`), alt çizgi veya dolar işareti gibi karakterleri içerebilir.
 
-### Function Scopes
+Genellikle, bir özellik adına uygulanan kurallar, bir değişken tanımlayıcısına uygulanan kurallarla aynıdır. Ancak bazı kelimeler değişken olarak kullanılamaz, ancak özellik adları olarak kullanılabilir. Bu kelimeler "rezerve edilmiş kelimeler" (reserved words) olarak adlandırılır ve bunlar JavaScript anahtar kelimeleri (`for`, `in`, `if`, vb.) ile birlikte `null`, `true` ve `false` gibi değerleri içerir.
 
-You use the `var` keyword to declare a variable that will belong to the current function scope, or the global scope if at the top level outside of any function.
+Bu kurallar, JavaScript'te değişkenler oluştururken ve nesne özellik adları belirlerken takip edilmesi gereken önemli kurallardır.
+
+**Not:** Daha fazla bilgi için, bu serinin *Types & Grammar* başlığının Ek A bölümüne başvurabilirsiniz. Bu bölüm, rezerve edilmiş kelimeler(reserved words) hakkında daha fazla ayrıntı içerir.
+
+### (Fonksiyon Kapsamları) Function Scopes
+
+`var` anahtar kelimesini kullanarak bir değişkeni mevcut işlev kapsamına veya herhangi bir işlevin dışında, en üst düzeyde global kapsama ait olarak tanımlayabilirsiniz.
 
 #### Hoisting
 
-Wherever a `var` appears inside a scope, that declaration is taken to belong to the entire scope and accessible everywhere throughout.
+Herhangi bir kapsam içinde bir `var` göründüğünde, bu bildiri, tüm kapsama ait kabul edilir ve her yerden erişilebilir.
 
-Metaphorically, this behavior is called *hoisting*, when a `var` declaration is conceptually "moved" to the top of its enclosing scope. Technically, this process is more accurately explained by how code is compiled, but we can skip over those details for now.
+Benzetme olarak, bu davranışa *yukarı taşıma (hoisting)* denir; bir `var` bildirimi kavramsal olarak çevresel kapsamının en üstüne "taşındığında". Teknik olarak, bu süreç, kodun nasıl derlendiğinin daha kesin bir açıklaması ile açıklanır, ancak şu an için bu ayrıntıları atlayabiliriz.
 
-Consider:
+Örnek olarak:
 
 ```js
 var a = 2;
@@ -367,11 +388,13 @@ function foo() {
 console.log( a );	// 2
 ```
 
-**Warning:** It's not common or a good idea to rely on variable *hoisting* to use a variable earlier in its scope than its `var` declaration appears; it can be quite confusing. It's much more common and accepted to use *hoisted* function declarations, as we do with the `foo()` call appearing before its formal declaration.
+**Uyarı ⚠️:** It's not common or a good idea to rely on variable *hoisting* to use a variable earlier in its scope than its `var` declaration appears; it can be quite confusing. It's much more common and accepted to use *hoisted* function declarations, as we do with the `foo()` call appearing before its formal declaration.
 
-#### Nested Scopes
+Değişken *yukarı taşıma (hoisting)*ya güvenmek, bir değişkenin `var` bildirimi görünmeden önce kapsamında kullanılması yaygın veya iyi bir fikir değildir; oldukça kafa karıştırıcı olabilir. *Yukarı taşınmış (hoisted)* işlev bildirimlerini kullanmak, resmi bildiriminden önce görünen `foo()` çağrısında olduğu gibi, çok daha yaygın ve kabul edilir bir yaklaşımdır.
 
-When you declare a variable, it is available anywhere in that scope, as well as any lower/inner scopes. For example:
+#### Nested Scopes (İç içe kapsamlar)
+
+Bir değişkeni tanımladığınızda, o kapsam içinde olduğu gibi, daha düşük/dahil kapsamlarda da herhangi bir yerde kullanılabilir. Örneğin:
 
 ```js
 function foo() {
@@ -397,9 +420,11 @@ function foo() {
 foo();
 ```
 
-Notice that `c` is not available inside of `bar()`, because it's declared only inside the inner `baz()` scope, and that `b` is not available to `foo()` for the same reason.
+`c`'nin, yalnızca iç içe geçmiş `baz()` kapsamında tanımlandığı için `bar()` içinde kullanılamadığını ve `b`'nin de aynı nedenle `foo()` için kullanılamadığına dikkat edelim ✅.
 
 If you try to access a variable's value in a scope where it's not available, you'll get a `ReferenceError` thrown. If you try to set a variable that hasn't been declared, you'll either end up creating a variable in the top-level global scope (bad!) or getting an error, depending on "strict mode" (see "Strict Mode"). Let's take a look:
+
+Bir değişkenin değerine, mevcut olmadığı bir kapsamda (scope'da) erişmeye çalışırsanız, bir `ReferenceError` hatası alırsınız. Tanımlanmamış bir değişkeni ayarlamaya çalışırsanız, ya en üst düzey global kapsamda bir değişken oluşturursunuz (kötü bir uygulama!) ya da bir hata alırsınız; bu, "Strict Mode"a (Bkz. "Strict Mode") bağlıdır. İşte bir örnek:
 
 ```js
 function foo() {
@@ -410,9 +435,9 @@ foo();
 a;			// 1 -- oops, auto global variable :(
 ```
 
-This is a very bad practice. Don't do it! Always formally declare your variables.
+Bu kötü bir uygulamadır. Her zaman değişkenlerinizi resmi olarak tanımlayın.
 
-In addition to creating declarations for variables at the function level, ES6 *lets* you declare variables to belong to individual blocks (pairs of `{ .. }`), using the `let` keyword. Besides some nuanced details, the scoping rules will behave roughly the same as we just saw with functions:
+ES6, değişkenleri bağımsız bloklara (`{ .. }` çiftleri) ait olacak şekilde `let` anahtar kelimesini kullanarak tanımlamanıza olanak tanır. Bazı ince ayrıntılar haricinde, kapsam kuralları, işlevlerle gördüğümüz gibi yaklaşık olarak aynı şekilde davranacaktır: 💯
 
 ```js
 function foo() {
@@ -434,15 +459,15 @@ foo();
 // 5 7 9
 ```
 
-Because of using `let` instead of `var`, `b` will belong only to the `if` statement and thus not to the whole `foo()` function's scope. Similarly, `c` belongs only to the `while` loop. Block scoping is very useful for managing your variable scopes in a more fine-grained fashion, which can make your code much easier to maintain over time.
+`var` yerine `let` kullanmanız nedeniyle, `b` yalnızca `if` ifadesine ait olacak ve bu nedenle `foo()` işlevinin genel kapsamına ait olmayacaktır. Benzer şekilde, `c` yalnızca `while` döngüsüne ait olur. Blok kapsama, değişken kapsamlarını daha ince bir şekilde yönetmek için çok kullanışlıdır ve bu, kodunuzu zaman içinde daha kolay bakım yapılabilir hale getirebilir. ✨
 
-**Note:** For more information about scope, see the *Scope & Closures* title of this series. See the *ES6 & Beyond* title of this series for more information about `let` block scoping.
+**Not:** Kapsam hakkında daha fazla bilgi için, bu seri içindeki *Scope & Closures* başlığını inceleyebilirsiniz. `let` blok kapsama hakkında daha fazla bilgi için ise bu seri içindeki *ES6 & Beyond* başlığını inceleyebilirsiniz. Bu kaynaklar, kapsam ve `let` kullanımı hakkında daha fazla ayrıntı sunacaktır.
 
-## Conditionals
+## Conditionals (Koşullu Durumlar)
 
-In addition to the `if` statement we introduced briefly in Chapter 1, JavaScript provides a few other conditionals mechanisms that we should take a look at.
+Bölüm 1'de kısaca tanıttığımız `if` ifadesine ek olarak, JavaScript'te göz atmanız gereken birkaç başka koşullu mekanizma bulunmaktadır.
 
-Sometimes you may find yourself writing a series of `if..else..if` statements like this:
+Bazen kendinizi aşağıdaki gibi bir dizi `if..else..if` ifadesi yazarken bulabilirsiniz:
 
 ```js
 if (a == 2) {
@@ -459,7 +484,7 @@ else {
 }
 ```
 
-This structure works, but it's a little verbose because you need to specify the `a` test for each case. Here's another option, the `switch` statement:
+Bu yapı işe yarar, ancak her durum için `a` testini belirtmeniz gerektiği için biraz kod kalabalığı oluşturur. İşte başka bir seçenek, `switch` ifadesi:
 
 ```js
 switch (a) {
@@ -477,7 +502,7 @@ switch (a) {
 }
 ```
 
-The `break` is important if you want only the statement(s) in one `case` to run. If you omit `break` from a `case`, and that `case` matches or runs, execution will continue with the next `case`'s statements regardless of that `case` matching. This so called "fall through" is sometimes useful/desired:
+`break`, yalnızca bir `case` içindeki ifadelerin çalışmasını istiyorsanız önemlidir. Bir `case` içinde `break`'i atladıysanız ve bu `case` eşleşirse veya çalışırsa, çalışma, eşleşip eşleşmemesine bakılmaksızın bir sonraki `case`'in ifadeleriyle devam eder. Bu duruma "düşme (fall)" denir ve bazen kullanışlı veya istenir:
 
 ```js
 switch (a) {
@@ -493,9 +518,9 @@ switch (a) {
 }
 ```
 
-Here, if `a` is either `2` or `10`, it will execute the "some cool stuff" code statements.
+Burada, eğer `a`, `2` veya `10` ise, "some cool stuff" kod ifadelesini çalıştıracaktır.
 
-Another form of conditional in JavaScript is the "conditional operator," often called the "ternary operator." It's like a more concise form of a single `if..else` statement, such as:
+JavaScript'te başka bir koşullu ifade türü, genellikle "ternary operatör" olarak adlandırılan "koşullu operatördür". Bu, tek bir `if..else` ifadesinin daha özgün bir biçimidir ve şu şekildedir: 🎉
 
 ```js
 var a = 42;
@@ -512,11 +537,11 @@ var b = (a > 41) ? "hello" : "world";
 // }
 ```
 
-If the test expression (`a > 41` here) evaluates as `true`, the first clause (`"hello"`) results, otherwise the second clause (`"world"`) results, and whatever the result is then gets assigned to `b`.
+Test ifadesi (`a > 41` burada) "true" olarak değerlendirilirse, ilk ifade (`"hello"`) sonuçlanır; aksi takdirde ikinci ifade (`"world"`) sonuçlanır ve sonuç `b`'ye atanır.
 
-The conditional operator doesn't have to be used in an assignment, but that's definitely the most common usage.
+Koşullu operatör bir atama işleminde kullanılması gerekmez, ancak bu kesinlikle en yaygın kullanım şeklidir.
 
-**Note:** For more information about testing conditions and other patterns for `switch` and `? :`, see the *Types & Grammar* title of this series.
+**Not:** Koşullu ifadeleri ve `switch` ile `? :` için diğer yapılar hakkında daha fazla bilgi için, bu seri içindeki *Types & Grammar* başlığını inceleyebilirsiniz. Bu kaynaklar, koşullu ifadelerin ve kontrol yapılarının daha fazla ayrıntısını sunacaktır.
 
 ## Strict Mode
 
@@ -524,18 +549,22 @@ ES5 added a "strict mode" to the language, which tightens the rules for certain 
 
 You can opt in to strict mode for an individual function, or an entire file, depending on where you put the strict mode pragma:
 
+ES5, dil için bazı davranışlar için kuralları sıkılaştıran "strict mode" adını verdiği bir özellik ekledi. Genellikle, bu kısıtlamalar, kodun daha güvenli ve uygun bir dizi kılavuza uymasını sağlamak olarak görülür. Ayrıca, strict mode kurallarına uymak, kodunuzu genellikle motor tarafından daha iyi optimize edilebilir kılar. Strict mode, kod için büyük bir kazançtır ve tüm programlarınız için kullanmalısınız.
+
+Strict mode'u, strict mode belirleyicisini nereye koyduğunuza bağlı olarak, bireysel bir işlev veya tüm bir dosya için etkinleştirebilirsiniz:
+
 ```js
 function foo() {
 	"use strict";
 
-	// this code is strict mode
+	// burası strict mode'da çalışır
 
 	function bar() {
-		// this code is strict mode
+		// burası strict mode'da çalışır
 	}
 }
 
-// this code is not strict mode
+// burası strict mode'da çalışmaz
 ```
 
 Compare that to:
@@ -544,36 +573,38 @@ Compare that to:
 "use strict";
 
 function foo() {
-	// this code is strict mode
+	// burası strict mode'da çalışır
 
 	function bar() {
-		// this code is strict mode
+		// burası strict mode'da çalışır
 	}
 }
 
-// this code is strict mode
+// burası strict mode'da çalışır
 ```
 
-One key difference (improvement!) with strict mode is disallowing the implicit auto-global variable declaration from omitting the `var`:
+Strict mode ile önemli bir fark (iyileşme!), `var` anahtar kelimesini kullanmadan otomatik global değişken bildirimini engellemesidir. Bu, değişkenlerin açık bir şekilde `var`, `let` veya `const` ile tanımlandığında tanınması ve beklenmeyen global değişkenlerin oluşturulmasını engeller. Bu, kodun daha güvenli ve öngörülebilir olmasına yardımcı olur.
+
 
 ```js
 function foo() {
-	"use strict";	// turn on strict mode
-	a = 1;			// `var` missing, ReferenceError
+	"use strict";	// strict mode'u aktif hale getirme
+	a = 1;			// `var` missing, ReferenceError  (vereceği hata)
 }
 
 foo();
 ```
 
-If you turn on strict mode in your code, and you get errors, or code starts behaving buggy, your temptation might be to avoid strict mode. But that instinct would be a bad idea to indulge. If strict mode causes issues in your program, almost certainly it's a sign that you have things in your program you should fix.
+Kodunuzda strict mode'u etkinleştirirseniz ve hatalar alırsanız veya kodunuzun beklenmedik davranışlar sergilemeye başladığını fark ederseniz, bu durumda strict mode'tan kaçınma eğiliminde olabilirsiniz. Ancak bu içgüdüyü tatmin etmek kötü bir fikir olurdu. Strict mode, programınızda sorunlara yol açıyorsa, neredeyse kesinlikle programınızda düzeltmeniz gereken şeyler olduğunun bir işaretidir.
 
-Not only will strict mode keep your code to a safer path, and not only will it make your code more optimizable, but it also represents the future direction of the language. It'd be easier on you to get used to strict mode now than to keep putting it off -- it'll only get harder to convert later!
+Strict mode, yalnızca kodunuzu daha güvenli bir yolda tutmaz ve yalnızca kodunuzu daha iyi optimize edebilir, aynı zamanda dilin gelecekteki yönelimini temsil eder. Katı kipi şimdi kullanmaya alışmak, daha sonra ertelemeye devam etmekten daha kolay olacaktır.
 
-**Note:** For more information about strict mode, see the Chapter 5 of the *Types & Grammar* title of this series.
+**Note:** Strict mode hakkında daha fazla bilgi için, bu seri içindeki *Types & Grammar* başlığının 5. bölümüne başvurabilirsiniz. Bu kaynak, katı kipin detaylarını daha ayrıntılı bir şekilde açıklayacaktır.
 
-## Functions As Values
+## Functions As Values (Değer olarak Fonksiyonlar)
 
-So far, we've discussed functions as the primary mechanism of *scope* in JavaScript. You recall typical `function` declaration syntax as follows:
+Şu ana kadar, JavaScript'te *kapsamın (scope)* temel mekanizması olarak fonksiyonları tartıştık. Tipik `function` bildirimi sözdizimini aşağıdaki gibi hatırlıyorsunuz:
+
 
 ```js
 function foo() {
@@ -581,13 +612,17 @@ function foo() {
 }
 ```
 
-Though it may not seem obvious from that syntax, `foo` is basically just a variable in the outer enclosing scope that's given a reference to the `function` being declared. That is, the `function` itself is a value, just like `42` or `[1,2,3]` would be.
+Bu kod bloğunda açıkça görünmese de, `foo` aslında sadece dış kapsamda bir değişken olarak düşünülür ve bu değişkene bildirilen `function`a bir başvuru verilir. Yani, `function` kendisi bir değerdir, `42` veya `[1,2,3]` gibi.
 
 This may sound like a strange concept at first, so take a moment to ponder it. Not only can you pass a value (argument) *to* a function, but *a function itself can be a value* that's assigned to variables, or passed to or returned from other functions.
 
 As such, a function value should be thought of as an expression, much like any other value or expression.
 
-Consider:
+Bu başlangıçta garip bir kavram gibi gelebilir, bu nedenle bir an düşünün. Bir fonksiyona bir değeri (argüman) iletebilirsiniz, ancak *bir fonksiyon kendisi de bir değer olabilir* ve değişkenlere atanabilir veya başka fonksiyonlara iletilip döndürülebilir.
+
+Bu nedenle, bir fonksiyon değeri, diğer herhangi bir değer veya ifade gibi bir ifade olarak düşünülmelidir.
+
+Örnek olarak:
 
 ```js
 var foo = function() {
@@ -599,11 +634,11 @@ var x = function bar(){
 };
 ```
 
-The first function expression assigned to the `foo` variable is called *anonymous* because it has no `name`.
+`foo` değişkenine atanmış olan ilk fonksiyon ifadesine, adı olmadığı için *anonim (anonymous)* denir.
 
-The second function expression is *named* (`bar`), even as a reference to it is also assigned to the `x` variable. *Named function expressions* are generally more preferable, though *anonymous function expressions* are still extremely common.
+İkinci fonksiyon ifadesi *isimli (named)* (`bar`) olarak adlandırılır, aynı zamanda bir referansı da `x` değişkenine atanır. *İsimli fonskiyon ifadeleri (Named function expressions)* genellikle tercih edilir, ancak *anonim fonksiyon ifadeleri (anonymous function expressions)* hala oldukça yaygındır.
 
-For more information, see the *Scope & Closures* title of this series.
+Daha fazla bilgi için bu serinin *Scope & Closures* başlığına bakabilirsiniz.
 
 ### Immediately Invoked Function Expressions (IIFEs)
 
