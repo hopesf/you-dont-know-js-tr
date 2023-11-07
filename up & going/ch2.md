@@ -614,10 +614,6 @@ function foo() {
 
 Bu kod bloğunda açıkça görünmese de, `foo` aslında sadece dış kapsamda bir değişken olarak düşünülür ve bu değişkene bildirilen `function`a bir başvuru verilir. Yani, `function` kendisi bir değerdir, `42` veya `[1,2,3]` gibi.
 
-This may sound like a strange concept at first, so take a moment to ponder it. Not only can you pass a value (argument) *to* a function, but *a function itself can be a value* that's assigned to variables, or passed to or returned from other functions.
-
-As such, a function value should be thought of as an expression, much like any other value or expression.
-
 Bu başlangıçta garip bir kavram gibi gelebilir, bu nedenle bir an düşünün. Bir fonksiyona bir değeri (argüman) iletebilirsiniz, ancak *bir fonksiyon kendisi de bir değer olabilir* ve değişkenlere atanabilir veya başka fonksiyonlara iletilip döndürülebilir.
 
 Bu nedenle, bir fonksiyon değeri, diğer herhangi bir değer veya ifade gibi bir ifade olarak düşünülmelidir.
@@ -640,11 +636,11 @@ var x = function bar(){
 
 Daha fazla bilgi için bu serinin *Scope & Closures* başlığına bakabilirsiniz.
 
-### Immediately Invoked Function Expressions (IIFEs)
+### Immediately Invoked Function Expressions (IIFEs) (Hemen Çağrılan Fonksiyon İfadeleri)
 
-In the previous snippet, neither of the function expressions are executed -- we could if we had included `foo()` or `x()`, for instance.
+Önceki örnekte, hiçbir fonksiyon ifadesi çalıştırılmaz -- örneğin `foo()` veya `x()` dahil etmiş olsaydık çalıştırabilirdik.
 
-There's another way to execute a function expression, which is typically referred to as an *immediately invoked function expression* (IIFE):
+Bir fonksiyon ifadesini çalıştırmanın başka bir yolu vardır, bu genellikle *hemen çağrılan fonksiyon ifadesi* (IIFE) olarak adlandırılır:
 
 ```js
 (function IIFE(){
@@ -653,27 +649,27 @@ There's another way to execute a function expression, which is typically referre
 // "Hello!"
 ```
 
-The outer `( .. )` that surrounds the `(function IIFE(){ .. })` function expression is just a nuance of JS grammar needed to prevent it from being treated as a normal function declaration.
+Dışarıdaki `( .. )`, `(function IIFE(){ .. })` fonksiyon ifadesinin normal bir fonksiyon bildirimi olarak ele alınmasını önlemek için gereken bir JS dil ayrıntısıdır.
 
-The final `()` on the end of the expression -- the `})();` line -- is what actually executes the function expression referenced immediately before it.
+İfade sonundaki `()` -- `})();` satırı -- gerçekte hemen öncesinde başvurulan fonksiyon ifadesini çalıştıran şeydir.
 
-That may seem strange, but it's not as foreign as first glance. Consider the similarities between `foo` and `IIFE` here:
+Bu garip gelebilir, ancak ilk bakışta olduğu kadar yabancı değildir. Buradaki `foo` ve `IIFE` arasındaki benzerlikleri düşünün:
 
 ```js
 function foo() { .. }
 
-// `foo` function reference expression,
-// then `()` executes it
+// `foo` fonksiyon referans ifadesi,
+// `()` fonksiyonu çalıştırır
 foo();
 
-// `IIFE` function expression,
-// then `()` executes it
+// `IIFE` fonksiyon ifadesi,
+// `()` fonksiyonu çalıştırır
 (function IIFE(){ .. })();
 ```
 
-As you can see, listing the `(function IIFE(){ .. })` before its executing `()` is essentially the same as including `foo` before its executing `()`; in both cases, the function reference is executed with `()` immediately after it.
+Gördüğünüz gibi, `(function IIFE(){ .. })`'yi çalıştırmadan önce listelemek, `()`'yi çalıştırmadan önce `foo`'yu eklemekle temelde aynıdır; her iki durumda da fonksiyon başvurusu, hemen ardından `()` ile çalıştırılır.
 
-Because an IIFE is just a function, and functions create variable *scope*, using an IIFE in this fashion is often used to declare variables that won't affect the surrounding code outside the IIFE:
+Bir IIFE yalnızca bir fonksiyon olduğundan ve fonksiyonlar da değişken *kapsamı* oluşturduğundan, bu şekilde bir IIFE kullanmak, IIFE dışındaki çevre kodu etkilemeyen değişkenlerin bildirildiği sıkça kullanılır:
 
 ```js
 var a = 42;
@@ -686,7 +682,7 @@ var a = 42;
 console.log( a );		// 42
 ```
 
-IIFEs can also have return values:
+IIFEs bir değer de döndürebilir:
 
 ```js
 var x = (function IIFE(){
@@ -696,65 +692,61 @@ var x = (function IIFE(){
 x;	// 42
 ```
 
-The `42` value gets `return`ed from the `IIFE`-named function being executed, and is then assigned to `x`.
+Çalıştırılan `IIFE` adlı fonksiyondan `42` değeri `return` edilir ve ardından `x` değişkenine atanır.
 
 ### Closure
 
-*Closure* is one of the most important, and often least understood, concepts in JavaScript. I won't cover it in deep detail here, and instead refer you to the *Scope & Closures* title of this series. But I want to say a few things about it so you understand the general concept. It will be one of the most important techniques in your JS skillset.
+*Closure*, JavaScript'te en önemli ve genellikle en az anlaşılan kavramlardan biridir. Burada derinlemesine detayına girmeyeceğim ve sizi bu serinin *Scope & Closures* başlığına yönlendireceğim. Ancak genel kavramı anlamanız için birkaç şey söylemek istiyorum. JavaScript beceri setinizde en önemli tekniklerden biri olacak.
 
-You can think of closure as a way to "remember" and continue to access a function's scope (its variables) even once the function has finished running.
+Closure, bir işlevin çalışması bittikten sonra bile işlevin kapsamını (değişkenlerini) "hatırlama" ve erişme yolu olarak düşünebilirsiniz.
 
-Consider:
+Örnek olarak:
 
 ```js
 function makeAdder(x) {
-	// parameter `x` is an inner variable
+    // Parametre `x`, iç değişken
 
-	// inner function `add()` uses `x`, so
-	// it has a "closure" over it
-	function add(y) {
-		return y + x;
-	};
+    // İç fonksiyon `add()`, `x`'i kullanır, bu yüzden
+    // üzerinde bir "closure" bulunur.
+    function add(y) {
+        return y + x;
+    }
 
-	return add;
+    return add;
 }
 ```
 
-The reference to the inner `add(..)` function that gets returned with each call to the outer `makeAdder(..)` is able to remember whatever `x` value was passed in to `makeAdder(..)`. Now, let's use `makeAdder(..)`:
+Her çağrıda dıştaki `makeAdder(..)` fonksiyonuna dönen iç `add(..)` fonksiyonuna yapılan referans, `makeAdder(..)`'a geçirilen herhangi bir `x` değerini hatırlayabilir. Şimdi `makeAdder(..)`'ı kullanalım:
 
 ```js
-// `plusOne` gets a reference to the inner `add(..)`
-// function with closure over the `x` parameter of
-// the outer `makeAdder(..)`
-var plusOne = makeAdder( 1 );
+// `plusOne`, dıştaki `makeAdder(..)`'ın `x` parametresi üzerinde closure'a sahip iç `add(..)` fonksiyonu referans alır
+var plusOne = makeAdder(1);
 
-// `plusTen` gets a reference to the inner `add(..)`
-// function with closure over the `x` parameter of
-// the outer `makeAdder(..)`
-var plusTen = makeAdder( 10 );
+// `plusTen`, dıştaki `makeAdder(..)`'ın `x` parametresi üzerinde closure'a sahip iç `add(..)` fonksiyonu referans alır
+var plusTen = makeAdder(10);
 
-plusOne( 3 );		// 4  <-- 1 + 3
-plusOne( 41 );		// 42 <-- 1 + 41
+plusOne(3);     // 4  <-- 1 + 3
+plusOne(41);    // 42 <-- 1 + 41
 
-plusTen( 13 );		// 23 <-- 10 + 13
+plusTen(13);    // 23 <-- 10 + 13
 ```
 
-More on how this code works:
+Bu kodun nasıl çalıştığına dair daha fazla açıklama:
 
-1. When we call `makeAdder(1)`, we get back a reference to its inner `add(..)` that remembers `x` as `1`. We call this function reference `plusOne(..)`.
-2. When we call `makeAdder(10)`, we get back another reference to its inner `add(..)` that remembers `x` as `10`. We call this function reference `plusTen(..)`.
-3. When we call `plusOne(3)`, it adds `3` (its inner `y`) to the `1` (remembered by `x`), and we get `4` as the result.
-4. When we call `plusTen(13)`, it adds `13` (its inner `y`) to the `10` (remembered by `x`), and we get `23` as the result.
+1. `makeAdder(1)`'i çağırdığımızda, iç `add(..)` fonksiyonu `x` değerini `1` olarak hatırlayan bir referansla geri alırız. Bu işlev referansına `plusOne(..)` adını veririz.
+2. `makeAdder(10)`'u çağırdığımızda, iç `add(..)` fonksiyonu `x` değerini `10` olarak hatırlayan başka bir referansla geri alırız. Bu işlev referansına `plusTen(..)` adını veririz.
+3. `plusOne(3)`'ü çağırdığımızda, `3` (iç `y`) ile `1` (hatırlanan `x`) ekler ve sonuç olarak `4` elde ederiz.
+4. `plusTen(13)`'ü çağırdığımızda, `13` (iç `y`) ile `10` (hatırlanan `x`) ekler ve sonuç olarak `23` elde ederiz.
 
-Don't worry if this seems strange and confusing at first -- it can be! It'll take lots of practice to understand it fully.
+Başlangıçta bu size garip ve kafa karıştırıcı gelebilir, endişelenmeyin - öyle olabilir! Tam olarak anlamak için biraz pratiğe ihtiyacımız var.
 
-But trust me, once you do, it's one of the most powerful and useful techniques in all of programming. It's definitely worth the effort to let your brain simmer on closures for a bit. In the next section, we'll get a little more practice with closure.
+Ancak bana güvenin, bir kez anladığınızda, bu programlamanın en güçlü ve kullanışlı tekniklerinden biridir. Closures üzerinde biraz düşünmek için emek harcamaya değer. Bir sonraki bölümde, closure üzerinde biraz daha pratiğe sahip olacağız.
 
 #### Modules
 
-The most common usage of closure in JavaScript is the module pattern. Modules let you define private implementation details (variables, functions) that are hidden from the outside world, as well as a public API that *is* accessible from the outside.
+JavaScript'te closure'un en yaygın kullanımı, modül desenidir (module pattern). Modüller, dış dünyadan gizlenen özel uygulama ayrıntılarını (değişkenler, işlevler) tanımlamanıza ve dışarıdan erişilebilir bir genel API oluşturmanıza olanak tanır.
 
-Consider:
+Örnek olarak:
 
 ```js
 function User(){
@@ -764,7 +756,7 @@ function User(){
 		username = user;
 		password = pw;
 
-		// do the rest of the login work
+		// ve geri kalan login işlemleri buraya gelecek
 	}
 
 	var publicAPI = {
@@ -774,41 +766,41 @@ function User(){
 	return publicAPI;
 }
 
-// create a `User` module instance
+// bir `User` modül örneği oluşturma (module instance)
 var fred = User();
 
 fred.login( "fred", "12Battery34!" );
 ```
 
-The `User()` function serves as an outer scope that holds the variables `username` and `password`, as well as the inner `doLogin()` function; these are all private inner details of this `User` module that cannot be accessed from the outside world.
+`User()` fonksiyonu, dış dünyadan erişilemeyen `username` ve `password` değişkenlerini ve iç `doLogin()` işlemini tutan dış bir kapsam olarak hizmet eder; bunlar `User` modülünün özel iç ayrıntılarıdır.
 
-**Warning:** We are not calling `new User()` here, on purpose, despite the fact that probably seems more common to most readers. `User()` is just a function, not a class to be instantiated, so it's just called normally. Using `new` would be inappropriate and actually waste resources.
+**Uyarı:** Burada `new User()`'ı bilerek çağırmıyoruz, bu, muhtemelen çoğu okuyucu için daha yaygın gibi görünse de. `User()` sadece bir fonksiyondur ve örneklenmesi gereken bir sınıf (class) değildir, bu nedenle normal bir şekilde çağrılır. `new` kullanmak uygun değil ve kaynakları gereksiz yere tüketebilir.
 
-Executing `User()` creates an *instance* of the `User` module -- a whole new scope is created, and thus a whole new copy of each of these inner variables/functions. We assign this instance to `fred`. If we run `User()` again, we'd get a new instance entirely separate from `fred`.
+`User()`'ı çalıştırdığımızda, `User` modülünün bir *örneği (instance)* oluşturulur - tamamen yeni bir kapsam (scope) oluşturulur ve bu nedenle iç değişken/fonksiyonların tamamen yeni bir kopyası oluşturulur. Bu örneği `fred` değişkenine atarız. Eğer `User()`'ı tekrar çalıştırırsak, `fred` ile tamamen ayrı bir yeni örnek elde ederiz.
 
-The inner `doLogin()` function has a closure over `username` and `password`, meaning it will retain its access to them even after the `User()` function finishes running.
+İç `doLogin()` işlevi, `username` ve `password` üzerinde bir closure'a sahiptir, bu da demek oluyor ki `User()` işlemi çalışmayı tamamladıktan sonra bile erişimini sürdürecektir.
 
-`publicAPI` is an object with one property/method on it, `login`, which is a reference to the inner `doLogin()` function. When we return `publicAPI` from `User()`, it becomes the instance we call `fred`.
+`publicAPI`, üzerinde `login` adında bir özelliğe/metoda sahip bir nesnedir ve bu özellik, iç `doLogin()` işlevine bir referanstır. `User()` işleminde `publicAPI`'yi döndüğümüzde, onu `fred` olarak adlandırırız.
 
-At this point, the outer `User()` function has finished executing. Normally, you'd think the inner variables like `username` and `password` have gone away. But here they have not, because there's a closure in the `login()` function keeping them alive.
+Bu noktada, dıştaki `User()` fonksiyonu çalışmayı tamamlamıştır. Normalde, `username` ve `password` gibi iç değişkenlerin işlemi sona erdiğini düşünürdünüz. Ancak burada, iç `login()` işlevinde onları canlı tutan bir closure olduğundan, bu değişkenler hala mevcuttur.
 
-That's why we can call `fred.login(..)` -- the same as calling the inner `doLogin(..)` -- and it can still access `username` and `password` inner variables.
+Bu nedenle `fred.login(..)`'ı çağırabiliriz - iç `doLogin(..)`'ı çağırmak gibi - ve hala `username` ve `password` iç değişkenlerine erişebiliriz.
 
-There's a good chance that with just this brief glimpse at closure and the module pattern, some of it is still a bit confusing. That's OK! It takes some work to wrap your brain around it.
+Closure ve modül deseni (module pattern) hakkında bu kısa bakıştan sonra, hala bazı kavramların karmaşık gelebileceğini düşünüyorum. Bu sorun değil! Bu konuyu tam olarak anlamak için bazı çalışmalar yapmanız gerekebilir.
 
-From here, go read the *Scope & Closures* title of this series for a much more in-depth exploration.
+Buradan, bu konuyu daha ayrıntılı bir şekilde incelemek için bu serinin *Scope & Closures* başlığını okuyabilirsiniz.
 
-## `this` Identifier
+## `this` Identifier (`this` tanımlayıcısı )
 
-Another very commonly misunderstood concept in JavaScript is the `this` identifier. Again, there's a couple of chapters on it in the *this & Object Prototypes* title of this series, so here we'll just briefly introduce the concept.
+JavaScript'te çok yaygın olarak yanlış anlaşılan bir diğer kavram ise `this` tanımlayıcısıdır. Yine de bu konu hakkında serinin *this & Object Prototypes* başlığında birkaç bölüm bulunmaktadır, bu yüzden burada kavramı kısaca tanıtacağız.
 
-While it may often seem that `this` is related to "object-oriented patterns," in JS `this` is a different mechanism.
+Çoğu zaman `this`, "nesne yönelimli desenler" (object-oriented patterns) ile ilişkilendiriliyormuş gibi görünse de, JS'de `this` farklı bir mekanizmadır.
 
-If a function has a `this` reference inside it, that `this` reference usually points to an `object`. But which `object` it points to depends on how the function was called.
+Bir fonksiyon içinde bir `this` referansı varsa, bu `this` referansı genellikle bir `nesneye` işaret eder. Ancak fonksiyonun nasıl çağrıldığına bağlı olarak bir `nesne`ye işaret eder.
 
-It's important to realize that `this` *does not* refer to the function itself, as is the most common misconception.
+`this`'in en yaygın yanlış anlamalarından biri, `this`'in fonksiyonun kendisine işaret ettiğini düşünmektir.
 
-Here's a quick illustration:
+İşte hızlı bir örnek:
 
 ```js
 function foo() {
@@ -834,70 +826,68 @@ foo.call( obj2 );		// "obj2"
 new foo();			// undefined
 ```
 
-There are four rules for how `this` gets set, and they're shown in those last four lines of that snippet.
+`this`'in nasıl ayarlandığını belirleyen dört kural bulunur ve bu kurallar, bu örnekten sonraki dört satırda gösterilmiştir.
 
-1. `foo()` ends up setting `this` to the global object in non-strict mode -- in strict mode, `this` would be `undefined` and you'd get an error in accessing the `bar` property -- so `"global"` is the value found for `this.bar`.
-2. `obj1.foo()` sets `this` to the `obj1` object.
-3. `foo.call(obj2)` sets `this` to the `obj2` object.
-4. `new foo()` sets `this` to a brand new empty object.
+1. `foo()`, non-strict modda `this`'i genel nesneye ayarlar - strict mode'da, `this` `undefined` olur ve `bar` özelliğine erişmeye çalışırken bir hata alırsınız, bu nedenle `this.bar` için bulunan değer `"global"` olur.
+2. `obj1.foo()`, `this`'i `obj1` nesnesine ayarlar.
+3. `foo.call(obj2)`, `this`'i `obj2` nesnesine ayarlar.
+4. `new foo()`, `this`'i tamamen yeni bir boş nesneye ayarlar.
 
-Bottom line: to understand what `this` points to, you have to examine how the function in question was called. It will be one of those four ways just shown, and that will then answer what `this` is.
+Sonuç olarak, `this`'in neye işaret ettiğini anlamak için ilgili işlemin nasıl çağrıldığını incelemeniz gerekir. Bu, gösterilen dört yolun biri olacaktır ve bu da `this`'in ne olduğunu yanıtlayacaktır.
 
-**Note:** For more information about `this`, see Chapters 1 and 2 of the *this & Object Prototypes* title of this series.
+**Not:** `this` hakkında daha fazla bilgi için, bu serinin *this & Object Prototypes* başlığının 1. ve 2. bölümlerine bakabilirsiniz.
 
 ## Prototypes
 
-The prototype mechanism in JavaScript is quite complicated. We will only glance at it here. You will want to spend plenty of time reviewing Chapters 4-6 of the *this & Object Prototypes* title of this series for all the details.
+JavaScript'deki prototype mekanizması oldukça karmaşıktır. Bu konuya burada sadece göz atacağız. Tüm ayrıntıları öğrenmek için bu serinin *this & Object Prototypes* başlığının 4-6. bölümlerini detaylıca incelemeniz gerekecektir.
 
-When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on. You could think of this almost as a fallback if the property is missing.
+Bir objectte bir özelliği başvurduğunuzda, eğer bu özellik mevcut değilse, JavaScript otomatik olarak bu objectin iç prototype'ın referansını kullanarak özelliği aramak için başka bir objecti bulacaktır. Bu, özelliğin eksik olduğu durumda neredeyse bir yedek olarak düşünülebilir.
 
-The internal prototype reference linkage from one object to its fallback happens at the time the object is created. The simplest way to illustrate it is with a built-in utility called `Object.create(..)`.
+Bir objectin iç prototip referans bağlantısı, obejectin oluşturulduğu zamanda gerçekleşir. Bu mekanizmayı en basit şekilde açıklamak için `Object.create(..)` adlı bir yerleşik yardımcı kullanabiliriz.
 
-Consider:
+Örnek olarak:
 
 ```js
 var foo = {
 	a: 42
 };
 
-// create `bar` and link it to `foo`
+// `bar` değişkeni oluştur ve `foo` object'ini bu değişkene atama yap
 var bar = Object.create( foo );
 
 bar.b = "hello world";
 
 bar.b;		// "hello world"
-bar.a;		// 42 <-- delegated to `foo`
+bar.a;		// 42 <-- `foo`'dan atanan değer
 ```
 
-It may help to visualize the `foo` and `bar` objects and their relationship:
+`foo` ve `bar` objectlerini ve ilişkilerini görselleştirmek işinizi kolaylaştırabilir:
 
 <img src="fig6.png">
 
-The `a` property doesn't actually exist on the `bar` object, but because `bar` is prototype-linked to `foo`, JavaScript automatically falls back to looking for `a` on the `foo` object, where it's found.
+`bar` objectinde `a` özelliği aslında mevcut değil, ancak `bar`, `foo` ile prototype bağlantılı olduğu için JavaScript otomatik olarak `a` özelliğini `foo` nesnesinde arar ve burada bulur.
 
-This linkage may seem like a strange feature of the language. The most common way this feature is used -- and I would argue, abused -- is to try to emulate/fake a "class" mechanism with "inheritance."
+Bu bağlantı, dilin tuhaf bir özelliği gibi görünebilir. Bu özellik en yaygın olarak kullanılan - ve bence kötüye kullanılan - yol, "miras (inheritance)" ile bir "sınıf (class)" mekanizması oluşturmaya çalışmaktır.
 
-But a more natural way of applying prototypes is a pattern called "behavior delegation," where you intentionally design your linked objects to be able to *delegate* from one to the other for parts of the needed behavior.
+Ancak prototype'ları daha doğal bir şekilde uygulamanın bir yolu, "davranış iletme (behavior delegation)" olarak adlandırılan bir desendir, burada bağlı object'lerin belirli davranışların bir kısmını birinden diğerine *iletebilecek* şekilde tasarlandığı bir desen olarak düşünülür.
 
-**Note:** For more information about prototypes and behavior delegation, see Chapters 4-6 of the *this & Object Prototypes* title of this series.
+**Not:** Prototype'lar ve davranış iletme hakkında daha fazla bilgi için, bu serinin *this & Object Prototypes* başlığının 4-6. bölümlerine başvurabilirsiniz.
 
 ## Old & New
 
-Some of the JS features we've already covered, and certainly many of the features covered in the rest of this series, are newer additions and will not necessarily be available in older browsers. In fact, some of the newest features in the specification aren't even implemented in any stable browsers yet.
+Zaten kapsadığımız JS özelliklerinin bazıları ve kesinlikle bu serinin geri kalanındaki özelliklerin birçoğu, eski tarayıcılarda her zaman bulunmayabilir. Aslında, belgenin en yeni özelliklerinin bazıları henüz hiçbir stabil tarayıcıda uygulanmamış olabilir.
 
-So, what do you do with the new stuff? Do you just have to wait around for years or decades for all the old browsers to fade into obscurity?
+Peki, yeni özelliklerle ne yapmalısınız? Eski tarayıcıların yıllar veya onyıllar boyunca unutulmalarını beklemek mi gerekiyor?
 
-That's how many people think about the situation, but it's really not a healthy approach to JS.
+Bu, birçok insanın bu durumu nasıl düşündüğüdür, ancak JS için sağlıklı bir yaklaşım değildir.
 
-There are two main techniques you can use to "bring" the newer JavaScript stuff to the older browsers: polyfilling and transpiling.
+Daha yeni JavaScript özelliklerini eski tarayıcılara "getirmek" için kullanabileceğiniz iki temel teknik bulunur: polyfilling ve transpiling.
 
 ### Polyfilling
 
-The word "polyfill" is an invented term (by Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) used to refer to taking the definition of a newer feature and producing a piece of code that's equivalent to the behavior, but is able to run in older JS environments.
+"Polyfill" kelimesi, daha yeni bir özelliğin tanımını alıp, davranışına eşdeğer olan ancak daha eski JS ortamlarında çalışabilen bir kod parçası üretmek için kullanılan uydurulmuş bir terimdir (Remy Sharp tarafından icat edilmiştir). Örneğin, ES6, `NaN` değerleri için doğru ve hata olmayan bir kontrol sağlamak için `Number.isNaN(..)` adlı bir yardımcı tanımlar ve orijinal `isNaN(..)` yardımcısını kullanım dışı bırakır. Ancak bu yardımcıyı polyfill etmek kolaydır, böylece kullanıcıların tarayıcılarının ES6 olup olmadığına bakılmaksızın kodunuzda kullanmaya başlayabilirsiniz.
 
-For example, ES6 defines a utility called `Number.isNaN(..)` to provide an accurate non-buggy check for `NaN` values, deprecating the original `isNaN(..)` utility. But it's easy to polyfill that utility so that you can start using it in your code regardless of whether the end user is in an ES6 browser or not.
-
-Consider:
+Örnek olarak:
 
 ```js
 if (!Number.isNaN) {
@@ -907,31 +897,31 @@ if (!Number.isNaN) {
 }
 ```
 
-The `if` statement guards against applying the polyfill definition in ES6 browsers where it will already exist. If it's not already present, we define `Number.isNaN(..)`.
+`if` ifadesi, polyfill tanımını zaten mevcut olan ES6 tarayıcılarında uygulamamızı engeller. Eğer zaten varsa, `Number.isNaN(..)`'yi tanımlarız.
 
-**Note:** The check we do here takes advantage of a quirk with `NaN` values, which is that they're the only value in the whole language that is not equal to itself. So the `NaN` value is the only one that would make `x !== x` be `true`.
+**Not:** Burada yaptığımız kontrol, `NaN` değerleriyle ilgili bir ilginçliği kullanır, yani dilin genelinde kendine eşit olmayan tek değer `NaN`'dir. Bu nedenle `NaN` değeri, `x !== x` ifadesini `true` yapacak tek değerdir.
 
-Not all new features are fully polyfillable. Sometimes most of the behavior can be polyfilled, but there are still small deviations. You should be really, really careful in implementing a polyfill yourself, to make sure you are adhering to the specification as strictly as possible.
+Tüm yeni özellikler tamamen polyfill edilemez. Bazen davranışın çoğu polyfill edilebilir, ancak hala küçük sapmalar olabilir. Kendiniz bir polyfill uygularken, mümkün olan en sıkı şekilde özelliklere uymak için gerçekten çok dikkatli olmalısınız.
 
-Or better yet, use an already vetted set of polyfills that you can trust, such as those provided by ES5-Shim (https://github.com/es-shims/es5-shim) and ES6-Shim (https://github.com/es-shims/es6-shim).
+Daha iyi olası, zaten güvenebileceğiniz, ES5-Shim (https://github.com/es-shims/es5-shim) ve ES6-Shim (https://github.com/es-shims/es6-shim) gibi bir dizi önceden test edilmiş polyfill kullanmaktır.
 
-### Transpiling
+### Transpiling (transpile etme)
 
-There's no way to polyfill new syntax that has been added to the language. The new syntax would throw an error in the old JS engine as unrecognized/invalid.
+JavaScript'te eklenen yeni sözdizimini polyfill (uyarlama) yapmanın bir yolu yoktur. Yeni sözdizimi, eski JS motorunda tanınmayan/geçersiz olarak bir hata alır.
 
-So the better option is to use a tool that converts your newer code into older code equivalents. This process is commonly called "transpiling," a term for transforming + compiling.
+Bu yüzden daha iyi bir seçenek, daha yeni kodunuzu daha eski kod karşılıklarına dönüştüren bir araç kullanmaktır. Bu süreç genellikle "transpile etme" olarak adlandırılır, yani dönüştürme + derleme işlemi.
 
-Essentially, your source code is authored in the new syntax form, but what you deploy to the browser is the transpiled code in old syntax form. You typically insert the transpiler into your build process, similar to your code linter or your minifier.
+Temelde, kaynak kodunuz yeni sözdizimi biçiminde yazılır, ancak tarayıcıya dağıttığınız şey eski sözdizim biçiminde transpile edilen koddur. Genellikle transpiler'ı kod denetleyici veya kod küçültücü gibi oluşturma sürecinize eklersiniz.
 
-You might wonder why you'd go to the trouble to write new syntax only to have it transpiled away to older code -- why not just write the older code directly?
+Yeni bir sözdizini yazıp sadece onu eski bir koda çevirtmeye niçin uğraşmanız gerektiğini merak edebilirsiniz, neden doğrudan eski kodu yazmıyorsunuz?
 
-There are several important reasons you should care about transpiling:
+Transpile etmeyi neden önemsemeniz gerektiğine dair birkaç önemli neden vardır:
 
-* The new syntax added to the language is designed to make your code more readable and maintainable. The older equivalents are often much more convoluted. You should prefer writing newer and cleaner syntax, not only for yourself but for all other members of the development team.
-* If you transpile only for older browsers, but serve the new syntax to the newest browsers, you get to take advantage of browser performance optimizations with the new syntax. This also lets browser makers have more real-world code to test their implementations and optimizations on.
-* Using the new syntax earlier allows it to be tested more robustly in the real world, which provides earlier feedback to the JavaScript committee (TC39). If issues are found early enough, they can be changed/fixed before those language design mistakes become permanent.
+* Dilin eklenen yeni sözdizimi, kodunuzu daha okunaklı ve sürdürülebilir hale getirmek için tasarlanmıştır. Eski karşılıklar genellikle çok daha karmaşıktır. Yeniden ve daha temiz sözdizisi yazmayı tercih etmelisiniz, sadece kendiniz için değil, geliştirme ekibinin diğer üyeleri için de.
+* Sadece eski tarayıcılara transpile ederseniz, ancak en yeni tarayıcılara yeni sözdizim sunarsanız, yeni sözdizimi ile tarayıcı performans optimizasyonlarından yararlanabilirsiniz. Ayrıca tarayıcı üreticilerine uygulamalarını ve optimizasyonlarını test etmek için daha fazla gerçek dünya koduna sahip olma imkanı sağlar.
+* Yeni sözdizimini daha erken kullanmak, onun gerçek dünyada daha sağlam bir şekilde test edilmesine izin verir, bu da JavaScript komitesine (TC39) daha erken geri bildirim sağlar. Sorunlar yeterince erken bulunursa, dil tasarım hataları kalıcı hale gelmeden değiştirilebilir/onarıabilir.
 
-Here's a quick example of transpiling. ES6 adds a feature called "default parameter values." It looks like this:
+İşte transpile etmenin kısa bir örneği. ES6, "varsayılan parametre değerleri" adlı bir özellik ekler. Şu şekilde görünüyor:
 
 ```js
 function foo(a = 2) {
@@ -942,7 +932,7 @@ foo();		// 2
 foo( 42 );	// 42
 ```
 
-Simple, right? Helpful, too! But it's new syntax that's invalid in pre-ES6 engines. So what will a transpiler do with that code to make it run in older environments?
+Basit, değil mi? Ayrıca oldukça faydalı! Ancak bu, ES6 öncesindeki motorlarda geçersiz olan yeni bir sözdizimidir. Peki, bir transpiler bu kodu eski ortamlarda çalıştırmak için ne yapar?
 
 ```js
 function foo() {
@@ -951,47 +941,47 @@ function foo() {
 }
 ```
 
-As you can see, it checks to see if the `arguments[0]` value is `void 0` (aka `undefined`), and if so provides the `2` default value; otherwise, it assigns whatever was passed.
+Gördüğünüz gibi, kod `arguments[0]` değerini `void 0` (yani `undefined`) ile karşılaştırır ve eğer öyleyse varsayılan değeri `2` olarak belirler; aksi halde geçirilen değeri atar.
 
-In addition to being able to now use the nicer syntax even in older browsers, looking at the transpiled code actually explains the intended behavior more clearly.
+Daha güzel sözdizimini eski tarayıcılarda kullanabilmenin yanı sıra, transpile edilen kodu incelediğinizde aslında beklenen davranışı daha net bir şekilde anlarsınız.
 
-You may not have realized just from looking at the ES6 version that `undefined` is the only value that can't get explicitly passed in for a default-value parameter, but the transpiled code makes that much more clear.
+ES6 sürümünü inceleyerek, varsayılan bir değer parametresi için açıkça `undefined` dışındaki başka bir değerin belirtilmeyeceğini anlayamamış olabilirsiniz, ancak transpile edilen kod bu konuyu çok daha net bir şekilde açıklar.
 
-The last important detail to emphasize about transpilers is that they should now be thought of as a standard part of the JS development ecosystem and process. JS is going to continue to evolve, much more quickly than before, so every few months new syntax and new features will be added.
+Transpilerlar hakkında vurgulanması gereken son önemli detay, artık bunların JS geliştirme ekosistemi ve sürecinin standart bir parçası olarak düşünülmesi gerektiğidir. JS, daha öncekinden çok daha hızlı bir şekilde evrilmeye devam edecek, bu yüzden her birkaç ayda bir yeni sözdizimi ve yeni özellikler ekleyecektir.
 
-If you use a transpiler by default, you'll always be able to make that switch to newer syntax whenever you find it useful, rather than always waiting for years for today's browsers to phase out.
+Varsayılan olarak bir transpiler kullanırsanız, yeni sözdizimini kullanmaya her zaman ihtiyaç duyduğunuzda geçiş yapabilirsiniz, bu yüzden her zaman bugünün tarayıcılarının kullanımını sonlandırmasını beklemek zorunda kalmazsınız.
 
-There are quite a few great transpilers for you to choose from. Here are some good options at the time of this writing:
+Kullanabileceğiniz birçok harika transpiler seçeneği bulunmaktadır. İşte bu yazının yazıldığı sırada bazı iyi seçenekler:
 
-* Babel (https://babeljs.io) (formerly 6to5): Transpiles ES6+ into ES5
-* Traceur (https://github.com/google/traceur-compiler): Transpiles ES6, ES7, and beyond into ES5
+* Babel (https://babeljs.io) (önceden 6to5 olarak bilinirdi): ES6+'yı ES5'e transpile eder.
+* Traceur (https://github.com/google/traceur-compiler): ES6, ES7 ve ötesini ES5'e transpile eder.
 
 ## Non-JavaScript
 
-So far, the only things we've covered are in the JS language itself. The reality is that most JS is written to run in and interact with environments like browsers. A good chunk of the stuff that you write in your code is, strictly speaking, not directly controlled by JavaScript. That probably sounds a little strange.
+Şimdiye kadar, ele aldığımız konular sadece JavaScript dilindeki konulardı. Gerçeklik şu ki, çoğu JS kodu tarayıcılar gibi ortamlarda çalışması ve etkileşimde bulunması için yazılır. Kodunuzda yazdığınız şeylerin büyük bir kısmı, katı olarak düşünüldüğünde doğrudan JavaScript tarafından kontrol edilmeyen şeylerdir. Bu belki biraz garip gelebilir.
 
-The most common non-JavaScript JavaScript you'll encounter is the DOM API. For example:
+Karşılaşacağınız en yaygın olmayan JavaScript, DOM API'si gibi JavaScript'ten farklı olan şeylerdir. Örneğin:
 
 ```js
 var el = document.getElementById( "foo" );
 ```
 
-The `document` variable exists as a global variable when your code is running in a browser. It's not provided by the JS engine, nor is it particularly controlled by the JavaScript specification. It takes the form of something that looks an awful lot like a normal JS `object`, but it's not really exactly that. It's a special `object,` often called a "host object."
+`document` değişkeni, kodunuz bir tarayıcıda çalıştığında global bir değişken olarak mevcuttur. Bu, JS motoru tarafından sağlanmaz ve JavaScript belgesi tarafından özellikle kontrol edilmez. Normal bir JS `object` gibi görünen bir şeye benzer bir form alır, ancak tam olarak o değildir. Bu özel bir `object`tir ve genellikle bir "ana obje" olarak adlandırılır.
 
-Moreover, the `getElementById(..)` method on `document` looks like a normal JS function, but it's just a thinly exposed interface to a built-in method provided by the DOM from your browser. In some (newer-generation) browsers, this layer may also be in JS, but traditionally the DOM and its behavior is implemented in something more like C/C++.
+Ayrıca, `document` üzerindeki `getElementById(..)` yöntemi normal bir JS işlevine benzese de, aslında tarayıcınızın DOM'dan sağladığı yerleşik bir yönteme aittir. Bazı (yeni nesil) tarayıcılarda, bu katman da JS'de olabilir, ancak geleneksel olarak DOM ve davranışları daha çok C/C++ gibi bir şeyde uygulanır.
 
-Another example is with input/output (I/O).
+Başka bir örnek giriş/çıkış (I/O) ile ilgilidir.
 
-Everyone's favorite `alert(..)` pops up a message box in the user's browser window. `alert(..)` is provided to your JS program by the browser, not by the JS engine itself. The call you make sends the message to the browser internals and it handles drawing and displaying the message box.
+Herkesin sevdiği `alert(..)`, kullanıcının tarayıcı penceresinde bir ileti kutusu görüntüler. `alert(..)`, JS programınıza tarayıcı tarafından sağlanır, JS motoru tarafından değil. Yaptığınız çağrı, iletiyi tarayıcı iç yapısına gönderir ve ileti kutusunu çizip görüntülemeyi yönetir.
 
-The same goes with `console.log(..)`; your browser provides such mechanisms and hooks them up to the developer tools.
+Aynı şey `console.log(..)` için de geçerlidir; tarayıcınız bu mekanizmaları sağlar ve bunları geliştirici araçlarına bağlar.
 
-This book, and this whole series, focuses on JavaScript the language. That's why you don't see any substantial coverage of these non-JavaScript JavaScript mechanisms. Nevertheless, you need to be aware of them, as they'll be in every JS program you write!
+Bu kitap ve bu seri, JavaScript dili üzerine odaklanmaktadır. Bu yüzden bu tür JavaScript ile ilgili olmayan mekanizmalarının büyük bir kapsama alanı yok. Bununla birlikte, bu mekanizmalar hakkında bilgi sahibi olmanız gerekmektedir, çünkü yazdığınız her JS programında karşınıza çıkacaktır!
 
-## Review
+## Gözden Geçirme
 
-The first step to learning JavaScript's flavor of programming is to get a basic understanding of its core mechanisms like values, types, function closures, `this`, and prototypes.
+JavaScript programlama dilinin özelliklerini öğrenmenin ilk adımı, değerler (values), tipler (types), fonksiyon kapanışları, `this` ve prototipler gibi temel mekanizmalarını temel bir anlayışla kavramaktır.
 
-Of course, each of these topics deserves much greater coverage than you've seen here, but that's why they have chapters and books dedicated to them throughout the rest of this series. After you feel pretty comfortable with the concepts and code samples in this chapter, the rest of the series awaits you to really dig in and get to know the language deeply.
+Tabii ki, bu konuların her biri burada gördüğünüzden çok daha fazla kapsama alanına sahiptir, ancak bu konulara ayrılmış bölümler ve kitaplar, bu serinin geri kalanında sizi bekliyor. Bu bölümdeki kavramlar ve kod örnekleri hakkında oldukça rahat hissettikten sonra, geri kalan seriyi keşfetmek ve dili derinlemesine tanımak için sizi bekliyor olacak.
 
-The final chapter of this book will briefly summarize each of the other titles in the series and the other concepts they cover besides what we've already explored.
+Bu kitabın son bölümü, serinin diğer başlıklarını ve zaten keşfettiğimiz konuların dışında kapsadığı diğer kavramları kısaca özetleyecektir.
